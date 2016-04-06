@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.5)
+project(Server)
+aux_source_directory(./TCPServer SRC_LIST)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+add_executable(Server ${SRC_LIST})
