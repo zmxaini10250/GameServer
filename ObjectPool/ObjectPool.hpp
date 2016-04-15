@@ -34,7 +34,14 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDelet
         {
             public:
                 CFreeClass(CObjectPool &pool) :pool(pool) {}
-                void operator() (T *t) const { t->~T(); pool.FreeSpaceStack.push((ObjectBlock *)t); }
+                void operator() (T *t) 
+                { 
+                    if (t == nullptr)
+                        return;
+                    t->~T(); 
+                    pool.FreeSpaceStack.push((ObjectBlock *)t); 
+                    std::cout<<(int)((ObjectBlock *)t - (ObjectBlock *)pool.PoolBlock)<<std::endl;
+                }
             private:
                 CObjectPool &pool;
         };
