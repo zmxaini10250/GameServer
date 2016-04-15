@@ -8,6 +8,11 @@
 
 #include "Singleton.hpp"
 
+template<class T, int>
+class ObjectPoolDeleter;
+template<class T, int>
+class CObjectPool;
+
 template<class T, int PoolLength = 1024>
 class ObjectPoolDeleter
 {

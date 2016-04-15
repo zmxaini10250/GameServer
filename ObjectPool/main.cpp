@@ -3,8 +3,7 @@
 
 int main()
 {
-    CObjectPool<int,50> pool;
-    auto p = pool.GetObject(4);
+    auto p = CObjectPool<int>::GetInstance().GetObject(4);
     std::cout<<*p<<std::endl;
 
     return 0;
