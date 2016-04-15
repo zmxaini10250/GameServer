@@ -3,7 +3,6 @@
 
 #include <type_traits>
 #include <memory>
-#include <iostream>
 #include <stack>
 
 #include "Singleton.hpp"
@@ -40,7 +39,6 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDelet
                         return;
                     t->~T(); 
                     pool.FreeSpaceStack.push((ObjectBlock *)t); 
-                    std::cout<<(int)((ObjectBlock *)t - (ObjectBlock *)pool.PoolBlock)<<std::endl;
                 }
             private:
                 CObjectPool &pool;
