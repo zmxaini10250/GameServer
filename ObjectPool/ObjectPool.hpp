@@ -8,10 +8,19 @@
 
 #include "Singleton.hpp"
 
-template<class T,int PoolLength>
-class CObjectPool
+template<class T, int PoolLength = 1024>
+class ObjectPoolDeleter
 {
-    private:
+    public:
+        ObjectPoolDeleter() {};
+        ~ObjectPoolDeleter() {};
+        void operator() (CObjectPool<T, PoolLength> *t) const { t->~CObjectPool(); }
+};
+
+template<class T, int PoolLength = 1024>
+class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDeleter<T, PoolLength> >
+{
+    protected:
         typedef typename std::aligned_storage<sizeof(T), alignof(T)>::type ObjectBlock;
         ObjectBlock PoolBlock[PoolLength];
         std::stack<ObjectBlock *> FreeSpaceStack;
@@ -25,20 +34,10 @@ class CObjectPool
                 CObjectPool &pool;
         };
 
-
-
+        friend class ObjectPoolDeleter<T, PoolLength>;
+        friend class CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDeleter<T, PoolLength> >;
     public:
         typedef std::unique_ptr<T, CFreeClass> Ptr;
-
-        CObjectPool()
-        {
-            for (int i = 0; i < PoolLength; ++i)
-            {
-                FreeSpaceStack.push(&PoolBlock[i]);
-            }
-        }
-
-        virtual ~CObjectPool() {};
 
         template<class... Args>
             Ptr GetObject(Args&&... args)
@@ -50,6 +49,15 @@ class CObjectPool
                 return Ptr(new (space)T(args...), CFreeClass(*this));
             }
 
+    protected:
+        CObjectPool()
+        {
+            for (int i = 0; i < PoolLength; ++i)
+            {
+                FreeSpaceStack.push(&PoolBlock[i]);
+            }
+        }
+        virtual ~CObjectPool() {};
 };
 
 #endif

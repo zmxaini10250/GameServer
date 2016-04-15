@@ -3,16 +3,16 @@
 
 #include <memory>
 
-template<class T>
+template<class T, class D = std::default_delete<T>>
 class CSingleton
 {
     public:
-        static const T& GetConstSingleton()
+        static const T& GetConstInstance()
         {
-            return GetSingleton();
+            return GetInstance();
         }
 
-        static T& GetSingleton()
+        static T& GetInstance()
         {
             if (SingletonPtr == nullptr)
             {
@@ -20,13 +20,15 @@ class CSingleton
             }
             return *SingletonPtr;
         }
-    private:
+
+    protected:
         CSingleton() {}
-        ~CSingleton() {};
-        static std::unique_ptr<T> SingletonPtr;
+        virtual ~CSingleton() {};
+        static std::unique_ptr<T, D> SingletonPtr;
 };
 
-template<typename T>
-std::unique_ptr<T> CSingleton<T>::SingletonPtr;
+template<class T, class D>
+std::unique_ptr<T, D> CSingleton<T, D>::SingletonPtr;
+
 
 #endif
