@@ -1,20 +1,30 @@
 #ifndef _TCP_SERVER_H_
 #define _TCP_SERVER_H_
 
-//#include "define.h"
-#include "const_value.h"
+#include <list>
+#include <memory>
+#include "NetBuffer.h"
 
 class CTCPServer
 {
     public:
-        CTCPServer(int port = serverPort, int waiNumber = serverWaitNumber);
-        ~CTCPServer();
+        CTCPServer();
+        ~CTCPServer(){}
         int Listen();
         int Accept();
+        int GetRecvBuff(Byte *buff, int size);
     private:
+        //int AddRecvBuff(){}
+        //int AddSendBuff(){}
+        //int GetSendBuff(){}
+    private:
+        int epollfd;
         int listenfd;
-        int listenPort;
-        int listenWaitNumber;
+    
+        std::list<std::unique_ptr<CNetBuffer> > freeSpace;
+        std::list<std::unique_ptr<CNetBuffer> > sendSpace;
+        std::list<std::unique_ptr<CNetBuffer> > recvSpace;
+
 };
 
 #endif
