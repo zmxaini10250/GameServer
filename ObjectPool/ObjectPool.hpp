@@ -8,21 +8,27 @@
 #include "Singleton.hpp"
 
 template<class T, int>
-class ObjectPoolDeleter;
+class CObjectPoolDeleter;
 template<class T, int>
 class CObjectPool;
 
 template<class T, int PoolLength = 1024>
-class ObjectPoolDeleter
+class CObjectPoolDeleter
 {
     public:
-        ObjectPoolDeleter() {};
-        ~ObjectPoolDeleter() {};
-        void operator() (CObjectPool<T, PoolLength> *t) const { t->~CObjectPool(); }
+        CObjectPoolDeleter() {};
+        virtual ~CObjectPoolDeleter() {};
+        virtual void operator() (CObjectPool<T, PoolLength> *t)const
+        {
+            if (t != nullptr)
+            {
+                delete t;
+            }
+        }
 };
 
 template<class T, int PoolLength = 1024>
-class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDeleter<T, PoolLength> >
+class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDeleter<T, PoolLength> >
 {
     protected:
         typedef typename std::aligned_storage<sizeof(T), alignof(T)>::type ObjectBlock;
@@ -38,14 +44,14 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDelet
                     if (t == nullptr)
                         return;
                     t->~T(); 
-                    pool.FreeSpaceStack.push((ObjectBlock *)t); 
+                    pool.FreeSpaceStack.push((ObjectBlock *)t);
                 }
             private:
                 CObjectPool &pool;
         };
 
-        friend class ObjectPoolDeleter<T, PoolLength>;
-        friend class CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDeleter<T, PoolLength> >;
+        friend class CObjectPoolDeleter<T, PoolLength>;
+        friend class CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDeleter<T, PoolLength> >;
     public:
         typedef std::unique_ptr<T, CFreeClass> Ptr;
 
@@ -67,7 +73,7 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, ObjectPoolDelet
                 FreeSpaceStack.push(&PoolBlock[i]);
             }
         }
-        virtual ~CObjectPool() {};
+        virtual ~CObjectPool() {}
 };
 
 #endif
