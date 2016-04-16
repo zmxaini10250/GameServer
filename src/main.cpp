@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "ObjectPool.hpp"
-#include "SingletonObject.hpp"
-
+#include "ObjectPool/ObjectPool.hpp"
+#include "ObjectPool/SingletonObject.hpp" 
 class MyClassA
 {
 public:
@@ -10,7 +9,7 @@ public:
 protected:
 	MyClassA() {}
 	virtual ~MyClassA() 
-	{ 
+	{
 		std::cout << "~MyClassA()" << std::endl;
 	}
 	int i = 0;

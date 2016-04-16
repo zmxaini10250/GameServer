@@ -12,8 +12,8 @@ class CTCPClientSocket
         int SendBuff();
     private:
         int readfd;
-        NetBuffer recvBuff;
-        NetBuffer sendBuff;
+        CNetBuffer recvBuff;
+        CNetBuffer sendBuff;
 };
 
 #endif
