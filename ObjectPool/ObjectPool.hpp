@@ -31,6 +31,12 @@ template<class T, int PoolLength = 1024>
 class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDeleter<T, PoolLength> >
 {
     protected:
+
+		CObjectPool(const CObjectPool&) = delete;
+		CObjectPool(CObjectPool &&) = delete;
+		CObjectPool &operator = (const CObjectPool &) = delete;
+		CObjectPool &operator = (CObjectPool &&) = delete;
+
         typedef typename std::aligned_storage<sizeof(T), alignof(T)>::type ObjectBlock;
         ObjectBlock PoolBlock[PoolLength];
         std::stack<ObjectBlock *> FreeSpaceStack;
