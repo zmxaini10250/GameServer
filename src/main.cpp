@@ -37,15 +37,15 @@ int main()
     std::vector<CObjectPool<MyClassB,length>::Ptr> p;
     for (int i = 0; i < length; ++i)
     {
-        p.push_back(CObjectPool<MyClassB, length>::GetInstance().GetObject());
+        p.push_back(CObjectPool<MyClassB, length>::GetInstance().CreateObject());
     }
-    CObjectPool<MyClassB,length>::Ptr ap = CObjectPool<MyClassB, length>::GetInstance().GetObject();
+    CObjectPool<MyClassB,length>::Ptr ap = CObjectPool<MyClassB, length>::GetInstance().CreateObject();
     ap.reset();
     for (int i = 0; i < length; ++i)
     {
         p.at(i).reset();
     }
-    CObjectPool<MyClassB,length>::Ptr ap2 = CObjectPool<MyClassB, length>::GetInstance().GetObject();
+    CObjectPool<MyClassB,length>::Ptr ap2 = CObjectPool<MyClassB, length>::GetInstance().CreateObject();
     ap2.reset();
     
 	return 0;

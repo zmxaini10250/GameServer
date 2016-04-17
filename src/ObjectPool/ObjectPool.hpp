@@ -62,7 +62,7 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDele
         typedef std::shared_ptr<T> Ptr;
 
         template<class... Args>
-            Ptr GetObject(Args&&... args)
+            Ptr CreateObject(Args&&... args)
             {
                 if (FreeSpaceStack.empty())
                     return Ptr();
