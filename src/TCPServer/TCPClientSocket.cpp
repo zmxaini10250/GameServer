@@ -1,3 +1,6 @@
+#include <memory>
+#include <map>
+
 #include "TCPClientSocket.h"
 #include "NetBuffer.h"
 #include "../ObjectPool/ObjectPool.hpp"
@@ -22,7 +25,8 @@ std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd
     {
         return std::weak_ptr<CTCPClientSocket>();
     }
-    ClientSocketPool::Ptr p = ClientSocketPool::CreateObject(readfd);
-    list.insert.(std::make_pair<int, ClientSocketPool::Ptr>(readfd, p));
+    ClientSocketPool::Ptr p(ClientSocketPool::GetInstance().CreateObject(readfd));
+    list.insert(std::make_pair(readfd, p));
+
     return std::weak_ptr<CTCPClientSocket>(p);
 }

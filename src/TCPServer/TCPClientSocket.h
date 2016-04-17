@@ -7,6 +7,13 @@
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
 
+class CTCPClientSocket;
+class CTCPClientSocketManager;
+
+typedef CObjectPool<CTCPClientSocket> ClientSocketPool;
+typedef CSingletonObject<CTCPClientSocketManager> ClientSocketManager;
+
+
 class CTCPClientSocket
 {
     public: 
@@ -29,9 +36,7 @@ class CTCPClientSocketManager
         ClientList list;
         CTCPClientSocketManager(){}
         ~CTCPClientSocketManager(){}
-}
+};
 
-typedef CObjectPool<CTCPServer> ClientSocketPool;
-typedef CSingletonObject<CTCPClientSocketManager> ClientSocketManager; 
 
 #endif
