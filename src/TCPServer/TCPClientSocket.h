@@ -2,6 +2,7 @@
 #define _TCPCLIENTSOCKET_H_
 
 #include "NetBuffer.h"
+#include "../ObjectPool/ObjectPool.hpp"
 
 class CTCPClientSocket
 {
@@ -15,5 +16,7 @@ class CTCPClientSocket
         CNetBuffer recvBuff;
         CNetBuffer sendBuff;
 };
+
+typedef CObjectPool<CTCPServer> ClientSocketPool;
 
 #endif

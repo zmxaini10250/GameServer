@@ -59,13 +59,13 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDele
         friend class CObjectPoolDeleter<T, PoolLength>;
         friend class CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDeleter<T, PoolLength> >;
     public:
-        typedef std::unique_ptr<T, CFreeClass> Ptr;
+        typedef std::shared_ptr<T> Ptr;
 
         template<class... Args>
             Ptr GetObject(Args&&... args)
             {
                 if (FreeSpaceStack.empty())
-                    return Ptr(nullptr, *this);
+                    return Ptr();
                 ObjectBlock *space = FreeSpaceStack.top();
                 FreeSpaceStack.pop();
                 return Ptr(new (space)T(args...), CFreeClass(*this));

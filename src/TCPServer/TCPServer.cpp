@@ -8,7 +8,7 @@
 #include <unistd.h>
 
 #include "TCPServer.h"
-#include "NetBuffer.h"
+#include "TCPClientSocket.h"
 
 const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;

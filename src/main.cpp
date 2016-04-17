@@ -40,13 +40,13 @@ int main()
         p.push_back(CObjectPool<MyClassB, length>::GetInstance().GetObject());
     }
     CObjectPool<MyClassB,length>::Ptr ap = CObjectPool<MyClassB, length>::GetInstance().GetObject();
-    ap.reset(nullptr);
+    ap.reset();
     for (int i = 0; i < length; ++i)
     {
-        p.at(i).reset(nullptr);
+        p.at(i).reset();
     }
     CObjectPool<MyClassB,length>::Ptr ap2 = CObjectPool<MyClassB, length>::GetInstance().GetObject();
-    ap2.reset(nullptr);
+    ap2.reset();
     
 	return 0;
 }
