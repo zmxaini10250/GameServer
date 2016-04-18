@@ -24,6 +24,7 @@ class CNetBuffer
     private:
         void Clear();
     private:
+        void DataMoveToHead();
         int beginPosition;
         int endPosition;
         Byte buffer[MsgMaxLength];

@@ -8,8 +8,7 @@
 
 int CTCPClientSocket::RecvBuff()
 {
-    recvBuff.ReadFromFD(readfd);
-    return 0;
+    return recvBuff.ReadFromFD(readfd);
 }
 
 int CTCPClientSocket::SendBuff()
@@ -42,9 +41,16 @@ std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd
 std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::GetClient(int readfd)
 {
     ClientList::const_iterator it = list.find(readfd);
-    if (it != list.end())
+    if (it == list.end())
     {
         return std::weak_ptr<CTCPClientSocket>();
     }
-    return std::weak_ptr<CTCPClientSocket>(*it);   
+    return std::weak_ptr<CTCPClientSocket>(it->second);   
+}
+
+
+int CTCPClientSocketManager::DestoryClient(int readfd)
+{
+    list.erase(readfd);
+    return 0;
 }

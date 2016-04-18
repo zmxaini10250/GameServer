@@ -15,6 +15,7 @@ void CNetBuffer::Clear()
 
 int CNetBuffer::ReadFromFD(int fd, ReadFunction readfunc)
 {
+    DataMoveToHead();
     int readSize = 0;
     readSize = readfunc(fd, buffer + endPosition, MsgMaxLength - endPosition);
     endPosition += readSize;
@@ -27,6 +28,7 @@ int CNetBuffer::GetStream(Byte *buffer, int size)
     if (Length < 0)
     {
         Clear();
+        return 0;
     }
     int ReadSize = (size > Length) ? Length : size;
     memmove(buffer, this->buffer, ReadSize);
@@ -42,4 +44,21 @@ bool CNetBuffer::isFull()
 bool CNetBuffer::isEmpty()
 {
     return endPosition == beginPosition;
+}
+
+void CNetBuffer::DataMoveToHead()
+{
+    if (beginPosition == 0)
+    {
+        return;
+    }
+    int Length = endPosition - beginPosition;
+    if (Length < 0)
+    {
+        Clear();
+        return;
+    }
+    memmove(buffer, this->buffer+beginPosition, Length);
+    this->beginPosition = 0;
+    this->endPosition = Length;
 }

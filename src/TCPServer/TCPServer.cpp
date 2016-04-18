@@ -9,6 +9,7 @@
 
 #include "TCPServer.h"
 #include "TCPClientSocket.h"
+#include "Process.h"
 
 const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;
@@ -53,13 +54,15 @@ int AddAcceptEvent(int epollfd, int eventfd)
     {
         return -1;
     }
-    //unsafe but how to do
-    std::weak_ptr<CTCPClientSocket> *p = new std::weak_ptr<CTCPClientSocket>(ClientSocketManager::GetInstance().CreateClient(eventfd));
-    if ((*p) == nullptr)
+    std::weak_ptr<CTCPClientSocket> p(ClientSocketManager::GetInstance().CreateClient(eventfd));
+    if (p.expired())
     {
-        return -1;
+        if (epoll_ctl(epollfd, EPOLL_CTL_DEL, eventfd, NULL) == -1)
+        {
+            return -1;
+        }
+        return 0;
     }
-    event.data.ptr = (void *)p;
     return 0;
 }
 
@@ -69,7 +72,43 @@ int RemoveAcceptEvent(int epollfd, int eventfd)
     {
         return -1;
     }
-    return -1;
+    if (ClientSocketManager::GetInstance().DestoryClient(eventfd) == -1)
+    {
+        return -1;
+    }
+    return 0;
+}
+
+int RecvData(int epollfd, int readfd)
+{
+    int nread = 0;
+    std::weak_ptr<CTCPClientSocket> p(ClientSocketManager::GetInstance().GetClient(readfd));
+    if (p.expired())
+    {
+        return -1;
+    }
+    std::shared_ptr<CTCPClientSocket> sp = p.lock();
+    if (sp == nullptr)
+    {
+        return -1;
+    }
+    nread = sp->RecvBuff();
+    if (nread > 0)
+    {
+        Data data;
+        if (sp->GetFormatData(data) != 0)
+        {
+            ProcessHandle::GetInstance().ProcessData(data);
+        }
+    }
+    else
+    {
+        if (RemoveAcceptEvent(epollfd, readfd) == -1)
+        {
+            return -1;
+        }
+    }
+    return 0;
 }
 
 CTCPServer::CTCPServer()
@@ -124,7 +163,6 @@ int CTCPServer::Accept()
 {
     int nfds = 0;
     struct epoll_event get_event[serverMaxEvent];
-    int nread = 0;
     memset(get_event, 0, sizeof(epoll_event) * serverMaxEvent);
     nfds = epoll_wait(epollfd, get_event, serverMaxEvent, serverWaitTime);
     for (int i = 0; i < nfds; ++i)
@@ -147,27 +185,11 @@ int CTCPServer::Accept()
             }
         }
         else
-        {
-            //TODO Function
-            if (get_event[i].events & EPOLLIN)
+        {    if (get_event[i].events & EPOLLIN)
             {
-                if (freeSpace.empty())
+                if (RecvData(epollfd, get_event[i].data.fd) == -1)
                 {
-                    return 0;
-                }
-                auto it = freeSpace.begin();
-                nread = (*it)->ReadFromFD(get_event[i].data.fd);
-                if (nread > 0)
-                {
-                    recvSpace.push_back(std::move((*it)));
-                    freeSpace.pop_front();
-                }
-                else
-                {
-                    if (RemoveAcceptEvent(epollfd, get_event[i].data.fd) == -1)
-                    {
-                        return -1;
-                    }
+                    return -1;
                 }
             }
         }
