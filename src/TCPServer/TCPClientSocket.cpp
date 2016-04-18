@@ -1,6 +1,7 @@
 #include <memory>
 #include <map>
 
+#include "Data.h"
 #include "TCPClientSocket.h"
 #include "NetBuffer.h"
 #include "../ObjectPool/ObjectPool.hpp"
@@ -16,6 +17,11 @@ int CTCPClientSocket::SendBuff()
     return 0;
 }
 
+int CTCPClientSocket::GetFormatData(Data &data)
+{
+    return recvBuff.GetStream(data.buffer, DataBufferSize);
+}
+
 //////////////////////////////////////////////////////////////////////////////
 
 std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd)
@@ -26,7 +32,19 @@ std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd
         return std::weak_ptr<CTCPClientSocket>();
     }
     ClientSocketPool::Ptr p(ClientSocketPool::GetInstance().CreateObject(readfd));
-    list.insert(std::make_pair(readfd, p));
-
+    if (p != nullptr)
+    {
+        list.insert(std::make_pair(readfd, p));
+    }
     return std::weak_ptr<CTCPClientSocket>(p);
+}
+
+std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::GetClient(int readfd)
+{
+    ClientList::const_iterator it = list.find(readfd);
+    if (it != list.end())
+    {
+        return std::weak_ptr<CTCPClientSocket>();
+    }
+    return std::weak_ptr<CTCPClientSocket>(*it);   
 }

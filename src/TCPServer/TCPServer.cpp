@@ -25,11 +25,10 @@ int SetNoBlock(int fd)
     return 0;
 }
 
-int AddEvent(int epollfd, int eventfd)
+int AddListenEvent(int epollfd, int eventfd)
 {
     struct epoll_event event;
     event.data.fd = eventfd;
-    
     if (epoll_ctl(epollfd, EPOLL_CTL_ADD, eventfd, &event) == -1)
     {
         return -1;
@@ -37,7 +36,34 @@ int AddEvent(int epollfd, int eventfd)
     return 0;
 }
 
-int RemoveEvent(int epollfd, int eventfd)
+int RemoveListenEvent(int epollfd, int eventfd)
+{
+    if (epoll_ctl(epollfd, EPOLL_CTL_DEL, eventfd, NULL) == -1)
+    {
+        return -1;
+    }
+    return -1;
+}
+
+int AddAcceptEvent(int epollfd, int eventfd)
+{
+    struct epoll_event event;
+    event.data.fd = eventfd;
+    if (epoll_ctl(epollfd, EPOLL_CTL_ADD, eventfd, &event) == -1)
+    {
+        return -1;
+    }
+    //unsafe but how to do
+    std::weak_ptr<CTCPClientSocket> *p = new std::weak_ptr<CTCPClientSocket>(ClientSocketManager::GetInstance().CreateClient(eventfd));
+    if ((*p) == nullptr)
+    {
+        return -1;
+    }
+    event.data.ptr = (void *)p;
+    return 0;
+}
+
+int RemoveAcceptEvent(int epollfd, int eventfd)
 {
     if (epoll_ctl(epollfd, EPOLL_CTL_DEL, eventfd, NULL) == -1)
     {
@@ -86,7 +112,7 @@ int CTCPServer::Listen()
         return -1;
     }
 
-    if (AddEvent(epollfd, listenfd) == -1)
+    if (AddListenEvent(epollfd, listenfd) == -1)
     {
         return -1;
     }
@@ -115,7 +141,7 @@ int CTCPServer::Accept()
             {
                 return -1;
             }
-            if (AddEvent(epollfd, acceptfd) == -1)
+            if (AddAcceptEvent(epollfd, acceptfd) == -1)
             {
                 return -1;
             }
@@ -138,7 +164,7 @@ int CTCPServer::Accept()
                 }
                 else
                 {
-                    if (RemoveEvent(epollfd, get_event[i].data.fd) == -1)
+                    if (RemoveAcceptEvent(epollfd, get_event[i].data.fd) == -1)
                     {
                         return -1;
                     }
@@ -146,18 +172,6 @@ int CTCPServer::Accept()
             }
         }
     }
-    return 0;
-}
-
-int CTCPServer::GetRecvBuff(Byte *buff, int size)
-{
-    if (recvSpace.empty())
-    {
-        return -1;
-    }
-    recvSpace.front()->GetStream(buff, size);
-    freeSpace.push_back(std::move(recvSpace.front()));
-    recvSpace.pop_front();
     return 0;
 }
 

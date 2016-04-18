@@ -7,6 +7,7 @@
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
 
+typedef Data;
 class CTCPClientSocket;
 class CTCPClientSocketManager;
 
@@ -21,6 +22,7 @@ class CTCPClientSocket
         ~CTCPClientSocket(){}
         int RecvBuff();
         int SendBuff();
+        int GetFormatData(Data &data);
     private:
         int readfd;
         CNetBuffer recvBuff;

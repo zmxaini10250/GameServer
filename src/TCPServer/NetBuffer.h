@@ -4,10 +4,7 @@
 #define MsgMaxLength (1024)
 
 #include <unistd.h>
-
-
-typedef char Byte;
-typedef ssize_t (*ReadFunction)(int fd, void *buffer, size_t readSize);
+#include "TypeDefine.h"
 
 enum eMsgType
 {
