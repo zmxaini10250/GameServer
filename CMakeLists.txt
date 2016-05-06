@@ -7,7 +7,7 @@ SET(CMAKE_CXX_COMPILER clang++)
 add_definitions(-g -std=c++11)
 
 aux_source_directory(./src/TCPServer/ SRC_LIST)
-#aux_source_directory(./src/protobuf/ SRC_LIST)
+aux_source_directory(./src/Timer/ SRC_LIST)
 
 aux_source_directory(./src SRC_LIST)
 

@@ -1,7 +1,9 @@
 #include <sys/time.h>
 #include <time.h>
 #include <cstdio>
-
+#include <typeinfo>
+#include <iostream>
+#include <limits>
 //const time_t usecofsec = 1000;
 
 const time_t secondsofminute = 60;
@@ -20,6 +22,11 @@ void testtime();
 
 int main()
 {
+    struct timeval time;
+    time.tv_sec = intmax_t;
+    time.tv_usec = -1;
+    std::cout<<time.tv_sec<<std::endl;   
+    std::cout<<time.tv_usec<<std::endl;   
     return 0;
 }
 
@@ -51,49 +58,49 @@ void testtime()
     struct tm ptm;
     localtime_r(&tNow, &ptm);
 
-    printf("%s\n", "second");
+    printf("second\n");
     printf("%d\n",ptm.tm_sec);
 
-    printf("%s\n", "mintes");
+    printf("mintes\n");
     printf("%d\n",ptm.tm_min);
 
-    printf("%s\n", "hour");
+    printf("hour\n");
     printf("%d\n",ptm.tm_hour);
 
-    printf("%s\n", "day");
+    printf("day\n");
     printf("%d\n",ptm.tm_mday);
 
-    printf("%s\n", "month");
+    printf("month\n");
     printf("%d\n",ptm.tm_mon);
 
-    printf("%s\n", "year");
+    printf("year\n");
     printf("%d\n",ptm.tm_year);
 
 
-    printf("%s\n", "weak day");
+    printf("weak day\n");
     printf("%d\n",ptm.tm_wday);
 
 
-    printf("%s\n", "year day");
+    printf("year day\n");
     printf("%d\n",ptm.tm_yday);
 
-    printf("\n");
+    printf("\n\n");
     
     struct timeval timev;
     gettimeofday(&timev, 0);
 
-    printf("%s\n", "second");
+    printf("second\n");
     printf("%ld\n",timev.tv_sec%secondsofminute);
 
-    printf("%s\n", "mintes");
+    printf("mintes\n");
     printf("%ld\n",(timev.tv_sec/secondsofminute)%minutesofhour);
     
-    printf("%s\n", "hour");
+    printf("hour\n");
     printf("%ld\n",(timev.tv_sec/secondsofhour)%hourofday);
     
-    printf("%s\n", "all second");
+    printf("all second\n");
     printf("%ld\n",timev.tv_sec);
     
-    printf("%s\n", "usecond");
+    printf("usecond\n");
     printf("%ld\n",timev.tv_usec);
 }
