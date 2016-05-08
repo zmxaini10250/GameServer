@@ -1,14 +1,17 @@
 cmake_minimum_required(VERSION 3.5)
 project(Server)
 
-SET(CMAKE_C_COMPILER clang)
-SET(CMAKE_CXX_COMPILER clang++)
+SET(CMAKE_C_COMPILER gcc)
+SET(CMAKE_CXX_COMPILER g++)
+#SET(CMAKE_C_COMPILER clang)
+#SET(CMAKE_CXX_COMPILER clang++)
 
-add_definitions(-g -std=c++11)
+#add_definitions(-g -std=c++11)
+add_definitions(-g)
 
 aux_source_directory(./src/TCPServer/ SRC_LIST)
 aux_source_directory(./src/Timer/ SRC_LIST)
-
+aux_source_directory(./src/Base/ SRC_LIST)
 aux_source_directory(./src SRC_LIST)
 
 
