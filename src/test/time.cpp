@@ -22,35 +22,8 @@ void testtime();
 
 int main()
 {
-    struct timeval time;
-    time.tv_sec = intmax_t;
-    time.tv_usec = -1;
-    std::cout<<time.tv_sec<<std::endl;   
-    std::cout<<time.tv_usec<<std::endl;   
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void testtime()
 {
