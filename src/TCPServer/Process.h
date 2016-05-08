@@ -17,3 +17,4 @@ class CProcess
 typedef CSingletonObject<CProcess> ProcessHandle;
 
 #endif
+

@@ -26,7 +26,7 @@ int CTCPClientSocket::GetFormatData(Data &data)
 std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd)
 {
     ClientList::const_iterator it = list.find(readfd);
-    if (it != list.end())
+    if (it != list.cend())
     {
         return std::weak_ptr<CTCPClientSocket>();
     }
@@ -41,7 +41,7 @@ std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::CreateClient(int readfd
 std::weak_ptr<CTCPClientSocket> CTCPClientSocketManager::GetClient(int readfd)
 {
     ClientList::const_iterator it = list.find(readfd);
-    if (it == list.end())
+    if (it == list.cend())
     {
         return std::weak_ptr<CTCPClientSocket>();
     }

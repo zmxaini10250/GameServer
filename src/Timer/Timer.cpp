@@ -36,7 +36,7 @@ int CTimerItem::AddEvent(EventFunction function)
 
 int CTimerManager::TimePass(const struct timeval& passtime)
 {
-    for (TimerList::const_iterator it = timerList.begin(); it != timerList.cend(); ++it)
+    for (TimerList::iterator it = timerList.begin(); it != timerList.cend(); ++it)
     {
         it->second.TimePass(passtime);
     }
