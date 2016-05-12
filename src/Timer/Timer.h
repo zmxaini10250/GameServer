@@ -12,10 +12,12 @@ class CTimerManager;
 
 typedef void(*EventFunction)();
 typedef CSingletonObject<CTimerManager> TimerManager;
+
 enum eTimeEventType
 {
     DailyRefresh = 0,
-
+    Second5Refresh,
+    MillSecond500Refresh,
     TimeEventTypeEnd
 };
 
@@ -42,11 +44,11 @@ class CTimerManager
 {
     public:
         int TimePass(const struct timeval& passtime);
-
+        
     protected:
-        CTimerManager(){}
+        CTimerManager();
         virtual ~CTimerManager(){}
-
+        int RegisterEvent(eTimeEventType type, EventFunction event);
         typedef std::unordered_map<eTimeEventType, CTimerItem> TimerList;
         TimerList timerList;
 };

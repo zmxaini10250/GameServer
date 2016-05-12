@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 #include "../Base/Time.h"
+#include "../Base/TimeValue.h"
 
 int CTimerItem::TimePass(const struct timeval& passtime)
 {
@@ -43,3 +44,19 @@ int CTimerManager::TimePass(const struct timeval& passtime)
     return 0;
 }
 
+CTimerManager::CTimerManager()
+{
+    timerList.insert(std::make_pair<eTimeEventType, CTimerItem>(DailyRefresh, CTimerItem({secondsofday, 0}, timeToDayEnd(), true)));
+    timerList.insert(std::make_pair<eTimeEventType, CTimerItem>(Second5Refresh, CTimerItem({5, 0}, timeToDayEnd(), true)));
+    timerList.insert(std::make_pair<eTimeEventType, CTimerItem>(MillSecond500Refresh, CTimerItem({0, 500000}, timeToDayEnd(), true)));
+}
+
+int CTimerManager::RegisterEvent(eTimeEventType type, EventFunction event)
+{
+    TimerList::iterator it = timerList.find(type);
+    if (it != timerList.cend())
+    {
+        it->second.AddEvent(event);
+    }
+    return 0;
+}

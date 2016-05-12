@@ -7,11 +7,6 @@ class CTime;
 
 typedef CSingletonObject<CTime> Time;
 
-bool timevalGreater(const struct timeval& left, const struct timeval& right);
-bool timevalCheck(const struct timeval& time);
-const struct timeval timevalSubtract(const struct timeval& left, const struct timeval& right);
-const struct timeval timevalAdd(const struct timeval& left, const struct timeval& right);
-
 class CTime
 {
     public:
@@ -22,7 +17,6 @@ class CTime
     protected:
         CTime();
         ~CTime(){};
-        int GetTime(struct timeval& time)const;
         struct timeval LasTickTime;
 };
 
