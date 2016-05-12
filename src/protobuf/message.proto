@@ -1,0 +1,4 @@
+message test
+{
+    optional int32 num = 1;
+}
