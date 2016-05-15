@@ -53,7 +53,7 @@ CTimerManager::CTimerManager()
 
 int CTimerManager::RegisterEvent(eTimeEventType type, EventFunction event)
 {
-    TimerList::iterator it = timerList.find(type);
+    TimerList::iterator it = timerList.find((int)type);
     if (it != timerList.cend())
     {
         it->second.AddEvent(event);

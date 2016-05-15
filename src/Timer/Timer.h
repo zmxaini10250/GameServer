@@ -49,7 +49,7 @@ class CTimerManager
         CTimerManager();
         virtual ~CTimerManager(){}
         int RegisterEvent(eTimeEventType type, EventFunction event);
-        typedef std::unordered_map<eTimeEventType, CTimerItem> TimerList;
+        typedef std::unordered_map<int, CTimerItem> TimerList;
         TimerList timerList;
 };
 

@@ -15,7 +15,7 @@ const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;
 const int serverWaitNumber  = 1024;
 const int serverMaxEvent    = 1024;
-const int serverWaitTime    = 500;
+const int serverWaitTime    = 50000;
 
 int SetNoBlock(int fd)
 {
