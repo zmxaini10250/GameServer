@@ -1,0 +1,240 @@
+enum eMessageType
+{
+    TypeC2SLoginCheckReq        = 1;
+    TypeS2CLoginCheckRes        = 2;
+
+    TypeC2SLoginRegisterReq     = 3;
+    TypeS2CLoginRegisterRes     = 4;
+
+    TypeC2SCreateUserReq        = 5;
+    TypeS2CCreateUserRes        = 6;
+
+    TypeC2SDeleteUserReq        = 7;
+    TypeS2CDeleteUserRes        = 8;
+
+    TypeC2SGetPlayerInfoReq     = 9;
+    TypeS2CGetPlayerInfoRes     = 10;
+
+    TypeC2SGetHeroListReq       = 11;
+    TypeS2CGetHeroListRes       = 12;
+
+    TypeC2SGetHeroInfoReq       = 13;
+    TypeS2CGetHeroInfoRes       = 14;
+
+    TypeC2SHeroLevelUpReq       = 15;
+    TypeS2CHeroLevelUpRes       = 16;
+
+    TypeC2SDeleteHeroReq        = 17;
+    TypeS2CDeleteHeroRes        = 18;
+
+    TypeC2SGetHeroTeamReq           = 19;
+    TypeS2CGetHeroTeamRes           = 20;
+
+    TypeC2SUpdateHeroTeamReq        = 21;
+    TypeS2CUpdateHeroTeamRes        = 22;
+
+    TypeC2SLotteryReq           = 23;
+    TypeS2CLotteryRes           = 24;
+
+    TypeC2SGetPlayerListReq     = 25;
+    TypeS2CGetPlayerListRes     = 26;
+
+    TypeC2SPlayerFightReq       = 27;
+    TypeS2CPlayerFightRes       = 28;
+}
+
+//TypeC2SLoginCheckReq
+message PBC2SLoginCheckReq
+{
+    required string Username            = 1;
+    required string Password            = 2;
+}
+
+//TypeS2CLoginCheckRes
+message PBS2CLoginCheckRes
+{
+    required int32 LoginCheckResult     = 1;
+}
+
+//TypeC2SLoginRegisterReq 
+message PBC2SLoginRegisterReq
+{
+    required string Username            = 1;
+    required string Password            = 2;
+}
+
+//TypeS2CLoginRegisterRes 
+message PBS2CLoginRegisterRes
+{
+    required int32 LoginRegisterResult  = 1;
+    optional int32 LoginID              = 2;
+}
+
+//TypeC2SCreateUserReq
+message PBC2SCreateUserReq
+{
+    required string PlayerName          = 1;
+}
+
+//TypeS2CCreateUserRes
+message PBS2CCreateUserRes
+{
+    required int32 CreateUserResult     = 1;
+}
+
+//TypeC2SDeleteUserReq
+message PBC2SDeleteUserReq
+{
+}
+
+//TypeS2CDeleteUserRes
+message PBS2CDeleteUserRes
+{
+    required int32 DeleteUserResult     = 1;
+}
+
+//TypeC2SGetPlayerInfoReq 
+message PBC2SGetPlayerInfoReq
+{
+}
+
+//TypeS2CGetPlayerInfoRes
+message PlayerInfo
+{
+}
+
+message PBS2CGetPlayerInfoRes
+{
+    required int32 GetPlayerInfoResult  = 1;
+    optional PlayerInfo Info            = 2;
+}
+
+//TypeC2SGetHeroListReq
+message PBC2SGetHeroListReq
+{
+}
+
+//TypeS2CGetHeroListRes   
+message Hero
+{
+}
+
+message PBS2CGetHeroListRes
+{
+    required int32 GetHeroListResult    = 1;
+    repeated Hero HeroList              = 2;
+}
+
+//TypeC2SGetHeroInfoReq   
+message PBC2SGetHeroInfoReq
+{
+    required int32 HeroID               = 1;
+}
+
+//TypeS2CGetHeroInfoRes
+message HeroInfo
+{
+}
+
+message PBS2CGetHeroInfoRes
+{
+    required int32 GetHeroInfoResult    = 1;
+    optional HeroInfo info              = 2;
+}
+
+//TypeC2SHeroLevelUpReq   
+message PBC2SHeroLevelUpReq
+{
+    required int32 HeroPackID           = 1;
+}
+
+//TypeS2CHeroLevelUpRes   
+message PBS2CHeroLevelUpRes
+{
+    required int32 HeroLevelUpResult    = 1;
+}
+
+//TypeC2SDeleteHeroReq 
+message PBC2SDeleteHeroReq
+{
+    required int32 HeroPackID           = 1;
+}
+
+//TypeS2CDeleteHeroRes    
+message PBS2CDeleteHeroRes
+{
+    required int32 DeleteHeroResult     = 1;
+}
+
+//TypeC2SGetHeroTeamReq       
+message PBC2SGetHeroTeamReq
+{
+}
+
+//TypeS2CGetHeroTeamRes       
+message HeroTeam
+{
+}
+
+message PBS2CGetHeroTeamRes
+{
+    required int32 GetHeroTeamResult    = 1;
+    optional HeroTeam Team              = 2;
+}
+
+//TypeC2SUpdateHeroTeamReq    
+message PBC2SUpdateHeroTeamReq
+{
+    required HeroTeam Team              = 1;
+}
+
+//TypeS2CUpdateHeroTeamRes 
+message PBS2CUpdateHeroTeamRes
+{
+    required int32 UpdateHeroTeamResult = 1;
+}
+
+//TypeC2SLotteryReq       
+message PBC2SLotteryReq
+{
+}
+
+//TypeS2CLotteryRes       
+message PBS2CLotteryRes
+{
+    required int32 LotteryResult        = 1;
+}
+
+//TypeC2SGetPlayerListReq 
+message PBC2SGetPlayerListReq
+{
+}
+
+//TypeS2CGetPlayerListRes 
+message Player
+{
+}
+
+message PBS2CGetPlayerListRes
+{
+    required int32 GetPlayerListResult  = 1;
+    repeated Player PlayerList          = 2;
+}
+
+//TypeC2SPlayerFightReq   
+message PBC2SPlayerFightReq
+{
+    required int32 DestPlayerID         = 1;
+}
+
+//TypeS2CPlayerFightRes   
+message FightReport
+{
+}
+
+message PBS2CPlayerFightRes
+{
+    required int32 PlayerFightResult    = 1;
+    optional FightReport Report         = 2;
+}
+

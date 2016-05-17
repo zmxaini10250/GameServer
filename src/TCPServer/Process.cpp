@@ -5,11 +5,11 @@
 #include "Data.h"
 #include "../DBServer/DBServer.h"
 
-#include "../protobuf/Message.pb.h"
+#include "../protobuf/ClientMessage.pb.h"
 
 int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    PBC2SLoginReq req;
+    PBC2SLoginCheckReq req;
     req.ParseFromArray(data.buffer, data.bufferLength);
     printf("username:%s password:%s\n", req.username().c_str(), req.password().c_str());
 
@@ -85,7 +85,7 @@ int PlayerFight(const Data& data, std::weak_ptr<CPlayer> player)
 
 CProcess::CProcess()
 {
-    RegisterFunction((int)TypeC2SLoginReq, LoginCheck);
+    RegisterFunction((int)TypeC2SLoginCheckReq, LoginCheck);
 }
 
 int CProcess::ProcessData(const Data& data, std::weak_ptr<CPlayer> player)
