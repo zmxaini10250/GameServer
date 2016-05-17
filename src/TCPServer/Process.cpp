@@ -38,7 +38,7 @@ int CProcess::ProcessData(const Data& data, std::weak_ptr<CPlayer> player)
 int CProcess::RegisterFunction(int type, ProcessFunction function)
 {
     FunctionList::const_iterator it = list.find(type);
-    if (it == list.cend())
+    if (it != list.cend())
     {
         return -1;
     }

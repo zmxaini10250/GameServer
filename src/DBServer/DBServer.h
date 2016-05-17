@@ -20,7 +20,7 @@ class CDBServer
         
         MYSQL *connect;
         int ConnectMysql();
-        CDBServer(){}
+        CDBServer();
         ~CDBServer(){}
 };
 

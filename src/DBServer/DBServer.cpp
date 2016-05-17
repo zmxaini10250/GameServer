@@ -4,6 +4,10 @@
 #include <mysql/mysql.h>
 #include <stdlib.h>
 
+CDBServer::CDBServer()
+{
+    ConnectMysql();
+}
 int CDBServer::ConnectMysql()
 { 
     connect = mysql_init(NULL);

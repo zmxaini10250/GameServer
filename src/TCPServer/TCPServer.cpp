@@ -15,7 +15,7 @@ const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;
 const int serverWaitNumber  = 1024;
 const int serverMaxEvent    = 1024;
-const int serverWaitTime    = 5000;
+const int serverWaitTime    = 500000;
 
 int SetNoBlock(int fd)
 {
@@ -29,6 +29,7 @@ int SetNoBlock(int fd)
 int AddListenEvent(int epollfd, int eventfd)
 {
     struct epoll_event event;
+    event.events=EPOLLIN;
     event.data.fd = eventfd;
     if (epoll_ctl(epollfd, EPOLL_CTL_ADD, eventfd, &event) == -1)
     {
@@ -64,7 +65,6 @@ int AddAcceptEvent(int epollfd, int eventfd)
         }
         return 0;
     }
-    printf("accept\n");
     return 0;
 }
 

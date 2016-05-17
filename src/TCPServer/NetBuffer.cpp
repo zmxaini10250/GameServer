@@ -22,12 +22,12 @@ int CNetBuffer::ReadFromFD(int fd, ReadFunction readfunc)
     return readSize;
 }
 
-int CNetBuffer::GetBuffType(int32_t type)
+int CNetBuffer::GetBuffType(int32_t &type)
 {
     return GetStream((Byte *)&type , sizeof(int32_t)/sizeof(Byte));
 }
 
-int CNetBuffer::GetBuffLength(int32_t buffLength)
+int CNetBuffer::GetBuffLength(int32_t &buffLength)
 {
     return GetStream((Byte *)&buffLength , sizeof(int32_t)/sizeof(Byte));
 }
