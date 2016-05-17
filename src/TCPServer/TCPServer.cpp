@@ -15,7 +15,7 @@ const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;
 const int serverWaitNumber  = 1024;
 const int serverMaxEvent    = 1024;
-const int serverWaitTime    = 50000;
+const int serverWaitTime    = 5000;
 
 int SetNoBlock(int fd)
 {
@@ -49,6 +49,7 @@ int RemoveListenEvent(int epollfd, int eventfd)
 int AddAcceptEvent(int epollfd, int eventfd)
 {
     struct epoll_event event;
+    event.events=EPOLLIN;
     event.data.fd = eventfd;
     if (epoll_ctl(epollfd, EPOLL_CTL_ADD, eventfd, &event) == -1)
     {
@@ -63,6 +64,7 @@ int AddAcceptEvent(int epollfd, int eventfd)
         }
         return 0;
     }
+    printf("accept\n");
     return 0;
 }
 
@@ -96,9 +98,10 @@ int RecvData(int epollfd, int readfd)
     if (nread > 0)
     {
         Data data;
-        if (sp->GetFormatData(data) != 0)
+        memset(&data, 0, sizeof(Data));
+        if (sp->GetFormatData(data) == 0)
         {
-            ProcessHandle::GetInstance().ProcessData(data);
+            ProcessHandle::GetInstance().ProcessData(data, sp->GetPlayer());
         }
     }
     else

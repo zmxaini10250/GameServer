@@ -1,7 +1,7 @@
 #include "NetBuffer.h"
 #include <string.h>
 #include <unistd.h>
-
+#include <stdint.h>
 CNetBuffer::CNetBuffer():beginPosition(0), endPosition(0)
 {
     memset(buffer, 0, MsgMaxLength);   
@@ -19,7 +19,17 @@ int CNetBuffer::ReadFromFD(int fd, ReadFunction readfunc)
     int readSize = 0;
     readSize = readfunc(fd, buffer + endPosition, MsgMaxLength - endPosition);
     endPosition += readSize;
-    return endPosition;
+    return readSize;
+}
+
+int CNetBuffer::GetBuffType(int32_t type)
+{
+    return GetStream((Byte *)&type , sizeof(int32_t)/sizeof(Byte));
+}
+
+int CNetBuffer::GetBuffLength(int32_t buffLength)
+{
+    return GetStream((Byte *)&buffLength , sizeof(int32_t)/sizeof(Byte));
 }
 
 int CNetBuffer::GetStream(Byte *buffer, int size)
@@ -31,7 +41,7 @@ int CNetBuffer::GetStream(Byte *buffer, int size)
         return 0;
     }
     int ReadSize = (size > Length) ? Length : size;
-    memmove(buffer, this->buffer, ReadSize);
+    memmove(buffer, this->buffer + beginPosition, ReadSize);
     beginPosition += ReadSize;
     return ReadSize;
 }
@@ -58,7 +68,7 @@ void CNetBuffer::DataMoveToHead()
         Clear();
         return;
     }
-    memmove(buffer, this->buffer+beginPosition, Length);
+    memmove(buffer, this->buffer + beginPosition, Length);
     this->beginPosition = 0;
     this->endPosition = Length;
 }

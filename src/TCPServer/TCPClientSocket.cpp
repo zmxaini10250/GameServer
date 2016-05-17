@@ -5,6 +5,7 @@
 #include "TCPClientSocket.h"
 #include "NetBuffer.h"
 #include "../ObjectPool/ObjectPool.hpp"
+#include "../protobuf/messageType.pb.h"
 
 int CTCPClientSocket::RecvBuff()
 {
@@ -18,7 +19,19 @@ int CTCPClientSocket::SendBuff()
 
 int CTCPClientSocket::GetFormatData(Data &data)
 {
-    return recvBuff.GetStream(data.buffer, DataBufferSize);
+    if (recvBuff.GetBuffType(data.type) != sizeof(int32_t) || data.type > (int32_t)eMessageType_MAX)
+    {
+        return -1;
+    }
+    if (recvBuff.GetBuffLength(data.bufferLength) != sizeof(int32_t) || (data.bufferLength > DataBufferSize))
+    {
+        return -1;
+    }
+    if (recvBuff.GetStream(data.buffer, data.bufferLength) != data.bufferLength)
+    {
+        return -1;
+    }
+    return 0;
 }
 
 //////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,4 @@
+enum eMessageType
+{
+    TypeC2SLoginReq     = 1;
+}

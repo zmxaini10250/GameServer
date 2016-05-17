@@ -1,16 +1,23 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
+#include <unordered_map>
+
 #include "Data.h"
 #include "../ObjectPool/SingletonObject.hpp"
+#include "../Player/PlayerData.h"
 
+typedef int(*ProcessFunction)(const Data& data, std::weak_ptr<CPlayer> player);
 
 class CProcess
 {
     public:
-        void ProcessData(const Data& data);
+        int ProcessData(const Data& data, std::weak_ptr<CPlayer> player);
+        int RegisterFunction(int type, ProcessFunction function);
     protected:
-        CProcess(){}
+        typedef std::unordered_map<int, ProcessFunction> FunctionList;
+        FunctionList list;
+        CProcess();
         ~CProcess(){}
 };
 

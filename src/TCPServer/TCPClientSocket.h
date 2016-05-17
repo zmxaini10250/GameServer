@@ -7,6 +7,7 @@
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
 #include "Data.h"
+#include "../Player/PlayerData.h"
 
 class CTCPClientSocket;
 class CTCPClientSocketManager;
@@ -22,11 +23,14 @@ class CTCPClientSocket
         ~CTCPClientSocket(){}
         int RecvBuff();
         int SendBuff();
+        std::weak_ptr<CPlayer> GetPlayer(){ return player; }
         int GetFormatData(Data &data);
     private:
+        std::weak_ptr<CPlayer> player;
         int readfd;
         CNetBuffer recvBuff;
-        CNetBuffer sendBuff;
+        
+
 };
 
 class CTCPClientSocketManager
