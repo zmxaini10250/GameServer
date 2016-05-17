@@ -40,8 +40,18 @@ class CHero
         CHero(){}
         ~CHero(){}
     private:
-        int HeroInfoIndex;
-        int Hero;
+        int HeroInfoID;
+        int HeroAttributeID;
+        int HeroSkillID;
+
+        int Empirical;
+
+};
+
+class CHeroPack
+{
+    public:
+    private:
 };
 
 #endif

@@ -3,9 +3,9 @@
 #include <stdio.h>
 
 #include "Data.h"
-#include "../protobuf/login.pb.h"
 #include "../DBServer/DBServer.h"
-#include "../protobuf/messageType.pb.h"
+
+#include "../protobuf/Message.pb.h"
 
 int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
 {
@@ -15,6 +15,71 @@ int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
 
     int result = DBServer::GetInstance().LoginCheck(req.username().c_str(), req.password().c_str()); 
     printf("result:%d\n", result);
+    return 0;
+}
+
+int LoginRegister(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int CreateUser(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int DeleteUser(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int GetPlayerInfo(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return -1;
+}
+
+int GetHeroList(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int GetHeroInfo(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int HeroLevelUp(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int DeleteHero(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int GetTeam(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int UpdateTeam(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int Lottery(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int GetPlayerList(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    return 0;
+}
+
+int PlayerFight(const Data& data, std::weak_ptr<CPlayer> player)
+{
     return 0;
 }
 
@@ -45,5 +110,4 @@ int CProcess::RegisterFunction(int type, ProcessFunction function)
     list.insert(std::make_pair(type, function));
     return 0;
 }
-
 

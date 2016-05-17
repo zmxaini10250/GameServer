@@ -5,7 +5,7 @@
 #include "TCPClientSocket.h"
 #include "NetBuffer.h"
 #include "../ObjectPool/ObjectPool.hpp"
-#include "../protobuf/messageType.pb.h"
+#include "../protobuf/Message.pb.h"
 
 int CTCPClientSocket::RecvBuff()
 {
