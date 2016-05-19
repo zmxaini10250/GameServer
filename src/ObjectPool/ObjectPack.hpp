@@ -6,8 +6,6 @@
 #include <stack>
 #include <unordered_map>
 
-#include "Singleton.hpp"
-
 template<class T, int PackLength = 1024>
 class CObjectPack
 {
@@ -15,7 +13,7 @@ class CObjectPack
         typedef typename std::aligned_storage<sizeof(T), alignof(T)>::type ObjectBlock;
         ObjectBlock PackBlock[PackLength];
         std::stack<ObjectBlock *> FreeSpaceStack;
-        std::unordered_map<int, Ptr> ObjectMap;
+        std::unordered_map<int, std::shared_ptr<T>> ObjectMap;
         class CFreeClass
         {
             public:
@@ -32,8 +30,6 @@ class CObjectPack
         };
 
     public:
-        typedef std::shared_ptr<T> Ptr;
-
         template<class... Args>
             int CreateObjectIndex(Args&&... args)
             {
@@ -43,7 +39,7 @@ class CObjectPack
                 }
                 ObjectBlock *space = FreeSpaceStack.top();
                 FreeSpaceStack.pop();
-                ObjectMap.insert(std::make_pair(space - PackBlock, Ptr(new (space)T(args...), CFreeClass(*this))));
+                ObjectMap.insert(std::make_pair(space - PackBlock, std::shared_ptr<T>(new (space)T(args...), CFreeClass(*this))));
                 return (space - PackBlock);
             }
 
@@ -56,13 +52,11 @@ class CObjectPack
                 }
                 ObjectBlock *space = FreeSpaceStack.top();
                 FreeSpaceStack.pop();
-                Ptr p(new (space)T(args...), CFreeClass(*this));
+				std::shared_ptr<T> p(new (space)T(args...), CFreeClass(*this));
                 std::weak_ptr<T> wp(p);
-                ObjectMap.insert(std::make_pair(space - PackBlock, p.move()));
+                ObjectMap.insert(std::make_pair(space - PackBlock, std::move(p)));
                 return wp;
             }
-
-        template<class... Args>
     public:
         bool isFull()
         {
