@@ -45,27 +45,27 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* PBC2SGetPlayerInfoReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBC2SGetPlayerInfoReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* PlayerInfo_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PBPlayerInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  PlayerInfo_reflection_ = NULL;
+  PBPlayerInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBS2CGetPlayerInfoRes_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBS2CGetPlayerInfoRes_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBC2SGetHeroListReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBC2SGetHeroListReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Hero_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PBHero_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Hero_reflection_ = NULL;
+  PBHero_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBS2CGetHeroListRes_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBS2CGetHeroListRes_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBC2SGetHeroInfoReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBC2SGetHeroInfoReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HeroInfo_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PBHeroInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  HeroInfo_reflection_ = NULL;
+  PBHeroInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBS2CGetHeroInfoRes_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBS2CGetHeroInfoRes_reflection_ = NULL;
@@ -84,9 +84,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* PBC2SGetHeroTeamReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBC2SGetHeroTeamReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HeroTeam_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PBHeroTeam_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  HeroTeam_reflection_ = NULL;
+  PBHeroTeam_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBS2CGetHeroTeamRes_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBS2CGetHeroTeamRes_reflection_ = NULL;
@@ -105,9 +105,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* PBC2SGetPlayerListReq_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBC2SGetPlayerListReq_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Player_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* PBPlayer_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Player_reflection_ = NULL;
+  PBPlayer_reflection_ = NULL;
 const ::google::protobuf::Descriptor* PBS2CGetPlayerListRes_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   PBS2CGetPlayerListRes_reflection_ = NULL;
@@ -267,24 +267,27 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetPlayerInfoReq));
-  PlayerInfo_descriptor_ = file->message_type(9);
-  static const int PlayerInfo_offsets_[1] = {
+  PBPlayerInfo_descriptor_ = file->message_type(9);
+  static const int PBPlayerInfo_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayerInfo, playerid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayerInfo, username_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayerInfo, gold_),
   };
-  PlayerInfo_reflection_ =
+  PBPlayerInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      PlayerInfo_descriptor_,
-      PlayerInfo::default_instance_,
-      PlayerInfo_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerInfo, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayerInfo, _unknown_fields_),
+      PBPlayerInfo_descriptor_,
+      PBPlayerInfo::default_instance_,
+      PBPlayerInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayerInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayerInfo, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(PlayerInfo));
+      sizeof(PBPlayerInfo));
   PBS2CGetPlayerInfoRes_descriptor_ = file->message_type(10);
   static const int PBS2CGetPlayerInfoRes_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetPlayerInfoRes, getplayerinforesult_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetPlayerInfoRes, info_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetPlayerInfoRes, playerinfo_),
   };
   PBS2CGetPlayerInfoRes_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -311,20 +314,20 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetHeroListReq));
-  Hero_descriptor_ = file->message_type(12);
-  static const int Hero_offsets_[1] = {
+  PBHero_descriptor_ = file->message_type(12);
+  static const int PBHero_offsets_[1] = {
   };
-  Hero_reflection_ =
+  PBHero_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Hero_descriptor_,
-      Hero::default_instance_,
-      Hero_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Hero, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Hero, _unknown_fields_),
+      PBHero_descriptor_,
+      PBHero::default_instance_,
+      PBHero_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHero, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHero, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Hero));
+      sizeof(PBHero));
   PBS2CGetHeroListRes_descriptor_ = file->message_type(13);
   static const int PBS2CGetHeroListRes_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroListRes, getherolistresult_),
@@ -356,24 +359,24 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetHeroInfoReq));
-  HeroInfo_descriptor_ = file->message_type(15);
-  static const int HeroInfo_offsets_[1] = {
+  PBHeroInfo_descriptor_ = file->message_type(15);
+  static const int PBHeroInfo_offsets_[1] = {
   };
-  HeroInfo_reflection_ =
+  PBHeroInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      HeroInfo_descriptor_,
-      HeroInfo::default_instance_,
-      HeroInfo_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeroInfo, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeroInfo, _unknown_fields_),
+      PBHeroInfo_descriptor_,
+      PBHeroInfo::default_instance_,
+      PBHeroInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HeroInfo));
+      sizeof(PBHeroInfo));
   PBS2CGetHeroInfoRes_descriptor_ = file->message_type(16);
   static const int PBS2CGetHeroInfoRes_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroInfoRes, getheroinforesult_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroInfoRes, info_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroInfoRes, heroinfo_),
   };
   PBS2CGetHeroInfoRes_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -460,24 +463,24 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetHeroTeamReq));
-  HeroTeam_descriptor_ = file->message_type(22);
-  static const int HeroTeam_offsets_[1] = {
+  PBHeroTeam_descriptor_ = file->message_type(22);
+  static const int PBHeroTeam_offsets_[1] = {
   };
-  HeroTeam_reflection_ =
+  PBHeroTeam_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      HeroTeam_descriptor_,
-      HeroTeam::default_instance_,
-      HeroTeam_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeroTeam, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HeroTeam, _unknown_fields_),
+      PBHeroTeam_descriptor_,
+      PBHeroTeam::default_instance_,
+      PBHeroTeam_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroTeam, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroTeam, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HeroTeam));
+      sizeof(PBHeroTeam));
   PBS2CGetHeroTeamRes_descriptor_ = file->message_type(23);
   static const int PBS2CGetHeroTeamRes_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroTeamRes, getheroteamresult_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroTeamRes, team_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetHeroTeamRes, heroteam_),
   };
   PBS2CGetHeroTeamRes_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -492,7 +495,7 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       sizeof(PBS2CGetHeroTeamRes));
   PBC2SUpdateHeroTeamReq_descriptor_ = file->message_type(24);
   static const int PBC2SUpdateHeroTeamReq_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBC2SUpdateHeroTeamReq, team_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBC2SUpdateHeroTeamReq, heroteam_),
   };
   PBC2SUpdateHeroTeamReq_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -563,20 +566,20 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetPlayerListReq));
-  Player_descriptor_ = file->message_type(29);
-  static const int Player_offsets_[1] = {
+  PBPlayer_descriptor_ = file->message_type(29);
+  static const int PBPlayer_offsets_[1] = {
   };
-  Player_reflection_ =
+  PBPlayer_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Player_descriptor_,
-      Player::default_instance_,
-      Player_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Player, _unknown_fields_),
+      PBPlayer_descriptor_,
+      PBPlayer::default_instance_,
+      PBPlayer_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBPlayer, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Player));
+      sizeof(PBPlayer));
   PBS2CGetPlayerListRes_descriptor_ = file->message_type(30);
   static const int PBS2CGetPlayerListRes_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBS2CGetPlayerListRes, getplayerlistresult_),
@@ -670,19 +673,19 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBC2SGetPlayerInfoReq_descriptor_, &PBC2SGetPlayerInfoReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    PlayerInfo_descriptor_, &PlayerInfo::default_instance());
+    PBPlayerInfo_descriptor_, &PBPlayerInfo::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBS2CGetPlayerInfoRes_descriptor_, &PBS2CGetPlayerInfoRes::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBC2SGetHeroListReq_descriptor_, &PBC2SGetHeroListReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Hero_descriptor_, &Hero::default_instance());
+    PBHero_descriptor_, &PBHero::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBS2CGetHeroListRes_descriptor_, &PBS2CGetHeroListRes::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBC2SGetHeroInfoReq_descriptor_, &PBC2SGetHeroInfoReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HeroInfo_descriptor_, &HeroInfo::default_instance());
+    PBHeroInfo_descriptor_, &PBHeroInfo::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBS2CGetHeroInfoRes_descriptor_, &PBS2CGetHeroInfoRes::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -696,7 +699,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBC2SGetHeroTeamReq_descriptor_, &PBC2SGetHeroTeamReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HeroTeam_descriptor_, &HeroTeam::default_instance());
+    PBHeroTeam_descriptor_, &PBHeroTeam::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBS2CGetHeroTeamRes_descriptor_, &PBS2CGetHeroTeamRes::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -710,7 +713,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBC2SGetPlayerListReq_descriptor_, &PBC2SGetPlayerListReq::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Player_descriptor_, &Player::default_instance());
+    PBPlayer_descriptor_, &PBPlayer::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     PBS2CGetPlayerListRes_descriptor_, &PBS2CGetPlayerListRes::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -742,20 +745,20 @@ void protobuf_ShutdownFile_ClientMessage_2eproto() {
   delete PBS2CDeleteUserRes_reflection_;
   delete PBC2SGetPlayerInfoReq::default_instance_;
   delete PBC2SGetPlayerInfoReq_reflection_;
-  delete PlayerInfo::default_instance_;
-  delete PlayerInfo_reflection_;
+  delete PBPlayerInfo::default_instance_;
+  delete PBPlayerInfo_reflection_;
   delete PBS2CGetPlayerInfoRes::default_instance_;
   delete PBS2CGetPlayerInfoRes_reflection_;
   delete PBC2SGetHeroListReq::default_instance_;
   delete PBC2SGetHeroListReq_reflection_;
-  delete Hero::default_instance_;
-  delete Hero_reflection_;
+  delete PBHero::default_instance_;
+  delete PBHero_reflection_;
   delete PBS2CGetHeroListRes::default_instance_;
   delete PBS2CGetHeroListRes_reflection_;
   delete PBC2SGetHeroInfoReq::default_instance_;
   delete PBC2SGetHeroInfoReq_reflection_;
-  delete HeroInfo::default_instance_;
-  delete HeroInfo_reflection_;
+  delete PBHeroInfo::default_instance_;
+  delete PBHeroInfo_reflection_;
   delete PBS2CGetHeroInfoRes::default_instance_;
   delete PBS2CGetHeroInfoRes_reflection_;
   delete PBC2SHeroLevelUpReq::default_instance_;
@@ -768,8 +771,8 @@ void protobuf_ShutdownFile_ClientMessage_2eproto() {
   delete PBS2CDeleteHeroRes_reflection_;
   delete PBC2SGetHeroTeamReq::default_instance_;
   delete PBC2SGetHeroTeamReq_reflection_;
-  delete HeroTeam::default_instance_;
-  delete HeroTeam_reflection_;
+  delete PBHeroTeam::default_instance_;
+  delete PBHeroTeam_reflection_;
   delete PBS2CGetHeroTeamRes::default_instance_;
   delete PBS2CGetHeroTeamRes_reflection_;
   delete PBC2SUpdateHeroTeamReq::default_instance_;
@@ -782,8 +785,8 @@ void protobuf_ShutdownFile_ClientMessage_2eproto() {
   delete PBS2CLotteryRes_reflection_;
   delete PBC2SGetPlayerListReq::default_instance_;
   delete PBC2SGetPlayerListReq_reflection_;
-  delete Player::default_instance_;
-  delete Player_reflection_;
+  delete PBPlayer::default_instance_;
+  delete PBPlayer_reflection_;
   delete PBS2CGetPlayerListRes::default_instance_;
   delete PBS2CGetPlayerListRes_reflection_;
   delete PBC2SPlayerFightReq::default_instance_;
@@ -812,52 +815,54 @@ void protobuf_AddDesc_ClientMessage_2eproto() {
     "Res\022\030\n\020CreateUserResult\030\001 \002(\005\"\024\n\022PBC2SDe"
     "leteUserReq\".\n\022PBS2CDeleteUserRes\022\030\n\020Del"
     "eteUserResult\030\001 \002(\005\"\027\n\025PBC2SGetPlayerInf"
-    "oReq\"\014\n\nPlayerInfo\"O\n\025PBS2CGetPlayerInfo"
-    "Res\022\033\n\023GetPlayerInfoResult\030\001 \002(\005\022\031\n\004Info"
-    "\030\002 \001(\0132\013.PlayerInfo\"\025\n\023PBC2SGetHeroListR"
-    "eq\"\006\n\004Hero\"I\n\023PBS2CGetHeroListRes\022\031\n\021Get"
-    "HeroListResult\030\001 \002(\005\022\027\n\010HeroList\030\002 \003(\0132\005"
-    ".Hero\"%\n\023PBC2SGetHeroInfoReq\022\016\n\006HeroID\030\001"
-    " \002(\005\"\n\n\010HeroInfo\"I\n\023PBS2CGetHeroInfoRes\022"
-    "\031\n\021GetHeroInfoResult\030\001 \002(\005\022\027\n\004info\030\002 \001(\013"
-    "2\t.HeroInfo\")\n\023PBC2SHeroLevelUpReq\022\022\n\nHe"
-    "roPackID\030\001 \002(\005\"0\n\023PBS2CHeroLevelUpRes\022\031\n"
-    "\021HeroLevelUpResult\030\001 \002(\005\"(\n\022PBC2SDeleteH"
-    "eroReq\022\022\n\nHeroPackID\030\001 \002(\005\".\n\022PBS2CDelet"
-    "eHeroRes\022\030\n\020DeleteHeroResult\030\001 \002(\005\"\025\n\023PB"
-    "C2SGetHeroTeamReq\"\n\n\010HeroTeam\"I\n\023PBS2CGe"
-    "tHeroTeamRes\022\031\n\021GetHeroTeamResult\030\001 \002(\005\022"
-    "\027\n\004Team\030\002 \001(\0132\t.HeroTeam\"1\n\026PBC2SUpdateH"
-    "eroTeamReq\022\027\n\004Team\030\001 \002(\0132\t.HeroTeam\"6\n\026P"
-    "BS2CUpdateHeroTeamRes\022\034\n\024UpdateHeroTeamR"
-    "esult\030\001 \002(\005\"\021\n\017PBC2SLotteryReq\"(\n\017PBS2CL"
-    "otteryRes\022\025\n\rLotteryResult\030\001 \002(\005\"\027\n\025PBC2"
-    "SGetPlayerListReq\"\010\n\006Player\"Q\n\025PBS2CGetP"
-    "layerListRes\022\033\n\023GetPlayerListResult\030\001 \002("
-    "\005\022\033\n\nPlayerList\030\002 \003(\0132\007.Player\"+\n\023PBC2SP"
-    "layerFightReq\022\024\n\014DestPlayerID\030\001 \002(\005\"\r\n\013F"
-    "ightReport\"N\n\023PBS2CPlayerFightRes\022\031\n\021Pla"
-    "yerFightResult\030\001 \002(\005\022\034\n\006Report\030\002 \001(\0132\014.F"
-    "ightReport*\204\006\n\014eMessageType\022\030\n\024TypeC2SLo"
-    "ginCheckReq\020\001\022\030\n\024TypeS2CLoginCheckRes\020\002\022"
-    "\033\n\027TypeC2SLoginRegisterReq\020\003\022\033\n\027TypeS2CL"
-    "oginRegisterRes\020\004\022\030\n\024TypeC2SCreateUserRe"
-    "q\020\005\022\030\n\024TypeS2CCreateUserRes\020\006\022\030\n\024TypeC2S"
-    "DeleteUserReq\020\007\022\030\n\024TypeS2CDeleteUserRes\020"
-    "\010\022\033\n\027TypeC2SGetPlayerInfoReq\020\t\022\033\n\027TypeS2"
-    "CGetPlayerInfoRes\020\n\022\031\n\025TypeC2SGetHeroLis"
-    "tReq\020\013\022\031\n\025TypeS2CGetHeroListRes\020\014\022\031\n\025Typ"
-    "eC2SGetHeroInfoReq\020\r\022\031\n\025TypeS2CGetHeroIn"
-    "foRes\020\016\022\031\n\025TypeC2SHeroLevelUpReq\020\017\022\031\n\025Ty"
-    "peS2CHeroLevelUpRes\020\020\022\030\n\024TypeC2SDeleteHe"
-    "roReq\020\021\022\030\n\024TypeS2CDeleteHeroRes\020\022\022\031\n\025Typ"
-    "eC2SGetHeroTeamReq\020\023\022\031\n\025TypeS2CGetHeroTe"
-    "amRes\020\024\022\034\n\030TypeC2SUpdateHeroTeamReq\020\025\022\034\n"
-    "\030TypeS2CUpdateHeroTeamRes\020\026\022\025\n\021TypeC2SLo"
-    "tteryReq\020\027\022\025\n\021TypeS2CLotteryRes\020\030\022\033\n\027Typ"
-    "eC2SGetPlayerListReq\020\031\022\033\n\027TypeS2CGetPlay"
-    "erListRes\020\032\022\031\n\025TypeC2SPlayerFightReq\020\033\022\031"
-    "\n\025TypeS2CPlayerFightRes\020\034", 2265);
+    "oReq\"@\n\014PBPlayerInfo\022\020\n\010PlayerID\030\001 \001(\005\022\020"
+    "\n\010Username\030\002 \001(\t\022\014\n\004Gold\030\003 \001(\005\"W\n\025PBS2CG"
+    "etPlayerInfoRes\022\033\n\023GetPlayerInfoResult\030\001"
+    " \002(\005\022!\n\nPlayerInfo\030\002 \001(\0132\r.PBPlayerInfo\""
+    "\025\n\023PBC2SGetHeroListReq\"\010\n\006PBHero\"K\n\023PBS2"
+    "CGetHeroListRes\022\031\n\021GetHeroListResult\030\001 \002"
+    "(\005\022\031\n\010HeroList\030\002 \003(\0132\007.PBHero\"%\n\023PBC2SGe"
+    "tHeroInfoReq\022\016\n\006HeroID\030\001 \002(\005\"\014\n\nPBHeroIn"
+    "fo\"O\n\023PBS2CGetHeroInfoRes\022\031\n\021GetHeroInfo"
+    "Result\030\001 \002(\005\022\035\n\010HeroInfo\030\002 \001(\0132\013.PBHeroI"
+    "nfo\")\n\023PBC2SHeroLevelUpReq\022\022\n\nHeroPackID"
+    "\030\001 \002(\005\"0\n\023PBS2CHeroLevelUpRes\022\031\n\021HeroLev"
+    "elUpResult\030\001 \002(\005\"(\n\022PBC2SDeleteHeroReq\022\022"
+    "\n\nHeroPackID\030\001 \002(\005\".\n\022PBS2CDeleteHeroRes"
+    "\022\030\n\020DeleteHeroResult\030\001 \002(\005\"\025\n\023PBC2SGetHe"
+    "roTeamReq\"\014\n\nPBHeroTeam\"O\n\023PBS2CGetHeroT"
+    "eamRes\022\031\n\021GetHeroTeamResult\030\001 \002(\005\022\035\n\010Her"
+    "oTeam\030\002 \001(\0132\013.PBHeroTeam\"7\n\026PBC2SUpdateH"
+    "eroTeamReq\022\035\n\010HeroTeam\030\001 \002(\0132\013.PBHeroTea"
+    "m\"6\n\026PBS2CUpdateHeroTeamRes\022\034\n\024UpdateHer"
+    "oTeamResult\030\001 \002(\005\"\021\n\017PBC2SLotteryReq\"(\n\017"
+    "PBS2CLotteryRes\022\025\n\rLotteryResult\030\001 \002(\005\"\027"
+    "\n\025PBC2SGetPlayerListReq\"\n\n\010PBPlayer\"S\n\025P"
+    "BS2CGetPlayerListRes\022\033\n\023GetPlayerListRes"
+    "ult\030\001 \002(\005\022\035\n\nPlayerList\030\002 \003(\0132\t.PBPlayer"
+    "\"+\n\023PBC2SPlayerFightReq\022\024\n\014DestPlayerID\030"
+    "\001 \002(\005\"\r\n\013FightReport\"N\n\023PBS2CPlayerFight"
+    "Res\022\031\n\021PlayerFightResult\030\001 \002(\005\022\034\n\006Report"
+    "\030\002 \001(\0132\014.FightReport*\204\006\n\014eMessageType\022\030\n"
+    "\024TypeC2SLoginCheckReq\020\001\022\030\n\024TypeS2CLoginC"
+    "heckRes\020\002\022\033\n\027TypeC2SLoginRegisterReq\020\003\022\033"
+    "\n\027TypeS2CLoginRegisterRes\020\004\022\030\n\024TypeC2SCr"
+    "eateUserReq\020\005\022\030\n\024TypeS2CCreateUserRes\020\006\022"
+    "\030\n\024TypeC2SDeleteUserReq\020\007\022\030\n\024TypeS2CDele"
+    "teUserRes\020\010\022\033\n\027TypeC2SGetPlayerInfoReq\020\t"
+    "\022\033\n\027TypeS2CGetPlayerInfoRes\020\n\022\031\n\025TypeC2S"
+    "GetHeroListReq\020\013\022\031\n\025TypeS2CGetHeroListRe"
+    "s\020\014\022\031\n\025TypeC2SGetHeroInfoReq\020\r\022\031\n\025TypeS2"
+    "CGetHeroInfoRes\020\016\022\031\n\025TypeC2SHeroLevelUpR"
+    "eq\020\017\022\031\n\025TypeS2CHeroLevelUpRes\020\020\022\030\n\024TypeC"
+    "2SDeleteHeroReq\020\021\022\030\n\024TypeS2CDeleteHeroRe"
+    "s\020\022\022\031\n\025TypeC2SGetHeroTeamReq\020\023\022\031\n\025TypeS2"
+    "CGetHeroTeamRes\020\024\022\034\n\030TypeC2SUpdateHeroTe"
+    "amReq\020\025\022\034\n\030TypeS2CUpdateHeroTeamRes\020\026\022\025\n"
+    "\021TypeC2SLotteryReq\020\027\022\025\n\021TypeS2CLotteryRe"
+    "s\020\030\022\033\n\027TypeC2SGetPlayerListReq\020\031\022\033\n\027Type"
+    "S2CGetPlayerListRes\020\032\022\031\n\025TypeC2SPlayerFi"
+    "ghtReq\020\033\022\031\n\025TypeS2CPlayerFightRes\020\034", 2355);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClientMessage.proto", &protobuf_RegisterTypes);
   PBC2SLoginCheckReq::default_instance_ = new PBC2SLoginCheckReq();
@@ -869,27 +874,27 @@ void protobuf_AddDesc_ClientMessage_2eproto() {
   PBC2SDeleteUserReq::default_instance_ = new PBC2SDeleteUserReq();
   PBS2CDeleteUserRes::default_instance_ = new PBS2CDeleteUserRes();
   PBC2SGetPlayerInfoReq::default_instance_ = new PBC2SGetPlayerInfoReq();
-  PlayerInfo::default_instance_ = new PlayerInfo();
+  PBPlayerInfo::default_instance_ = new PBPlayerInfo();
   PBS2CGetPlayerInfoRes::default_instance_ = new PBS2CGetPlayerInfoRes();
   PBC2SGetHeroListReq::default_instance_ = new PBC2SGetHeroListReq();
-  Hero::default_instance_ = new Hero();
+  PBHero::default_instance_ = new PBHero();
   PBS2CGetHeroListRes::default_instance_ = new PBS2CGetHeroListRes();
   PBC2SGetHeroInfoReq::default_instance_ = new PBC2SGetHeroInfoReq();
-  HeroInfo::default_instance_ = new HeroInfo();
+  PBHeroInfo::default_instance_ = new PBHeroInfo();
   PBS2CGetHeroInfoRes::default_instance_ = new PBS2CGetHeroInfoRes();
   PBC2SHeroLevelUpReq::default_instance_ = new PBC2SHeroLevelUpReq();
   PBS2CHeroLevelUpRes::default_instance_ = new PBS2CHeroLevelUpRes();
   PBC2SDeleteHeroReq::default_instance_ = new PBC2SDeleteHeroReq();
   PBS2CDeleteHeroRes::default_instance_ = new PBS2CDeleteHeroRes();
   PBC2SGetHeroTeamReq::default_instance_ = new PBC2SGetHeroTeamReq();
-  HeroTeam::default_instance_ = new HeroTeam();
+  PBHeroTeam::default_instance_ = new PBHeroTeam();
   PBS2CGetHeroTeamRes::default_instance_ = new PBS2CGetHeroTeamRes();
   PBC2SUpdateHeroTeamReq::default_instance_ = new PBC2SUpdateHeroTeamReq();
   PBS2CUpdateHeroTeamRes::default_instance_ = new PBS2CUpdateHeroTeamRes();
   PBC2SLotteryReq::default_instance_ = new PBC2SLotteryReq();
   PBS2CLotteryRes::default_instance_ = new PBS2CLotteryRes();
   PBC2SGetPlayerListReq::default_instance_ = new PBC2SGetPlayerListReq();
-  Player::default_instance_ = new Player();
+  PBPlayer::default_instance_ = new PBPlayer();
   PBS2CGetPlayerListRes::default_instance_ = new PBS2CGetPlayerListRes();
   PBC2SPlayerFightReq::default_instance_ = new PBC2SPlayerFightReq();
   FightReport::default_instance_ = new FightReport();
@@ -903,27 +908,27 @@ void protobuf_AddDesc_ClientMessage_2eproto() {
   PBC2SDeleteUserReq::default_instance_->InitAsDefaultInstance();
   PBS2CDeleteUserRes::default_instance_->InitAsDefaultInstance();
   PBC2SGetPlayerInfoReq::default_instance_->InitAsDefaultInstance();
-  PlayerInfo::default_instance_->InitAsDefaultInstance();
+  PBPlayerInfo::default_instance_->InitAsDefaultInstance();
   PBS2CGetPlayerInfoRes::default_instance_->InitAsDefaultInstance();
   PBC2SGetHeroListReq::default_instance_->InitAsDefaultInstance();
-  Hero::default_instance_->InitAsDefaultInstance();
+  PBHero::default_instance_->InitAsDefaultInstance();
   PBS2CGetHeroListRes::default_instance_->InitAsDefaultInstance();
   PBC2SGetHeroInfoReq::default_instance_->InitAsDefaultInstance();
-  HeroInfo::default_instance_->InitAsDefaultInstance();
+  PBHeroInfo::default_instance_->InitAsDefaultInstance();
   PBS2CGetHeroInfoRes::default_instance_->InitAsDefaultInstance();
   PBC2SHeroLevelUpReq::default_instance_->InitAsDefaultInstance();
   PBS2CHeroLevelUpRes::default_instance_->InitAsDefaultInstance();
   PBC2SDeleteHeroReq::default_instance_->InitAsDefaultInstance();
   PBS2CDeleteHeroRes::default_instance_->InitAsDefaultInstance();
   PBC2SGetHeroTeamReq::default_instance_->InitAsDefaultInstance();
-  HeroTeam::default_instance_->InitAsDefaultInstance();
+  PBHeroTeam::default_instance_->InitAsDefaultInstance();
   PBS2CGetHeroTeamRes::default_instance_->InitAsDefaultInstance();
   PBC2SUpdateHeroTeamReq::default_instance_->InitAsDefaultInstance();
   PBS2CUpdateHeroTeamRes::default_instance_->InitAsDefaultInstance();
   PBC2SLotteryReq::default_instance_->InitAsDefaultInstance();
   PBS2CLotteryRes::default_instance_->InitAsDefaultInstance();
   PBC2SGetPlayerListReq::default_instance_->InitAsDefaultInstance();
-  Player::default_instance_->InitAsDefaultInstance();
+  PBPlayer::default_instance_->InitAsDefaultInstance();
   PBS2CGetPlayerListRes::default_instance_->InitAsDefaultInstance();
   PBC2SPlayerFightReq::default_instance_->InitAsDefaultInstance();
   FightReport::default_instance_->InitAsDefaultInstance();
@@ -3127,116 +3132,263 @@ void PBC2SGetPlayerInfoReq::Swap(PBC2SGetPlayerInfoReq* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int PBPlayerInfo::kPlayerIDFieldNumber;
+const int PBPlayerInfo::kUsernameFieldNumber;
+const int PBPlayerInfo::kGoldFieldNumber;
 #endif  // !_MSC_VER
 
-PlayerInfo::PlayerInfo()
+PBPlayerInfo::PBPlayerInfo()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PlayerInfo)
+  // @@protoc_insertion_point(constructor:PBPlayerInfo)
 }
 
-void PlayerInfo::InitAsDefaultInstance() {
+void PBPlayerInfo::InitAsDefaultInstance() {
 }
 
-PlayerInfo::PlayerInfo(const PlayerInfo& from)
+PBPlayerInfo::PBPlayerInfo(const PBPlayerInfo& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:PlayerInfo)
+  // @@protoc_insertion_point(copy_constructor:PBPlayerInfo)
 }
 
-void PlayerInfo::SharedCtor() {
+void PBPlayerInfo::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  playerid_ = 0;
+  username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  gold_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-PlayerInfo::~PlayerInfo() {
-  // @@protoc_insertion_point(destructor:PlayerInfo)
+PBPlayerInfo::~PBPlayerInfo() {
+  // @@protoc_insertion_point(destructor:PBPlayerInfo)
   SharedDtor();
 }
 
-void PlayerInfo::SharedDtor() {
+void PBPlayerInfo::SharedDtor() {
+  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete username_;
+  }
   if (this != default_instance_) {
   }
 }
 
-void PlayerInfo::SetCachedSize(int size) const {
+void PBPlayerInfo::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* PlayerInfo::descriptor() {
+const ::google::protobuf::Descriptor* PBPlayerInfo::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return PlayerInfo_descriptor_;
+  return PBPlayerInfo_descriptor_;
 }
 
-const PlayerInfo& PlayerInfo::default_instance() {
+const PBPlayerInfo& PBPlayerInfo::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ClientMessage_2eproto();
   return *default_instance_;
 }
 
-PlayerInfo* PlayerInfo::default_instance_ = NULL;
+PBPlayerInfo* PBPlayerInfo::default_instance_ = NULL;
 
-PlayerInfo* PlayerInfo::New() const {
-  return new PlayerInfo;
+PBPlayerInfo* PBPlayerInfo::New() const {
+  return new PBPlayerInfo;
 }
 
-void PlayerInfo::Clear() {
+void PBPlayerInfo::Clear() {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<PBPlayerInfo*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 7) {
+    ZR_(playerid_, gold_);
+    if (has_username()) {
+      if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        username_->clear();
+      }
+    }
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool PlayerInfo::MergePartialFromCodedStream(
+bool PBPlayerInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PlayerInfo)
+  // @@protoc_insertion_point(parse_start:PBPlayerInfo)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 PlayerID = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &playerid_)));
+          set_has_playerid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_Username;
+        break;
+      }
+
+      // optional string Username = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_Username:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_username()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->username().data(), this->username().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "username");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_Gold;
+        break;
+      }
+
+      // optional int32 Gold = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_Gold:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &gold_)));
+          set_has_gold();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:PlayerInfo)
+  // @@protoc_insertion_point(parse_success:PBPlayerInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PlayerInfo)
+  // @@protoc_insertion_point(parse_failure:PBPlayerInfo)
   return false;
 #undef DO_
 }
 
-void PlayerInfo::SerializeWithCachedSizes(
+void PBPlayerInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PlayerInfo)
+  // @@protoc_insertion_point(serialize_start:PBPlayerInfo)
+  // optional int32 PlayerID = 1;
+  if (has_playerid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->playerid(), output);
+  }
+
+  // optional string Username = 2;
+  if (has_username()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->username().data(), this->username().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "username");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->username(), output);
+  }
+
+  // optional int32 Gold = 3;
+  if (has_gold()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->gold(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:PlayerInfo)
+  // @@protoc_insertion_point(serialize_end:PBPlayerInfo)
 }
 
-::google::protobuf::uint8* PlayerInfo::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBPlayerInfo::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlayerInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:PBPlayerInfo)
+  // optional int32 PlayerID = 1;
+  if (has_playerid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->playerid(), target);
+  }
+
+  // optional string Username = 2;
+  if (has_username()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->username().data(), this->username().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "username");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->username(), target);
+  }
+
+  // optional int32 Gold = 3;
+  if (has_gold()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->gold(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PlayerInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:PBPlayerInfo)
   return target;
 }
 
-int PlayerInfo::ByteSize() const {
+int PBPlayerInfo::ByteSize() const {
   int total_size = 0;
 
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 PlayerID = 1;
+    if (has_playerid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->playerid());
+    }
+
+    // optional string Username = 2;
+    if (has_username()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->username());
+    }
+
+    // optional int32 Gold = 3;
+    if (has_gold()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->gold());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -3248,10 +3400,10 @@ int PlayerInfo::ByteSize() const {
   return total_size;
 }
 
-void PlayerInfo::MergeFrom(const ::google::protobuf::Message& from) {
+void PBPlayerInfo::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const PlayerInfo* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const PlayerInfo*>(
+  const PBPlayerInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PBPlayerInfo*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -3260,40 +3412,55 @@ void PlayerInfo::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void PlayerInfo::MergeFrom(const PlayerInfo& from) {
+void PBPlayerInfo::MergeFrom(const PBPlayerInfo& from) {
   GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_playerid()) {
+      set_playerid(from.playerid());
+    }
+    if (from.has_username()) {
+      set_username(from.username());
+    }
+    if (from.has_gold()) {
+      set_gold(from.gold());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void PlayerInfo::CopyFrom(const ::google::protobuf::Message& from) {
+void PBPlayerInfo::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void PlayerInfo::CopyFrom(const PlayerInfo& from) {
+void PBPlayerInfo::CopyFrom(const PBPlayerInfo& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool PlayerInfo::IsInitialized() const {
+bool PBPlayerInfo::IsInitialized() const {
 
   return true;
 }
 
-void PlayerInfo::Swap(PlayerInfo* other) {
+void PBPlayerInfo::Swap(PBPlayerInfo* other) {
   if (other != this) {
+    std::swap(playerid_, other->playerid_);
+    std::swap(username_, other->username_);
+    std::swap(gold_, other->gold_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata PlayerInfo::GetMetadata() const {
+::google::protobuf::Metadata PBPlayerInfo::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = PlayerInfo_descriptor_;
-  metadata.reflection = PlayerInfo_reflection_;
+  metadata.descriptor = PBPlayerInfo_descriptor_;
+  metadata.reflection = PBPlayerInfo_reflection_;
   return metadata;
 }
 
@@ -3302,7 +3469,7 @@ void PlayerInfo::Swap(PlayerInfo* other) {
 
 #ifndef _MSC_VER
 const int PBS2CGetPlayerInfoRes::kGetPlayerInfoResultFieldNumber;
-const int PBS2CGetPlayerInfoRes::kInfoFieldNumber;
+const int PBS2CGetPlayerInfoRes::kPlayerInfoFieldNumber;
 #endif  // !_MSC_VER
 
 PBS2CGetPlayerInfoRes::PBS2CGetPlayerInfoRes()
@@ -3312,7 +3479,7 @@ PBS2CGetPlayerInfoRes::PBS2CGetPlayerInfoRes()
 }
 
 void PBS2CGetPlayerInfoRes::InitAsDefaultInstance() {
-  info_ = const_cast< ::PlayerInfo*>(&::PlayerInfo::default_instance());
+  playerinfo_ = const_cast< ::PBPlayerInfo*>(&::PBPlayerInfo::default_instance());
 }
 
 PBS2CGetPlayerInfoRes::PBS2CGetPlayerInfoRes(const PBS2CGetPlayerInfoRes& from)
@@ -3325,7 +3492,7 @@ PBS2CGetPlayerInfoRes::PBS2CGetPlayerInfoRes(const PBS2CGetPlayerInfoRes& from)
 void PBS2CGetPlayerInfoRes::SharedCtor() {
   _cached_size_ = 0;
   getplayerinforesult_ = 0;
-  info_ = NULL;
+  playerinfo_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3336,7 +3503,7 @@ PBS2CGetPlayerInfoRes::~PBS2CGetPlayerInfoRes() {
 
 void PBS2CGetPlayerInfoRes::SharedDtor() {
   if (this != default_instance_) {
-    delete info_;
+    delete playerinfo_;
   }
 }
 
@@ -3364,8 +3531,8 @@ PBS2CGetPlayerInfoRes* PBS2CGetPlayerInfoRes::New() const {
 void PBS2CGetPlayerInfoRes::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     getplayerinforesult_ = 0;
-    if (has_info()) {
-      if (info_ != NULL) info_->::PlayerInfo::Clear();
+    if (has_playerinfo()) {
+      if (playerinfo_ != NULL) playerinfo_->::PBPlayerInfo::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -3392,16 +3559,16 @@ bool PBS2CGetPlayerInfoRes::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_Info;
+        if (input->ExpectTag(18)) goto parse_PlayerInfo;
         break;
       }
 
-      // optional .PlayerInfo Info = 2;
+      // optional .PBPlayerInfo PlayerInfo = 2;
       case 2: {
         if (tag == 18) {
-         parse_Info:
+         parse_PlayerInfo:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_info()));
+               input, mutable_playerinfo()));
         } else {
           goto handle_unusual;
         }
@@ -3439,10 +3606,10 @@ void PBS2CGetPlayerInfoRes::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->getplayerinforesult(), output);
   }
 
-  // optional .PlayerInfo Info = 2;
-  if (has_info()) {
+  // optional .PBPlayerInfo PlayerInfo = 2;
+  if (has_playerinfo()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->info(), output);
+      2, this->playerinfo(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3460,11 +3627,11 @@ void PBS2CGetPlayerInfoRes::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->getplayerinforesult(), target);
   }
 
-  // optional .PlayerInfo Info = 2;
-  if (has_info()) {
+  // optional .PBPlayerInfo PlayerInfo = 2;
+  if (has_playerinfo()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->info(), target);
+        2, this->playerinfo(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3486,11 +3653,11 @@ int PBS2CGetPlayerInfoRes::ByteSize() const {
           this->getplayerinforesult());
     }
 
-    // optional .PlayerInfo Info = 2;
-    if (has_info()) {
+    // optional .PBPlayerInfo PlayerInfo = 2;
+    if (has_playerinfo()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->info());
+          this->playerinfo());
     }
 
   }
@@ -3523,8 +3690,8 @@ void PBS2CGetPlayerInfoRes::MergeFrom(const PBS2CGetPlayerInfoRes& from) {
     if (from.has_getplayerinforesult()) {
       set_getplayerinforesult(from.getplayerinforesult());
     }
-    if (from.has_info()) {
-      mutable_info()->::PlayerInfo::MergeFrom(from.info());
+    if (from.has_playerinfo()) {
+      mutable_playerinfo()->::PBPlayerInfo::MergeFrom(from.playerinfo());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3551,7 +3718,7 @@ bool PBS2CGetPlayerInfoRes::IsInitialized() const {
 void PBS2CGetPlayerInfoRes::Swap(PBS2CGetPlayerInfoRes* other) {
   if (other != this) {
     std::swap(getplayerinforesult_, other->getplayerinforesult_);
-    std::swap(info_, other->info_);
+    std::swap(playerinfo_, other->playerinfo_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -3746,68 +3913,68 @@ void PBC2SGetHeroListReq::Swap(PBC2SGetHeroListReq* other) {
 #ifndef _MSC_VER
 #endif  // !_MSC_VER
 
-Hero::Hero()
+PBHero::PBHero()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Hero)
+  // @@protoc_insertion_point(constructor:PBHero)
 }
 
-void Hero::InitAsDefaultInstance() {
+void PBHero::InitAsDefaultInstance() {
 }
 
-Hero::Hero(const Hero& from)
+PBHero::PBHero(const PBHero& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:Hero)
+  // @@protoc_insertion_point(copy_constructor:PBHero)
 }
 
-void Hero::SharedCtor() {
+void PBHero::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Hero::~Hero() {
-  // @@protoc_insertion_point(destructor:Hero)
+PBHero::~PBHero() {
+  // @@protoc_insertion_point(destructor:PBHero)
   SharedDtor();
 }
 
-void Hero::SharedDtor() {
+void PBHero::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Hero::SetCachedSize(int size) const {
+void PBHero::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Hero::descriptor() {
+const ::google::protobuf::Descriptor* PBHero::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Hero_descriptor_;
+  return PBHero_descriptor_;
 }
 
-const Hero& Hero::default_instance() {
+const PBHero& PBHero::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ClientMessage_2eproto();
   return *default_instance_;
 }
 
-Hero* Hero::default_instance_ = NULL;
+PBHero* PBHero::default_instance_ = NULL;
 
-Hero* Hero::New() const {
-  return new Hero;
+PBHero* PBHero::New() const {
+  return new PBHero;
 }
 
-void Hero::Clear() {
+void PBHero::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool Hero::MergePartialFromCodedStream(
+bool PBHero::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Hero)
+  // @@protoc_insertion_point(parse_start:PBHero)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -3822,36 +3989,36 @@ bool Hero::MergePartialFromCodedStream(
           input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:Hero)
+  // @@protoc_insertion_point(parse_success:PBHero)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Hero)
+  // @@protoc_insertion_point(parse_failure:PBHero)
   return false;
 #undef DO_
 }
 
-void Hero::SerializeWithCachedSizes(
+void PBHero::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Hero)
+  // @@protoc_insertion_point(serialize_start:PBHero)
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Hero)
+  // @@protoc_insertion_point(serialize_end:PBHero)
 }
 
-::google::protobuf::uint8* Hero::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBHero::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Hero)
+  // @@protoc_insertion_point(serialize_to_array_start:PBHero)
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Hero)
+  // @@protoc_insertion_point(serialize_to_array_end:PBHero)
   return target;
 }
 
-int Hero::ByteSize() const {
+int PBHero::ByteSize() const {
   int total_size = 0;
 
   if (!unknown_fields().empty()) {
@@ -3865,10 +4032,10 @@ int Hero::ByteSize() const {
   return total_size;
 }
 
-void Hero::MergeFrom(const ::google::protobuf::Message& from) {
+void PBHero::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Hero* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Hero*>(
+  const PBHero* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PBHero*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -3877,40 +4044,40 @@ void Hero::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Hero::MergeFrom(const Hero& from) {
+void PBHero::MergeFrom(const PBHero& from) {
   GOOGLE_CHECK_NE(&from, this);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Hero::CopyFrom(const ::google::protobuf::Message& from) {
+void PBHero::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Hero::CopyFrom(const Hero& from) {
+void PBHero::CopyFrom(const PBHero& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Hero::IsInitialized() const {
+bool PBHero::IsInitialized() const {
 
   return true;
 }
 
-void Hero::Swap(Hero* other) {
+void PBHero::Swap(PBHero* other) {
   if (other != this) {
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata Hero::GetMetadata() const {
+::google::protobuf::Metadata PBHero::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Hero_descriptor_;
-  metadata.reflection = Hero_reflection_;
+  metadata.descriptor = PBHero_descriptor_;
+  metadata.reflection = PBHero_reflection_;
   return metadata;
 }
 
@@ -4006,7 +4173,7 @@ bool PBS2CGetHeroListRes::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .Hero HeroList = 2;
+      // repeated .PBHero HeroList = 2;
       case 2: {
         if (tag == 18) {
          parse_HeroList:
@@ -4050,7 +4217,7 @@ void PBS2CGetHeroListRes::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->getherolistresult(), output);
   }
 
-  // repeated .Hero HeroList = 2;
+  // repeated .PBHero HeroList = 2;
   for (int i = 0; i < this->herolist_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->herolist(i), output);
@@ -4071,7 +4238,7 @@ void PBS2CGetHeroListRes::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->getherolistresult(), target);
   }
 
-  // repeated .Hero HeroList = 2;
+  // repeated .PBHero HeroList = 2;
   for (int i = 0; i < this->herolist_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -4098,7 +4265,7 @@ int PBS2CGetHeroListRes::ByteSize() const {
     }
 
   }
-  // repeated .Hero HeroList = 2;
+  // repeated .PBHero HeroList = 2;
   total_size += 1 * this->herolist_size();
   for (int i = 0; i < this->herolist_size(); i++) {
     total_size +=
@@ -4405,68 +4572,68 @@ void PBC2SGetHeroInfoReq::Swap(PBC2SGetHeroInfoReq* other) {
 #ifndef _MSC_VER
 #endif  // !_MSC_VER
 
-HeroInfo::HeroInfo()
+PBHeroInfo::PBHeroInfo()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:HeroInfo)
+  // @@protoc_insertion_point(constructor:PBHeroInfo)
 }
 
-void HeroInfo::InitAsDefaultInstance() {
+void PBHeroInfo::InitAsDefaultInstance() {
 }
 
-HeroInfo::HeroInfo(const HeroInfo& from)
+PBHeroInfo::PBHeroInfo(const PBHeroInfo& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:HeroInfo)
+  // @@protoc_insertion_point(copy_constructor:PBHeroInfo)
 }
 
-void HeroInfo::SharedCtor() {
+void PBHeroInfo::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-HeroInfo::~HeroInfo() {
-  // @@protoc_insertion_point(destructor:HeroInfo)
+PBHeroInfo::~PBHeroInfo() {
+  // @@protoc_insertion_point(destructor:PBHeroInfo)
   SharedDtor();
 }
 
-void HeroInfo::SharedDtor() {
+void PBHeroInfo::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void HeroInfo::SetCachedSize(int size) const {
+void PBHeroInfo::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* HeroInfo::descriptor() {
+const ::google::protobuf::Descriptor* PBHeroInfo::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return HeroInfo_descriptor_;
+  return PBHeroInfo_descriptor_;
 }
 
-const HeroInfo& HeroInfo::default_instance() {
+const PBHeroInfo& PBHeroInfo::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ClientMessage_2eproto();
   return *default_instance_;
 }
 
-HeroInfo* HeroInfo::default_instance_ = NULL;
+PBHeroInfo* PBHeroInfo::default_instance_ = NULL;
 
-HeroInfo* HeroInfo::New() const {
-  return new HeroInfo;
+PBHeroInfo* PBHeroInfo::New() const {
+  return new PBHeroInfo;
 }
 
-void HeroInfo::Clear() {
+void PBHeroInfo::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool HeroInfo::MergePartialFromCodedStream(
+bool PBHeroInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:HeroInfo)
+  // @@protoc_insertion_point(parse_start:PBHeroInfo)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -4481,36 +4648,36 @@ bool HeroInfo::MergePartialFromCodedStream(
           input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:HeroInfo)
+  // @@protoc_insertion_point(parse_success:PBHeroInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:HeroInfo)
+  // @@protoc_insertion_point(parse_failure:PBHeroInfo)
   return false;
 #undef DO_
 }
 
-void HeroInfo::SerializeWithCachedSizes(
+void PBHeroInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:HeroInfo)
+  // @@protoc_insertion_point(serialize_start:PBHeroInfo)
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:HeroInfo)
+  // @@protoc_insertion_point(serialize_end:PBHeroInfo)
 }
 
-::google::protobuf::uint8* HeroInfo::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBHeroInfo::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:HeroInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:PBHeroInfo)
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:HeroInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:PBHeroInfo)
   return target;
 }
 
-int HeroInfo::ByteSize() const {
+int PBHeroInfo::ByteSize() const {
   int total_size = 0;
 
   if (!unknown_fields().empty()) {
@@ -4524,10 +4691,10 @@ int HeroInfo::ByteSize() const {
   return total_size;
 }
 
-void HeroInfo::MergeFrom(const ::google::protobuf::Message& from) {
+void PBHeroInfo::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const HeroInfo* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HeroInfo*>(
+  const PBHeroInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PBHeroInfo*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -4536,40 +4703,40 @@ void HeroInfo::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void HeroInfo::MergeFrom(const HeroInfo& from) {
+void PBHeroInfo::MergeFrom(const PBHeroInfo& from) {
   GOOGLE_CHECK_NE(&from, this);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void HeroInfo::CopyFrom(const ::google::protobuf::Message& from) {
+void PBHeroInfo::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void HeroInfo::CopyFrom(const HeroInfo& from) {
+void PBHeroInfo::CopyFrom(const PBHeroInfo& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool HeroInfo::IsInitialized() const {
+bool PBHeroInfo::IsInitialized() const {
 
   return true;
 }
 
-void HeroInfo::Swap(HeroInfo* other) {
+void PBHeroInfo::Swap(PBHeroInfo* other) {
   if (other != this) {
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata HeroInfo::GetMetadata() const {
+::google::protobuf::Metadata PBHeroInfo::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HeroInfo_descriptor_;
-  metadata.reflection = HeroInfo_reflection_;
+  metadata.descriptor = PBHeroInfo_descriptor_;
+  metadata.reflection = PBHeroInfo_reflection_;
   return metadata;
 }
 
@@ -4578,7 +4745,7 @@ void HeroInfo::Swap(HeroInfo* other) {
 
 #ifndef _MSC_VER
 const int PBS2CGetHeroInfoRes::kGetHeroInfoResultFieldNumber;
-const int PBS2CGetHeroInfoRes::kInfoFieldNumber;
+const int PBS2CGetHeroInfoRes::kHeroInfoFieldNumber;
 #endif  // !_MSC_VER
 
 PBS2CGetHeroInfoRes::PBS2CGetHeroInfoRes()
@@ -4588,7 +4755,7 @@ PBS2CGetHeroInfoRes::PBS2CGetHeroInfoRes()
 }
 
 void PBS2CGetHeroInfoRes::InitAsDefaultInstance() {
-  info_ = const_cast< ::HeroInfo*>(&::HeroInfo::default_instance());
+  heroinfo_ = const_cast< ::PBHeroInfo*>(&::PBHeroInfo::default_instance());
 }
 
 PBS2CGetHeroInfoRes::PBS2CGetHeroInfoRes(const PBS2CGetHeroInfoRes& from)
@@ -4601,7 +4768,7 @@ PBS2CGetHeroInfoRes::PBS2CGetHeroInfoRes(const PBS2CGetHeroInfoRes& from)
 void PBS2CGetHeroInfoRes::SharedCtor() {
   _cached_size_ = 0;
   getheroinforesult_ = 0;
-  info_ = NULL;
+  heroinfo_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4612,7 +4779,7 @@ PBS2CGetHeroInfoRes::~PBS2CGetHeroInfoRes() {
 
 void PBS2CGetHeroInfoRes::SharedDtor() {
   if (this != default_instance_) {
-    delete info_;
+    delete heroinfo_;
   }
 }
 
@@ -4640,8 +4807,8 @@ PBS2CGetHeroInfoRes* PBS2CGetHeroInfoRes::New() const {
 void PBS2CGetHeroInfoRes::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     getheroinforesult_ = 0;
-    if (has_info()) {
-      if (info_ != NULL) info_->::HeroInfo::Clear();
+    if (has_heroinfo()) {
+      if (heroinfo_ != NULL) heroinfo_->::PBHeroInfo::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -4668,16 +4835,16 @@ bool PBS2CGetHeroInfoRes::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_info;
+        if (input->ExpectTag(18)) goto parse_HeroInfo;
         break;
       }
 
-      // optional .HeroInfo info = 2;
+      // optional .PBHeroInfo HeroInfo = 2;
       case 2: {
         if (tag == 18) {
-         parse_info:
+         parse_HeroInfo:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_info()));
+               input, mutable_heroinfo()));
         } else {
           goto handle_unusual;
         }
@@ -4715,10 +4882,10 @@ void PBS2CGetHeroInfoRes::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->getheroinforesult(), output);
   }
 
-  // optional .HeroInfo info = 2;
-  if (has_info()) {
+  // optional .PBHeroInfo HeroInfo = 2;
+  if (has_heroinfo()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->info(), output);
+      2, this->heroinfo(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4736,11 +4903,11 @@ void PBS2CGetHeroInfoRes::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->getheroinforesult(), target);
   }
 
-  // optional .HeroInfo info = 2;
-  if (has_info()) {
+  // optional .PBHeroInfo HeroInfo = 2;
+  if (has_heroinfo()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->info(), target);
+        2, this->heroinfo(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4762,11 +4929,11 @@ int PBS2CGetHeroInfoRes::ByteSize() const {
           this->getheroinforesult());
     }
 
-    // optional .HeroInfo info = 2;
-    if (has_info()) {
+    // optional .PBHeroInfo HeroInfo = 2;
+    if (has_heroinfo()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->info());
+          this->heroinfo());
     }
 
   }
@@ -4799,8 +4966,8 @@ void PBS2CGetHeroInfoRes::MergeFrom(const PBS2CGetHeroInfoRes& from) {
     if (from.has_getheroinforesult()) {
       set_getheroinforesult(from.getheroinforesult());
     }
-    if (from.has_info()) {
-      mutable_info()->::HeroInfo::MergeFrom(from.info());
+    if (from.has_heroinfo()) {
+      mutable_heroinfo()->::PBHeroInfo::MergeFrom(from.heroinfo());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -4827,7 +4994,7 @@ bool PBS2CGetHeroInfoRes::IsInitialized() const {
 void PBS2CGetHeroInfoRes::Swap(PBS2CGetHeroInfoRes* other) {
   if (other != this) {
     std::swap(getheroinforesult_, other->getheroinforesult_);
-    std::swap(info_, other->info_);
+    std::swap(heroinfo_, other->heroinfo_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -5914,68 +6081,68 @@ void PBC2SGetHeroTeamReq::Swap(PBC2SGetHeroTeamReq* other) {
 #ifndef _MSC_VER
 #endif  // !_MSC_VER
 
-HeroTeam::HeroTeam()
+PBHeroTeam::PBHeroTeam()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:HeroTeam)
+  // @@protoc_insertion_point(constructor:PBHeroTeam)
 }
 
-void HeroTeam::InitAsDefaultInstance() {
+void PBHeroTeam::InitAsDefaultInstance() {
 }
 
-HeroTeam::HeroTeam(const HeroTeam& from)
+PBHeroTeam::PBHeroTeam(const PBHeroTeam& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:HeroTeam)
+  // @@protoc_insertion_point(copy_constructor:PBHeroTeam)
 }
 
-void HeroTeam::SharedCtor() {
+void PBHeroTeam::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-HeroTeam::~HeroTeam() {
-  // @@protoc_insertion_point(destructor:HeroTeam)
+PBHeroTeam::~PBHeroTeam() {
+  // @@protoc_insertion_point(destructor:PBHeroTeam)
   SharedDtor();
 }
 
-void HeroTeam::SharedDtor() {
+void PBHeroTeam::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void HeroTeam::SetCachedSize(int size) const {
+void PBHeroTeam::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* HeroTeam::descriptor() {
+const ::google::protobuf::Descriptor* PBHeroTeam::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return HeroTeam_descriptor_;
+  return PBHeroTeam_descriptor_;
 }
 
-const HeroTeam& HeroTeam::default_instance() {
+const PBHeroTeam& PBHeroTeam::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ClientMessage_2eproto();
   return *default_instance_;
 }
 
-HeroTeam* HeroTeam::default_instance_ = NULL;
+PBHeroTeam* PBHeroTeam::default_instance_ = NULL;
 
-HeroTeam* HeroTeam::New() const {
-  return new HeroTeam;
+PBHeroTeam* PBHeroTeam::New() const {
+  return new PBHeroTeam;
 }
 
-void HeroTeam::Clear() {
+void PBHeroTeam::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool HeroTeam::MergePartialFromCodedStream(
+bool PBHeroTeam::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:HeroTeam)
+  // @@protoc_insertion_point(parse_start:PBHeroTeam)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -5990,36 +6157,36 @@ bool HeroTeam::MergePartialFromCodedStream(
           input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:HeroTeam)
+  // @@protoc_insertion_point(parse_success:PBHeroTeam)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:HeroTeam)
+  // @@protoc_insertion_point(parse_failure:PBHeroTeam)
   return false;
 #undef DO_
 }
 
-void HeroTeam::SerializeWithCachedSizes(
+void PBHeroTeam::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:HeroTeam)
+  // @@protoc_insertion_point(serialize_start:PBHeroTeam)
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:HeroTeam)
+  // @@protoc_insertion_point(serialize_end:PBHeroTeam)
 }
 
-::google::protobuf::uint8* HeroTeam::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBHeroTeam::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:HeroTeam)
+  // @@protoc_insertion_point(serialize_to_array_start:PBHeroTeam)
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:HeroTeam)
+  // @@protoc_insertion_point(serialize_to_array_end:PBHeroTeam)
   return target;
 }
 
-int HeroTeam::ByteSize() const {
+int PBHeroTeam::ByteSize() const {
   int total_size = 0;
 
   if (!unknown_fields().empty()) {
@@ -6033,10 +6200,10 @@ int HeroTeam::ByteSize() const {
   return total_size;
 }
 
-void HeroTeam::MergeFrom(const ::google::protobuf::Message& from) {
+void PBHeroTeam::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const HeroTeam* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HeroTeam*>(
+  const PBHeroTeam* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PBHeroTeam*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -6045,40 +6212,40 @@ void HeroTeam::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void HeroTeam::MergeFrom(const HeroTeam& from) {
+void PBHeroTeam::MergeFrom(const PBHeroTeam& from) {
   GOOGLE_CHECK_NE(&from, this);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void HeroTeam::CopyFrom(const ::google::protobuf::Message& from) {
+void PBHeroTeam::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void HeroTeam::CopyFrom(const HeroTeam& from) {
+void PBHeroTeam::CopyFrom(const PBHeroTeam& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool HeroTeam::IsInitialized() const {
+bool PBHeroTeam::IsInitialized() const {
 
   return true;
 }
 
-void HeroTeam::Swap(HeroTeam* other) {
+void PBHeroTeam::Swap(PBHeroTeam* other) {
   if (other != this) {
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata HeroTeam::GetMetadata() const {
+::google::protobuf::Metadata PBHeroTeam::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HeroTeam_descriptor_;
-  metadata.reflection = HeroTeam_reflection_;
+  metadata.descriptor = PBHeroTeam_descriptor_;
+  metadata.reflection = PBHeroTeam_reflection_;
   return metadata;
 }
 
@@ -6087,7 +6254,7 @@ void HeroTeam::Swap(HeroTeam* other) {
 
 #ifndef _MSC_VER
 const int PBS2CGetHeroTeamRes::kGetHeroTeamResultFieldNumber;
-const int PBS2CGetHeroTeamRes::kTeamFieldNumber;
+const int PBS2CGetHeroTeamRes::kHeroTeamFieldNumber;
 #endif  // !_MSC_VER
 
 PBS2CGetHeroTeamRes::PBS2CGetHeroTeamRes()
@@ -6097,7 +6264,7 @@ PBS2CGetHeroTeamRes::PBS2CGetHeroTeamRes()
 }
 
 void PBS2CGetHeroTeamRes::InitAsDefaultInstance() {
-  team_ = const_cast< ::HeroTeam*>(&::HeroTeam::default_instance());
+  heroteam_ = const_cast< ::PBHeroTeam*>(&::PBHeroTeam::default_instance());
 }
 
 PBS2CGetHeroTeamRes::PBS2CGetHeroTeamRes(const PBS2CGetHeroTeamRes& from)
@@ -6110,7 +6277,7 @@ PBS2CGetHeroTeamRes::PBS2CGetHeroTeamRes(const PBS2CGetHeroTeamRes& from)
 void PBS2CGetHeroTeamRes::SharedCtor() {
   _cached_size_ = 0;
   getheroteamresult_ = 0;
-  team_ = NULL;
+  heroteam_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -6121,7 +6288,7 @@ PBS2CGetHeroTeamRes::~PBS2CGetHeroTeamRes() {
 
 void PBS2CGetHeroTeamRes::SharedDtor() {
   if (this != default_instance_) {
-    delete team_;
+    delete heroteam_;
   }
 }
 
@@ -6149,8 +6316,8 @@ PBS2CGetHeroTeamRes* PBS2CGetHeroTeamRes::New() const {
 void PBS2CGetHeroTeamRes::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     getheroteamresult_ = 0;
-    if (has_team()) {
-      if (team_ != NULL) team_->::HeroTeam::Clear();
+    if (has_heroteam()) {
+      if (heroteam_ != NULL) heroteam_->::PBHeroTeam::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6177,16 +6344,16 @@ bool PBS2CGetHeroTeamRes::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_Team;
+        if (input->ExpectTag(18)) goto parse_HeroTeam;
         break;
       }
 
-      // optional .HeroTeam Team = 2;
+      // optional .PBHeroTeam HeroTeam = 2;
       case 2: {
         if (tag == 18) {
-         parse_Team:
+         parse_HeroTeam:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_team()));
+               input, mutable_heroteam()));
         } else {
           goto handle_unusual;
         }
@@ -6224,10 +6391,10 @@ void PBS2CGetHeroTeamRes::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->getheroteamresult(), output);
   }
 
-  // optional .HeroTeam Team = 2;
-  if (has_team()) {
+  // optional .PBHeroTeam HeroTeam = 2;
+  if (has_heroteam()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->team(), output);
+      2, this->heroteam(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -6245,11 +6412,11 @@ void PBS2CGetHeroTeamRes::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->getheroteamresult(), target);
   }
 
-  // optional .HeroTeam Team = 2;
-  if (has_team()) {
+  // optional .PBHeroTeam HeroTeam = 2;
+  if (has_heroteam()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        2, this->team(), target);
+        2, this->heroteam(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -6271,11 +6438,11 @@ int PBS2CGetHeroTeamRes::ByteSize() const {
           this->getheroteamresult());
     }
 
-    // optional .HeroTeam Team = 2;
-    if (has_team()) {
+    // optional .PBHeroTeam HeroTeam = 2;
+    if (has_heroteam()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->team());
+          this->heroteam());
     }
 
   }
@@ -6308,8 +6475,8 @@ void PBS2CGetHeroTeamRes::MergeFrom(const PBS2CGetHeroTeamRes& from) {
     if (from.has_getheroteamresult()) {
       set_getheroteamresult(from.getheroteamresult());
     }
-    if (from.has_team()) {
-      mutable_team()->::HeroTeam::MergeFrom(from.team());
+    if (from.has_heroteam()) {
+      mutable_heroteam()->::PBHeroTeam::MergeFrom(from.heroteam());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -6336,7 +6503,7 @@ bool PBS2CGetHeroTeamRes::IsInitialized() const {
 void PBS2CGetHeroTeamRes::Swap(PBS2CGetHeroTeamRes* other) {
   if (other != this) {
     std::swap(getheroteamresult_, other->getheroteamresult_);
-    std::swap(team_, other->team_);
+    std::swap(heroteam_, other->heroteam_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -6355,7 +6522,7 @@ void PBS2CGetHeroTeamRes::Swap(PBS2CGetHeroTeamRes* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int PBC2SUpdateHeroTeamReq::kTeamFieldNumber;
+const int PBC2SUpdateHeroTeamReq::kHeroTeamFieldNumber;
 #endif  // !_MSC_VER
 
 PBC2SUpdateHeroTeamReq::PBC2SUpdateHeroTeamReq()
@@ -6365,7 +6532,7 @@ PBC2SUpdateHeroTeamReq::PBC2SUpdateHeroTeamReq()
 }
 
 void PBC2SUpdateHeroTeamReq::InitAsDefaultInstance() {
-  team_ = const_cast< ::HeroTeam*>(&::HeroTeam::default_instance());
+  heroteam_ = const_cast< ::PBHeroTeam*>(&::PBHeroTeam::default_instance());
 }
 
 PBC2SUpdateHeroTeamReq::PBC2SUpdateHeroTeamReq(const PBC2SUpdateHeroTeamReq& from)
@@ -6377,7 +6544,7 @@ PBC2SUpdateHeroTeamReq::PBC2SUpdateHeroTeamReq(const PBC2SUpdateHeroTeamReq& fro
 
 void PBC2SUpdateHeroTeamReq::SharedCtor() {
   _cached_size_ = 0;
-  team_ = NULL;
+  heroteam_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -6388,7 +6555,7 @@ PBC2SUpdateHeroTeamReq::~PBC2SUpdateHeroTeamReq() {
 
 void PBC2SUpdateHeroTeamReq::SharedDtor() {
   if (this != default_instance_) {
-    delete team_;
+    delete heroteam_;
   }
 }
 
@@ -6414,8 +6581,8 @@ PBC2SUpdateHeroTeamReq* PBC2SUpdateHeroTeamReq::New() const {
 }
 
 void PBC2SUpdateHeroTeamReq::Clear() {
-  if (has_team()) {
-    if (team_ != NULL) team_->::HeroTeam::Clear();
+  if (has_heroteam()) {
+    if (heroteam_ != NULL) heroteam_->::PBHeroTeam::Clear();
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -6431,11 +6598,11 @@ bool PBC2SUpdateHeroTeamReq::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .HeroTeam Team = 1;
+      // required .PBHeroTeam HeroTeam = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_team()));
+               input, mutable_heroteam()));
         } else {
           goto handle_unusual;
         }
@@ -6468,10 +6635,10 @@ failure:
 void PBC2SUpdateHeroTeamReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:PBC2SUpdateHeroTeamReq)
-  // required .HeroTeam Team = 1;
-  if (has_team()) {
+  // required .PBHeroTeam HeroTeam = 1;
+  if (has_heroteam()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->team(), output);
+      1, this->heroteam(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -6484,11 +6651,11 @@ void PBC2SUpdateHeroTeamReq::SerializeWithCachedSizes(
 ::google::protobuf::uint8* PBC2SUpdateHeroTeamReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:PBC2SUpdateHeroTeamReq)
-  // required .HeroTeam Team = 1;
-  if (has_team()) {
+  // required .PBHeroTeam HeroTeam = 1;
+  if (has_heroteam()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        1, this->team(), target);
+        1, this->heroteam(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -6503,11 +6670,11 @@ int PBC2SUpdateHeroTeamReq::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .HeroTeam Team = 1;
-    if (has_team()) {
+    // required .PBHeroTeam HeroTeam = 1;
+    if (has_heroteam()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->team());
+          this->heroteam());
     }
 
   }
@@ -6537,8 +6704,8 @@ void PBC2SUpdateHeroTeamReq::MergeFrom(const ::google::protobuf::Message& from) 
 void PBC2SUpdateHeroTeamReq::MergeFrom(const PBC2SUpdateHeroTeamReq& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_team()) {
-      mutable_team()->::HeroTeam::MergeFrom(from.team());
+    if (from.has_heroteam()) {
+      mutable_heroteam()->::PBHeroTeam::MergeFrom(from.heroteam());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -6564,7 +6731,7 @@ bool PBC2SUpdateHeroTeamReq::IsInitialized() const {
 
 void PBC2SUpdateHeroTeamReq::Swap(PBC2SUpdateHeroTeamReq* other) {
   if (other != this) {
-    std::swap(team_, other->team_);
+    std::swap(heroteam_, other->heroteam_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -7379,68 +7546,68 @@ void PBC2SGetPlayerListReq::Swap(PBC2SGetPlayerListReq* other) {
 #ifndef _MSC_VER
 #endif  // !_MSC_VER
 
-Player::Player()
+PBPlayer::PBPlayer()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Player)
+  // @@protoc_insertion_point(constructor:PBPlayer)
 }
 
-void Player::InitAsDefaultInstance() {
+void PBPlayer::InitAsDefaultInstance() {
 }
 
-Player::Player(const Player& from)
+PBPlayer::PBPlayer(const PBPlayer& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:Player)
+  // @@protoc_insertion_point(copy_constructor:PBPlayer)
 }
 
-void Player::SharedCtor() {
+void PBPlayer::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Player::~Player() {
-  // @@protoc_insertion_point(destructor:Player)
+PBPlayer::~PBPlayer() {
+  // @@protoc_insertion_point(destructor:PBPlayer)
   SharedDtor();
 }
 
-void Player::SharedDtor() {
+void PBPlayer::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Player::SetCachedSize(int size) const {
+void PBPlayer::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Player::descriptor() {
+const ::google::protobuf::Descriptor* PBPlayer::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Player_descriptor_;
+  return PBPlayer_descriptor_;
 }
 
-const Player& Player::default_instance() {
+const PBPlayer& PBPlayer::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ClientMessage_2eproto();
   return *default_instance_;
 }
 
-Player* Player::default_instance_ = NULL;
+PBPlayer* PBPlayer::default_instance_ = NULL;
 
-Player* Player::New() const {
-  return new Player;
+PBPlayer* PBPlayer::New() const {
+  return new PBPlayer;
 }
 
-void Player::Clear() {
+void PBPlayer::Clear() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool Player::MergePartialFromCodedStream(
+bool PBPlayer::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Player)
+  // @@protoc_insertion_point(parse_start:PBPlayer)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -7455,36 +7622,36 @@ bool Player::MergePartialFromCodedStream(
           input, tag, mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:Player)
+  // @@protoc_insertion_point(parse_success:PBPlayer)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Player)
+  // @@protoc_insertion_point(parse_failure:PBPlayer)
   return false;
 #undef DO_
 }
 
-void Player::SerializeWithCachedSizes(
+void PBPlayer::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Player)
+  // @@protoc_insertion_point(serialize_start:PBPlayer)
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Player)
+  // @@protoc_insertion_point(serialize_end:PBPlayer)
 }
 
-::google::protobuf::uint8* Player::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* PBPlayer::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Player)
+  // @@protoc_insertion_point(serialize_to_array_start:PBPlayer)
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Player)
+  // @@protoc_insertion_point(serialize_to_array_end:PBPlayer)
   return target;
 }
 
-int Player::ByteSize() const {
+int PBPlayer::ByteSize() const {
   int total_size = 0;
 
   if (!unknown_fields().empty()) {
@@ -7498,10 +7665,10 @@ int Player::ByteSize() const {
   return total_size;
 }
 
-void Player::MergeFrom(const ::google::protobuf::Message& from) {
+void PBPlayer::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Player* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Player*>(
+  const PBPlayer* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const PBPlayer*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -7510,40 +7677,40 @@ void Player::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Player::MergeFrom(const Player& from) {
+void PBPlayer::MergeFrom(const PBPlayer& from) {
   GOOGLE_CHECK_NE(&from, this);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Player::CopyFrom(const ::google::protobuf::Message& from) {
+void PBPlayer::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Player::CopyFrom(const Player& from) {
+void PBPlayer::CopyFrom(const PBPlayer& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Player::IsInitialized() const {
+bool PBPlayer::IsInitialized() const {
 
   return true;
 }
 
-void Player::Swap(Player* other) {
+void PBPlayer::Swap(PBPlayer* other) {
   if (other != this) {
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata Player::GetMetadata() const {
+::google::protobuf::Metadata PBPlayer::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Player_descriptor_;
-  metadata.reflection = Player_reflection_;
+  metadata.descriptor = PBPlayer_descriptor_;
+  metadata.reflection = PBPlayer_reflection_;
   return metadata;
 }
 
@@ -7639,7 +7806,7 @@ bool PBS2CGetPlayerListRes::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .Player PlayerList = 2;
+      // repeated .PBPlayer PlayerList = 2;
       case 2: {
         if (tag == 18) {
          parse_PlayerList:
@@ -7683,7 +7850,7 @@ void PBS2CGetPlayerListRes::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->getplayerlistresult(), output);
   }
 
-  // repeated .Player PlayerList = 2;
+  // repeated .PBPlayer PlayerList = 2;
   for (int i = 0; i < this->playerlist_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->playerlist(i), output);
@@ -7704,7 +7871,7 @@ void PBS2CGetPlayerListRes::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->getplayerlistresult(), target);
   }
 
-  // repeated .Player PlayerList = 2;
+  // repeated .PBPlayer PlayerList = 2;
   for (int i = 0; i < this->playerlist_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -7731,7 +7898,7 @@ int PBS2CGetPlayerListRes::ByteSize() const {
     }
 
   }
-  // repeated .Player PlayerList = 2;
+  // repeated .PBPlayer PlayerList = 2;
   total_size += 1 * this->playerlist_size();
   for (int i = 0; i < this->playerlist_size(); i++) {
     total_size +=

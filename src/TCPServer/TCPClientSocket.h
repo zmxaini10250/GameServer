@@ -3,11 +3,14 @@
 
 #include <memory>
 #include <unordered_map>
+#include <google/protobuf/message.h>
+#include <google/protobuf/wire_format.h>
 #include "NetBuffer.h"
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
 #include "Data.h"
-#include "../Player/PlayerData.h"
+
+class CPlayer;
 
 class CTCPClientSocket;
 class CTCPClientSocketManager;
@@ -22,7 +25,7 @@ class CTCPClientSocket
         CTCPClientSocket(int readfd): readfd(readfd){}
         ~CTCPClientSocket(){}
         int RecvBuff();
-        int SendBuff();
+        int SendBuff(int32_t type, ::google::protobuf::Message& message);
         std::weak_ptr<CPlayer> GetPlayer(){ return player; }
         int GetFormatData(Data &data);
     private:

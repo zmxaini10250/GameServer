@@ -5,7 +5,8 @@
 
 #include "Data.h"
 #include "../ObjectPool/SingletonObject.hpp"
-#include "../Player/PlayerData.h"
+
+class CPlayer;
 
 typedef int(*ProcessFunction)(const Data& data, std::weak_ptr<CPlayer> player);
 

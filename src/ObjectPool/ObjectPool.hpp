@@ -70,7 +70,11 @@ class CObjectPool :public CSingleton<CObjectPool<T, PoolLength>, CObjectPoolDele
                 FreeSpaceStack.pop();
                 return Ptr(new (space)T(args...), CFreeClass(*this));
             }
-
+        
+        bool isFull()
+        {
+            return FreeSpaceStack.empty();
+        }
     protected:
         CObjectPool()
         {

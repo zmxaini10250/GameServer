@@ -3,6 +3,7 @@
 
 #include <mysql/mysql.h>
 #include "../ObjectPool/SingletonObject.hpp"
+#include "../protobuf/ClientMessage.pb.h"
 
 class CDBServer;
 
@@ -11,7 +12,10 @@ typedef CSingletonObject<CDBServer> DBServer;
 class CDBServer
 {
     public:
-        int LoginCheck(const char* loginusername, const char* loginpassword);
+        int LoginCheck(const char* LoginUsername, const char* LoginPassword, PBS2CLoginCheckRes& PBRes);
+        int LoginRegister(const char* LoginUsername, const char* LoginPassword, PBS2CLoginRegisterRes& PBRes);
+        int CreateUser(int LoginID, const char* PlayName, PBS2CCreateUserRes& PBRes);
+        int DeleteUser(int LoginID, PBS2CDeleteUserRes& PBRes);
     protected:
         const char* server = "localhost";
         const char* user = "root";

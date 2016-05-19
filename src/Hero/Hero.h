@@ -1,6 +1,10 @@
 #ifndef _HERO_H_
 #define _HERO_H_
 
+#include "../ObjectPool/ObjectPack.hpp"
+
+const int HeroPackSize = 50;
+
 class CHeroInfo
 {
     public:
@@ -51,7 +55,12 @@ class CHero
 class CHeroPack
 {
     public:
+        CHeroPack()
+        ~CHeroPack(){}
+        bool isFull();
+        int AddHero(int HeroID);
     private:
+        CObjectPack<CHero, HeroPackSize> pack;
 };
 
 #endif

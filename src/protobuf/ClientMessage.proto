@@ -99,14 +99,17 @@ message PBC2SGetPlayerInfoReq
 }
 
 //TypeS2CGetPlayerInfoRes
-message PlayerInfo
+message PBPlayerInfo
 {
+    optional int32 PlayerID             = 1;
+    optional string Username            = 2;
+    optional int32 Gold                 = 3;
 }
 
 message PBS2CGetPlayerInfoRes
 {
     required int32 GetPlayerInfoResult  = 1;
-    optional PlayerInfo Info            = 2;
+    optional PBPlayerInfo PlayerInfo    = 2;
 }
 
 //TypeC2SGetHeroListReq
@@ -115,14 +118,14 @@ message PBC2SGetHeroListReq
 }
 
 //TypeS2CGetHeroListRes   
-message Hero
+message PBHero
 {
 }
 
 message PBS2CGetHeroListRes
 {
     required int32 GetHeroListResult    = 1;
-    repeated Hero HeroList              = 2;
+    repeated PBHero HeroList            = 2;
 }
 
 //TypeC2SGetHeroInfoReq   
@@ -132,14 +135,14 @@ message PBC2SGetHeroInfoReq
 }
 
 //TypeS2CGetHeroInfoRes
-message HeroInfo
+message PBHeroInfo
 {
 }
 
 message PBS2CGetHeroInfoRes
 {
     required int32 GetHeroInfoResult    = 1;
-    optional HeroInfo info              = 2;
+    optional PBHeroInfo HeroInfo        = 2;
 }
 
 //TypeC2SHeroLevelUpReq   
@@ -172,20 +175,20 @@ message PBC2SGetHeroTeamReq
 }
 
 //TypeS2CGetHeroTeamRes       
-message HeroTeam
+message PBHeroTeam
 {
 }
 
 message PBS2CGetHeroTeamRes
 {
     required int32 GetHeroTeamResult    = 1;
-    optional HeroTeam Team              = 2;
+    optional PBHeroTeam HeroTeam        = 2;
 }
 
 //TypeC2SUpdateHeroTeamReq    
 message PBC2SUpdateHeroTeamReq
 {
-    required HeroTeam Team              = 1;
+    required PBHeroTeam HeroTeam              = 1;
 }
 
 //TypeS2CUpdateHeroTeamRes 
@@ -211,14 +214,14 @@ message PBC2SGetPlayerListReq
 }
 
 //TypeS2CGetPlayerListRes 
-message Player
+message PBPlayer
 {
 }
 
 message PBS2CGetPlayerListRes
 {
     required int32 GetPlayerListResult  = 1;
-    repeated Player PlayerList          = 2;
+    repeated PBPlayer PlayerList          = 2;
 }
 
 //TypeC2SPlayerFightReq   

@@ -41,27 +41,27 @@ class PBS2CCreateUserRes;
 class PBC2SDeleteUserReq;
 class PBS2CDeleteUserRes;
 class PBC2SGetPlayerInfoReq;
-class PlayerInfo;
+class PBPlayerInfo;
 class PBS2CGetPlayerInfoRes;
 class PBC2SGetHeroListReq;
-class Hero;
+class PBHero;
 class PBS2CGetHeroListRes;
 class PBC2SGetHeroInfoReq;
-class HeroInfo;
+class PBHeroInfo;
 class PBS2CGetHeroInfoRes;
 class PBC2SHeroLevelUpReq;
 class PBS2CHeroLevelUpRes;
 class PBC2SDeleteHeroReq;
 class PBS2CDeleteHeroRes;
 class PBC2SGetHeroTeamReq;
-class HeroTeam;
+class PBHeroTeam;
 class PBS2CGetHeroTeamRes;
 class PBC2SUpdateHeroTeamReq;
 class PBS2CUpdateHeroTeamRes;
 class PBC2SLotteryReq;
 class PBS2CLotteryRes;
 class PBC2SGetPlayerListReq;
-class Player;
+class PBPlayer;
 class PBS2CGetPlayerListRes;
 class PBC2SPlayerFightReq;
 class FightReport;
@@ -860,14 +860,14 @@ class PBC2SGetPlayerInfoReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class PlayerInfo : public ::google::protobuf::Message {
+class PBPlayerInfo : public ::google::protobuf::Message {
  public:
-  PlayerInfo();
-  virtual ~PlayerInfo();
+  PBPlayerInfo();
+  virtual ~PBPlayerInfo();
 
-  PlayerInfo(const PlayerInfo& from);
+  PBPlayerInfo(const PBPlayerInfo& from);
 
-  inline PlayerInfo& operator=(const PlayerInfo& from) {
+  inline PBPlayerInfo& operator=(const PBPlayerInfo& from) {
     CopyFrom(from);
     return *this;
   }
@@ -881,17 +881,17 @@ class PlayerInfo : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const PlayerInfo& default_instance();
+  static const PBPlayerInfo& default_instance();
 
-  void Swap(PlayerInfo* other);
+  void Swap(PBPlayerInfo* other);
 
   // implements Message ----------------------------------------------
 
-  PlayerInfo* New() const;
+  PBPlayerInfo* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const PlayerInfo& from);
-  void MergeFrom(const PlayerInfo& from);
+  void CopyFrom(const PBPlayerInfo& from);
+  void MergeFrom(const PBPlayerInfo& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -913,19 +913,54 @@ class PlayerInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:PlayerInfo)
+  // optional int32 PlayerID = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayerIDFieldNumber = 1;
+  inline ::google::protobuf::int32 playerid() const;
+  inline void set_playerid(::google::protobuf::int32 value);
+
+  // optional string Username = 2;
+  inline bool has_username() const;
+  inline void clear_username();
+  static const int kUsernameFieldNumber = 2;
+  inline const ::std::string& username() const;
+  inline void set_username(const ::std::string& value);
+  inline void set_username(const char* value);
+  inline void set_username(const char* value, size_t size);
+  inline ::std::string* mutable_username();
+  inline ::std::string* release_username();
+  inline void set_allocated_username(::std::string* username);
+
+  // optional int32 Gold = 3;
+  inline bool has_gold() const;
+  inline void clear_gold();
+  static const int kGoldFieldNumber = 3;
+  inline ::google::protobuf::int32 gold() const;
+  inline void set_gold(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PBPlayerInfo)
  private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+  inline void set_has_username();
+  inline void clear_has_username();
+  inline void set_has_gold();
+  inline void clear_has_gold();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::std::string* username_;
+  ::google::protobuf::int32 playerid_;
+  ::google::protobuf::int32 gold_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static PlayerInfo* default_instance_;
+  static PBPlayerInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -989,27 +1024,27 @@ class PBS2CGetPlayerInfoRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 getplayerinforesult() const;
   inline void set_getplayerinforesult(::google::protobuf::int32 value);
 
-  // optional .PlayerInfo Info = 2;
-  inline bool has_info() const;
-  inline void clear_info();
-  static const int kInfoFieldNumber = 2;
-  inline const ::PlayerInfo& info() const;
-  inline ::PlayerInfo* mutable_info();
-  inline ::PlayerInfo* release_info();
-  inline void set_allocated_info(::PlayerInfo* info);
+  // optional .PBPlayerInfo PlayerInfo = 2;
+  inline bool has_playerinfo() const;
+  inline void clear_playerinfo();
+  static const int kPlayerInfoFieldNumber = 2;
+  inline const ::PBPlayerInfo& playerinfo() const;
+  inline ::PBPlayerInfo* mutable_playerinfo();
+  inline ::PBPlayerInfo* release_playerinfo();
+  inline void set_allocated_playerinfo(::PBPlayerInfo* playerinfo);
 
   // @@protoc_insertion_point(class_scope:PBS2CGetPlayerInfoRes)
  private:
   inline void set_has_getplayerinforesult();
   inline void clear_has_getplayerinforesult();
-  inline void set_has_info();
-  inline void clear_has_info();
+  inline void set_has_playerinfo();
+  inline void clear_has_playerinfo();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::PlayerInfo* info_;
+  ::PBPlayerInfo* playerinfo_;
   ::google::protobuf::int32 getplayerinforesult_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -1089,14 +1124,14 @@ class PBC2SGetHeroListReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Hero : public ::google::protobuf::Message {
+class PBHero : public ::google::protobuf::Message {
  public:
-  Hero();
-  virtual ~Hero();
+  PBHero();
+  virtual ~PBHero();
 
-  Hero(const Hero& from);
+  PBHero(const PBHero& from);
 
-  inline Hero& operator=(const Hero& from) {
+  inline PBHero& operator=(const PBHero& from) {
     CopyFrom(from);
     return *this;
   }
@@ -1110,17 +1145,17 @@ class Hero : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Hero& default_instance();
+  static const PBHero& default_instance();
 
-  void Swap(Hero* other);
+  void Swap(PBHero* other);
 
   // implements Message ----------------------------------------------
 
-  Hero* New() const;
+  PBHero* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Hero& from);
-  void MergeFrom(const Hero& from);
+  void CopyFrom(const PBHero& from);
+  void MergeFrom(const PBHero& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1142,7 +1177,7 @@ class Hero : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:Hero)
+  // @@protoc_insertion_point(class_scope:PBHero)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1154,7 +1189,7 @@ class Hero : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static Hero* default_instance_;
+  static PBHero* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1218,16 +1253,16 @@ class PBS2CGetHeroListRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 getherolistresult() const;
   inline void set_getherolistresult(::google::protobuf::int32 value);
 
-  // repeated .Hero HeroList = 2;
+  // repeated .PBHero HeroList = 2;
   inline int herolist_size() const;
   inline void clear_herolist();
   static const int kHeroListFieldNumber = 2;
-  inline const ::Hero& herolist(int index) const;
-  inline ::Hero* mutable_herolist(int index);
-  inline ::Hero* add_herolist();
-  inline const ::google::protobuf::RepeatedPtrField< ::Hero >&
+  inline const ::PBHero& herolist(int index) const;
+  inline ::PBHero* mutable_herolist(int index);
+  inline ::PBHero* add_herolist();
+  inline const ::google::protobuf::RepeatedPtrField< ::PBHero >&
       herolist() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Hero >*
+  inline ::google::protobuf::RepeatedPtrField< ::PBHero >*
       mutable_herolist();
 
   // @@protoc_insertion_point(class_scope:PBS2CGetHeroListRes)
@@ -1239,7 +1274,7 @@ class PBS2CGetHeroListRes : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Hero > herolist_;
+  ::google::protobuf::RepeatedPtrField< ::PBHero > herolist_;
   ::google::protobuf::int32 getherolistresult_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -1329,14 +1364,14 @@ class PBC2SGetHeroInfoReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class HeroInfo : public ::google::protobuf::Message {
+class PBHeroInfo : public ::google::protobuf::Message {
  public:
-  HeroInfo();
-  virtual ~HeroInfo();
+  PBHeroInfo();
+  virtual ~PBHeroInfo();
 
-  HeroInfo(const HeroInfo& from);
+  PBHeroInfo(const PBHeroInfo& from);
 
-  inline HeroInfo& operator=(const HeroInfo& from) {
+  inline PBHeroInfo& operator=(const PBHeroInfo& from) {
     CopyFrom(from);
     return *this;
   }
@@ -1350,17 +1385,17 @@ class HeroInfo : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const HeroInfo& default_instance();
+  static const PBHeroInfo& default_instance();
 
-  void Swap(HeroInfo* other);
+  void Swap(PBHeroInfo* other);
 
   // implements Message ----------------------------------------------
 
-  HeroInfo* New() const;
+  PBHeroInfo* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HeroInfo& from);
-  void MergeFrom(const HeroInfo& from);
+  void CopyFrom(const PBHeroInfo& from);
+  void MergeFrom(const PBHeroInfo& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1382,7 +1417,7 @@ class HeroInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:HeroInfo)
+  // @@protoc_insertion_point(class_scope:PBHeroInfo)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1394,7 +1429,7 @@ class HeroInfo : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static HeroInfo* default_instance_;
+  static PBHeroInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1458,27 +1493,27 @@ class PBS2CGetHeroInfoRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 getheroinforesult() const;
   inline void set_getheroinforesult(::google::protobuf::int32 value);
 
-  // optional .HeroInfo info = 2;
-  inline bool has_info() const;
-  inline void clear_info();
-  static const int kInfoFieldNumber = 2;
-  inline const ::HeroInfo& info() const;
-  inline ::HeroInfo* mutable_info();
-  inline ::HeroInfo* release_info();
-  inline void set_allocated_info(::HeroInfo* info);
+  // optional .PBHeroInfo HeroInfo = 2;
+  inline bool has_heroinfo() const;
+  inline void clear_heroinfo();
+  static const int kHeroInfoFieldNumber = 2;
+  inline const ::PBHeroInfo& heroinfo() const;
+  inline ::PBHeroInfo* mutable_heroinfo();
+  inline ::PBHeroInfo* release_heroinfo();
+  inline void set_allocated_heroinfo(::PBHeroInfo* heroinfo);
 
   // @@protoc_insertion_point(class_scope:PBS2CGetHeroInfoRes)
  private:
   inline void set_has_getheroinforesult();
   inline void clear_has_getheroinforesult();
-  inline void set_has_info();
-  inline void clear_has_info();
+  inline void set_has_heroinfo();
+  inline void clear_has_heroinfo();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::HeroInfo* info_;
+  ::PBHeroInfo* heroinfo_;
   ::google::protobuf::int32 getheroinforesult_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -1874,14 +1909,14 @@ class PBC2SGetHeroTeamReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class HeroTeam : public ::google::protobuf::Message {
+class PBHeroTeam : public ::google::protobuf::Message {
  public:
-  HeroTeam();
-  virtual ~HeroTeam();
+  PBHeroTeam();
+  virtual ~PBHeroTeam();
 
-  HeroTeam(const HeroTeam& from);
+  PBHeroTeam(const PBHeroTeam& from);
 
-  inline HeroTeam& operator=(const HeroTeam& from) {
+  inline PBHeroTeam& operator=(const PBHeroTeam& from) {
     CopyFrom(from);
     return *this;
   }
@@ -1895,17 +1930,17 @@ class HeroTeam : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const HeroTeam& default_instance();
+  static const PBHeroTeam& default_instance();
 
-  void Swap(HeroTeam* other);
+  void Swap(PBHeroTeam* other);
 
   // implements Message ----------------------------------------------
 
-  HeroTeam* New() const;
+  PBHeroTeam* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HeroTeam& from);
-  void MergeFrom(const HeroTeam& from);
+  void CopyFrom(const PBHeroTeam& from);
+  void MergeFrom(const PBHeroTeam& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1927,7 +1962,7 @@ class HeroTeam : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:HeroTeam)
+  // @@protoc_insertion_point(class_scope:PBHeroTeam)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1939,7 +1974,7 @@ class HeroTeam : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static HeroTeam* default_instance_;
+  static PBHeroTeam* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -2003,27 +2038,27 @@ class PBS2CGetHeroTeamRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 getheroteamresult() const;
   inline void set_getheroteamresult(::google::protobuf::int32 value);
 
-  // optional .HeroTeam Team = 2;
-  inline bool has_team() const;
-  inline void clear_team();
-  static const int kTeamFieldNumber = 2;
-  inline const ::HeroTeam& team() const;
-  inline ::HeroTeam* mutable_team();
-  inline ::HeroTeam* release_team();
-  inline void set_allocated_team(::HeroTeam* team);
+  // optional .PBHeroTeam HeroTeam = 2;
+  inline bool has_heroteam() const;
+  inline void clear_heroteam();
+  static const int kHeroTeamFieldNumber = 2;
+  inline const ::PBHeroTeam& heroteam() const;
+  inline ::PBHeroTeam* mutable_heroteam();
+  inline ::PBHeroTeam* release_heroteam();
+  inline void set_allocated_heroteam(::PBHeroTeam* heroteam);
 
   // @@protoc_insertion_point(class_scope:PBS2CGetHeroTeamRes)
  private:
   inline void set_has_getheroteamresult();
   inline void clear_has_getheroteamresult();
-  inline void set_has_team();
-  inline void clear_has_team();
+  inline void set_has_heroteam();
+  inline void clear_has_heroteam();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::HeroTeam* team_;
+  ::PBHeroTeam* heroteam_;
   ::google::protobuf::int32 getheroteamresult_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -2087,25 +2122,25 @@ class PBC2SUpdateHeroTeamReq : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .HeroTeam Team = 1;
-  inline bool has_team() const;
-  inline void clear_team();
-  static const int kTeamFieldNumber = 1;
-  inline const ::HeroTeam& team() const;
-  inline ::HeroTeam* mutable_team();
-  inline ::HeroTeam* release_team();
-  inline void set_allocated_team(::HeroTeam* team);
+  // required .PBHeroTeam HeroTeam = 1;
+  inline bool has_heroteam() const;
+  inline void clear_heroteam();
+  static const int kHeroTeamFieldNumber = 1;
+  inline const ::PBHeroTeam& heroteam() const;
+  inline ::PBHeroTeam* mutable_heroteam();
+  inline ::PBHeroTeam* release_heroteam();
+  inline void set_allocated_heroteam(::PBHeroTeam* heroteam);
 
   // @@protoc_insertion_point(class_scope:PBC2SUpdateHeroTeamReq)
  private:
-  inline void set_has_team();
-  inline void clear_has_team();
+  inline void set_has_heroteam();
+  inline void clear_has_heroteam();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::HeroTeam* team_;
+  ::PBHeroTeam* heroteam_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
@@ -2411,14 +2446,14 @@ class PBC2SGetPlayerListReq : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Player : public ::google::protobuf::Message {
+class PBPlayer : public ::google::protobuf::Message {
  public:
-  Player();
-  virtual ~Player();
+  PBPlayer();
+  virtual ~PBPlayer();
 
-  Player(const Player& from);
+  PBPlayer(const PBPlayer& from);
 
-  inline Player& operator=(const Player& from) {
+  inline PBPlayer& operator=(const PBPlayer& from) {
     CopyFrom(from);
     return *this;
   }
@@ -2432,17 +2467,17 @@ class Player : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Player& default_instance();
+  static const PBPlayer& default_instance();
 
-  void Swap(Player* other);
+  void Swap(PBPlayer* other);
 
   // implements Message ----------------------------------------------
 
-  Player* New() const;
+  PBPlayer* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Player& from);
-  void MergeFrom(const Player& from);
+  void CopyFrom(const PBPlayer& from);
+  void MergeFrom(const PBPlayer& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -2464,7 +2499,7 @@ class Player : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:Player)
+  // @@protoc_insertion_point(class_scope:PBPlayer)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -2476,7 +2511,7 @@ class Player : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
 
   void InitAsDefaultInstance();
-  static Player* default_instance_;
+  static PBPlayer* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -2540,16 +2575,16 @@ class PBS2CGetPlayerListRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 getplayerlistresult() const;
   inline void set_getplayerlistresult(::google::protobuf::int32 value);
 
-  // repeated .Player PlayerList = 2;
+  // repeated .PBPlayer PlayerList = 2;
   inline int playerlist_size() const;
   inline void clear_playerlist();
   static const int kPlayerListFieldNumber = 2;
-  inline const ::Player& playerlist(int index) const;
-  inline ::Player* mutable_playerlist(int index);
-  inline ::Player* add_playerlist();
-  inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+  inline const ::PBPlayer& playerlist(int index) const;
+  inline ::PBPlayer* mutable_playerlist(int index);
+  inline ::PBPlayer* add_playerlist();
+  inline const ::google::protobuf::RepeatedPtrField< ::PBPlayer >&
       playerlist() const;
-  inline ::google::protobuf::RepeatedPtrField< ::Player >*
+  inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
       mutable_playerlist();
 
   // @@protoc_insertion_point(class_scope:PBS2CGetPlayerListRes)
@@ -2561,7 +2596,7 @@ class PBS2CGetPlayerListRes : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Player > playerlist_;
+  ::google::protobuf::RepeatedPtrField< ::PBPlayer > playerlist_;
   ::google::protobuf::int32 getplayerlistresult_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -3350,7 +3385,131 @@ inline void PBS2CDeleteUserRes::set_deleteuserresult(::google::protobuf::int32 v
 
 // -------------------------------------------------------------------
 
-// PlayerInfo
+// PBPlayerInfo
+
+// optional int32 PlayerID = 1;
+inline bool PBPlayerInfo::has_playerid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBPlayerInfo::set_has_playerid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBPlayerInfo::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBPlayerInfo::clear_playerid() {
+  playerid_ = 0;
+  clear_has_playerid();
+}
+inline ::google::protobuf::int32 PBPlayerInfo::playerid() const {
+  // @@protoc_insertion_point(field_get:PBPlayerInfo.PlayerID)
+  return playerid_;
+}
+inline void PBPlayerInfo::set_playerid(::google::protobuf::int32 value) {
+  set_has_playerid();
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayerInfo.PlayerID)
+}
+
+// optional string Username = 2;
+inline bool PBPlayerInfo::has_username() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PBPlayerInfo::set_has_username() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PBPlayerInfo::clear_has_username() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PBPlayerInfo::clear_username() {
+  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    username_->clear();
+  }
+  clear_has_username();
+}
+inline const ::std::string& PBPlayerInfo::username() const {
+  // @@protoc_insertion_point(field_get:PBPlayerInfo.Username)
+  return *username_;
+}
+inline void PBPlayerInfo::set_username(const ::std::string& value) {
+  set_has_username();
+  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    username_ = new ::std::string;
+  }
+  username_->assign(value);
+  // @@protoc_insertion_point(field_set:PBPlayerInfo.Username)
+}
+inline void PBPlayerInfo::set_username(const char* value) {
+  set_has_username();
+  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    username_ = new ::std::string;
+  }
+  username_->assign(value);
+  // @@protoc_insertion_point(field_set_char:PBPlayerInfo.Username)
+}
+inline void PBPlayerInfo::set_username(const char* value, size_t size) {
+  set_has_username();
+  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    username_ = new ::std::string;
+  }
+  username_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:PBPlayerInfo.Username)
+}
+inline ::std::string* PBPlayerInfo::mutable_username() {
+  set_has_username();
+  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    username_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:PBPlayerInfo.Username)
+  return username_;
+}
+inline ::std::string* PBPlayerInfo::release_username() {
+  clear_has_username();
+  if (username_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = username_;
+    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void PBPlayerInfo::set_allocated_username(::std::string* username) {
+  if (username_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete username_;
+  }
+  if (username) {
+    set_has_username();
+    username_ = username;
+  } else {
+    clear_has_username();
+    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:PBPlayerInfo.Username)
+}
+
+// optional int32 Gold = 3;
+inline bool PBPlayerInfo::has_gold() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PBPlayerInfo::set_has_gold() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PBPlayerInfo::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PBPlayerInfo::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 PBPlayerInfo::gold() const {
+  // @@protoc_insertion_point(field_get:PBPlayerInfo.Gold)
+  return gold_;
+}
+inline void PBPlayerInfo::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:PBPlayerInfo.Gold)
+}
 
 // -------------------------------------------------------------------
 
@@ -3380,45 +3539,45 @@ inline void PBS2CGetPlayerInfoRes::set_getplayerinforesult(::google::protobuf::i
   // @@protoc_insertion_point(field_set:PBS2CGetPlayerInfoRes.GetPlayerInfoResult)
 }
 
-// optional .PlayerInfo Info = 2;
-inline bool PBS2CGetPlayerInfoRes::has_info() const {
+// optional .PBPlayerInfo PlayerInfo = 2;
+inline bool PBS2CGetPlayerInfoRes::has_playerinfo() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBS2CGetPlayerInfoRes::set_has_info() {
+inline void PBS2CGetPlayerInfoRes::set_has_playerinfo() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBS2CGetPlayerInfoRes::clear_has_info() {
+inline void PBS2CGetPlayerInfoRes::clear_has_playerinfo() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PBS2CGetPlayerInfoRes::clear_info() {
-  if (info_ != NULL) info_->::PlayerInfo::Clear();
-  clear_has_info();
+inline void PBS2CGetPlayerInfoRes::clear_playerinfo() {
+  if (playerinfo_ != NULL) playerinfo_->::PBPlayerInfo::Clear();
+  clear_has_playerinfo();
 }
-inline const ::PlayerInfo& PBS2CGetPlayerInfoRes::info() const {
-  // @@protoc_insertion_point(field_get:PBS2CGetPlayerInfoRes.Info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
+inline const ::PBPlayerInfo& PBS2CGetPlayerInfoRes::playerinfo() const {
+  // @@protoc_insertion_point(field_get:PBS2CGetPlayerInfoRes.PlayerInfo)
+  return playerinfo_ != NULL ? *playerinfo_ : *default_instance_->playerinfo_;
 }
-inline ::PlayerInfo* PBS2CGetPlayerInfoRes::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) info_ = new ::PlayerInfo;
-  // @@protoc_insertion_point(field_mutable:PBS2CGetPlayerInfoRes.Info)
-  return info_;
+inline ::PBPlayerInfo* PBS2CGetPlayerInfoRes::mutable_playerinfo() {
+  set_has_playerinfo();
+  if (playerinfo_ == NULL) playerinfo_ = new ::PBPlayerInfo;
+  // @@protoc_insertion_point(field_mutable:PBS2CGetPlayerInfoRes.PlayerInfo)
+  return playerinfo_;
 }
-inline ::PlayerInfo* PBS2CGetPlayerInfoRes::release_info() {
-  clear_has_info();
-  ::PlayerInfo* temp = info_;
-  info_ = NULL;
+inline ::PBPlayerInfo* PBS2CGetPlayerInfoRes::release_playerinfo() {
+  clear_has_playerinfo();
+  ::PBPlayerInfo* temp = playerinfo_;
+  playerinfo_ = NULL;
   return temp;
 }
-inline void PBS2CGetPlayerInfoRes::set_allocated_info(::PlayerInfo* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
+inline void PBS2CGetPlayerInfoRes::set_allocated_playerinfo(::PBPlayerInfo* playerinfo) {
+  delete playerinfo_;
+  playerinfo_ = playerinfo;
+  if (playerinfo) {
+    set_has_playerinfo();
   } else {
-    clear_has_info();
+    clear_has_playerinfo();
   }
-  // @@protoc_insertion_point(field_set_allocated:PBS2CGetPlayerInfoRes.Info)
+  // @@protoc_insertion_point(field_set_allocated:PBS2CGetPlayerInfoRes.PlayerInfo)
 }
 
 // -------------------------------------------------------------------
@@ -3427,7 +3586,7 @@ inline void PBS2CGetPlayerInfoRes::set_allocated_info(::PlayerInfo* info) {
 
 // -------------------------------------------------------------------
 
-// Hero
+// PBHero
 
 // -------------------------------------------------------------------
 
@@ -3457,31 +3616,31 @@ inline void PBS2CGetHeroListRes::set_getherolistresult(::google::protobuf::int32
   // @@protoc_insertion_point(field_set:PBS2CGetHeroListRes.GetHeroListResult)
 }
 
-// repeated .Hero HeroList = 2;
+// repeated .PBHero HeroList = 2;
 inline int PBS2CGetHeroListRes::herolist_size() const {
   return herolist_.size();
 }
 inline void PBS2CGetHeroListRes::clear_herolist() {
   herolist_.Clear();
 }
-inline const ::Hero& PBS2CGetHeroListRes::herolist(int index) const {
+inline const ::PBHero& PBS2CGetHeroListRes::herolist(int index) const {
   // @@protoc_insertion_point(field_get:PBS2CGetHeroListRes.HeroList)
   return herolist_.Get(index);
 }
-inline ::Hero* PBS2CGetHeroListRes::mutable_herolist(int index) {
+inline ::PBHero* PBS2CGetHeroListRes::mutable_herolist(int index) {
   // @@protoc_insertion_point(field_mutable:PBS2CGetHeroListRes.HeroList)
   return herolist_.Mutable(index);
 }
-inline ::Hero* PBS2CGetHeroListRes::add_herolist() {
+inline ::PBHero* PBS2CGetHeroListRes::add_herolist() {
   // @@protoc_insertion_point(field_add:PBS2CGetHeroListRes.HeroList)
   return herolist_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Hero >&
+inline const ::google::protobuf::RepeatedPtrField< ::PBHero >&
 PBS2CGetHeroListRes::herolist() const {
   // @@protoc_insertion_point(field_list:PBS2CGetHeroListRes.HeroList)
   return herolist_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::Hero >*
+inline ::google::protobuf::RepeatedPtrField< ::PBHero >*
 PBS2CGetHeroListRes::mutable_herolist() {
   // @@protoc_insertion_point(field_mutable_list:PBS2CGetHeroListRes.HeroList)
   return &herolist_;
@@ -3517,7 +3676,7 @@ inline void PBC2SGetHeroInfoReq::set_heroid(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// HeroInfo
+// PBHeroInfo
 
 // -------------------------------------------------------------------
 
@@ -3547,45 +3706,45 @@ inline void PBS2CGetHeroInfoRes::set_getheroinforesult(::google::protobuf::int32
   // @@protoc_insertion_point(field_set:PBS2CGetHeroInfoRes.GetHeroInfoResult)
 }
 
-// optional .HeroInfo info = 2;
-inline bool PBS2CGetHeroInfoRes::has_info() const {
+// optional .PBHeroInfo HeroInfo = 2;
+inline bool PBS2CGetHeroInfoRes::has_heroinfo() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBS2CGetHeroInfoRes::set_has_info() {
+inline void PBS2CGetHeroInfoRes::set_has_heroinfo() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBS2CGetHeroInfoRes::clear_has_info() {
+inline void PBS2CGetHeroInfoRes::clear_has_heroinfo() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PBS2CGetHeroInfoRes::clear_info() {
-  if (info_ != NULL) info_->::HeroInfo::Clear();
-  clear_has_info();
+inline void PBS2CGetHeroInfoRes::clear_heroinfo() {
+  if (heroinfo_ != NULL) heroinfo_->::PBHeroInfo::Clear();
+  clear_has_heroinfo();
 }
-inline const ::HeroInfo& PBS2CGetHeroInfoRes::info() const {
-  // @@protoc_insertion_point(field_get:PBS2CGetHeroInfoRes.info)
-  return info_ != NULL ? *info_ : *default_instance_->info_;
+inline const ::PBHeroInfo& PBS2CGetHeroInfoRes::heroinfo() const {
+  // @@protoc_insertion_point(field_get:PBS2CGetHeroInfoRes.HeroInfo)
+  return heroinfo_ != NULL ? *heroinfo_ : *default_instance_->heroinfo_;
 }
-inline ::HeroInfo* PBS2CGetHeroInfoRes::mutable_info() {
-  set_has_info();
-  if (info_ == NULL) info_ = new ::HeroInfo;
-  // @@protoc_insertion_point(field_mutable:PBS2CGetHeroInfoRes.info)
-  return info_;
+inline ::PBHeroInfo* PBS2CGetHeroInfoRes::mutable_heroinfo() {
+  set_has_heroinfo();
+  if (heroinfo_ == NULL) heroinfo_ = new ::PBHeroInfo;
+  // @@protoc_insertion_point(field_mutable:PBS2CGetHeroInfoRes.HeroInfo)
+  return heroinfo_;
 }
-inline ::HeroInfo* PBS2CGetHeroInfoRes::release_info() {
-  clear_has_info();
-  ::HeroInfo* temp = info_;
-  info_ = NULL;
+inline ::PBHeroInfo* PBS2CGetHeroInfoRes::release_heroinfo() {
+  clear_has_heroinfo();
+  ::PBHeroInfo* temp = heroinfo_;
+  heroinfo_ = NULL;
   return temp;
 }
-inline void PBS2CGetHeroInfoRes::set_allocated_info(::HeroInfo* info) {
-  delete info_;
-  info_ = info;
-  if (info) {
-    set_has_info();
+inline void PBS2CGetHeroInfoRes::set_allocated_heroinfo(::PBHeroInfo* heroinfo) {
+  delete heroinfo_;
+  heroinfo_ = heroinfo;
+  if (heroinfo) {
+    set_has_heroinfo();
   } else {
-    clear_has_info();
+    clear_has_heroinfo();
   }
-  // @@protoc_insertion_point(field_set_allocated:PBS2CGetHeroInfoRes.info)
+  // @@protoc_insertion_point(field_set_allocated:PBS2CGetHeroInfoRes.HeroInfo)
 }
 
 // -------------------------------------------------------------------
@@ -3706,7 +3865,7 @@ inline void PBS2CDeleteHeroRes::set_deleteheroresult(::google::protobuf::int32 v
 
 // -------------------------------------------------------------------
 
-// HeroTeam
+// PBHeroTeam
 
 // -------------------------------------------------------------------
 
@@ -3736,90 +3895,90 @@ inline void PBS2CGetHeroTeamRes::set_getheroteamresult(::google::protobuf::int32
   // @@protoc_insertion_point(field_set:PBS2CGetHeroTeamRes.GetHeroTeamResult)
 }
 
-// optional .HeroTeam Team = 2;
-inline bool PBS2CGetHeroTeamRes::has_team() const {
+// optional .PBHeroTeam HeroTeam = 2;
+inline bool PBS2CGetHeroTeamRes::has_heroteam() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PBS2CGetHeroTeamRes::set_has_team() {
+inline void PBS2CGetHeroTeamRes::set_has_heroteam() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PBS2CGetHeroTeamRes::clear_has_team() {
+inline void PBS2CGetHeroTeamRes::clear_has_heroteam() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PBS2CGetHeroTeamRes::clear_team() {
-  if (team_ != NULL) team_->::HeroTeam::Clear();
-  clear_has_team();
+inline void PBS2CGetHeroTeamRes::clear_heroteam() {
+  if (heroteam_ != NULL) heroteam_->::PBHeroTeam::Clear();
+  clear_has_heroteam();
 }
-inline const ::HeroTeam& PBS2CGetHeroTeamRes::team() const {
-  // @@protoc_insertion_point(field_get:PBS2CGetHeroTeamRes.Team)
-  return team_ != NULL ? *team_ : *default_instance_->team_;
+inline const ::PBHeroTeam& PBS2CGetHeroTeamRes::heroteam() const {
+  // @@protoc_insertion_point(field_get:PBS2CGetHeroTeamRes.HeroTeam)
+  return heroteam_ != NULL ? *heroteam_ : *default_instance_->heroteam_;
 }
-inline ::HeroTeam* PBS2CGetHeroTeamRes::mutable_team() {
-  set_has_team();
-  if (team_ == NULL) team_ = new ::HeroTeam;
-  // @@protoc_insertion_point(field_mutable:PBS2CGetHeroTeamRes.Team)
-  return team_;
+inline ::PBHeroTeam* PBS2CGetHeroTeamRes::mutable_heroteam() {
+  set_has_heroteam();
+  if (heroteam_ == NULL) heroteam_ = new ::PBHeroTeam;
+  // @@protoc_insertion_point(field_mutable:PBS2CGetHeroTeamRes.HeroTeam)
+  return heroteam_;
 }
-inline ::HeroTeam* PBS2CGetHeroTeamRes::release_team() {
-  clear_has_team();
-  ::HeroTeam* temp = team_;
-  team_ = NULL;
+inline ::PBHeroTeam* PBS2CGetHeroTeamRes::release_heroteam() {
+  clear_has_heroteam();
+  ::PBHeroTeam* temp = heroteam_;
+  heroteam_ = NULL;
   return temp;
 }
-inline void PBS2CGetHeroTeamRes::set_allocated_team(::HeroTeam* team) {
-  delete team_;
-  team_ = team;
-  if (team) {
-    set_has_team();
+inline void PBS2CGetHeroTeamRes::set_allocated_heroteam(::PBHeroTeam* heroteam) {
+  delete heroteam_;
+  heroteam_ = heroteam;
+  if (heroteam) {
+    set_has_heroteam();
   } else {
-    clear_has_team();
+    clear_has_heroteam();
   }
-  // @@protoc_insertion_point(field_set_allocated:PBS2CGetHeroTeamRes.Team)
+  // @@protoc_insertion_point(field_set_allocated:PBS2CGetHeroTeamRes.HeroTeam)
 }
 
 // -------------------------------------------------------------------
 
 // PBC2SUpdateHeroTeamReq
 
-// required .HeroTeam Team = 1;
-inline bool PBC2SUpdateHeroTeamReq::has_team() const {
+// required .PBHeroTeam HeroTeam = 1;
+inline bool PBC2SUpdateHeroTeamReq::has_heroteam() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void PBC2SUpdateHeroTeamReq::set_has_team() {
+inline void PBC2SUpdateHeroTeamReq::set_has_heroteam() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void PBC2SUpdateHeroTeamReq::clear_has_team() {
+inline void PBC2SUpdateHeroTeamReq::clear_has_heroteam() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void PBC2SUpdateHeroTeamReq::clear_team() {
-  if (team_ != NULL) team_->::HeroTeam::Clear();
-  clear_has_team();
+inline void PBC2SUpdateHeroTeamReq::clear_heroteam() {
+  if (heroteam_ != NULL) heroteam_->::PBHeroTeam::Clear();
+  clear_has_heroteam();
 }
-inline const ::HeroTeam& PBC2SUpdateHeroTeamReq::team() const {
-  // @@protoc_insertion_point(field_get:PBC2SUpdateHeroTeamReq.Team)
-  return team_ != NULL ? *team_ : *default_instance_->team_;
+inline const ::PBHeroTeam& PBC2SUpdateHeroTeamReq::heroteam() const {
+  // @@protoc_insertion_point(field_get:PBC2SUpdateHeroTeamReq.HeroTeam)
+  return heroteam_ != NULL ? *heroteam_ : *default_instance_->heroteam_;
 }
-inline ::HeroTeam* PBC2SUpdateHeroTeamReq::mutable_team() {
-  set_has_team();
-  if (team_ == NULL) team_ = new ::HeroTeam;
-  // @@protoc_insertion_point(field_mutable:PBC2SUpdateHeroTeamReq.Team)
-  return team_;
+inline ::PBHeroTeam* PBC2SUpdateHeroTeamReq::mutable_heroteam() {
+  set_has_heroteam();
+  if (heroteam_ == NULL) heroteam_ = new ::PBHeroTeam;
+  // @@protoc_insertion_point(field_mutable:PBC2SUpdateHeroTeamReq.HeroTeam)
+  return heroteam_;
 }
-inline ::HeroTeam* PBC2SUpdateHeroTeamReq::release_team() {
-  clear_has_team();
-  ::HeroTeam* temp = team_;
-  team_ = NULL;
+inline ::PBHeroTeam* PBC2SUpdateHeroTeamReq::release_heroteam() {
+  clear_has_heroteam();
+  ::PBHeroTeam* temp = heroteam_;
+  heroteam_ = NULL;
   return temp;
 }
-inline void PBC2SUpdateHeroTeamReq::set_allocated_team(::HeroTeam* team) {
-  delete team_;
-  team_ = team;
-  if (team) {
-    set_has_team();
+inline void PBC2SUpdateHeroTeamReq::set_allocated_heroteam(::PBHeroTeam* heroteam) {
+  delete heroteam_;
+  heroteam_ = heroteam;
+  if (heroteam) {
+    set_has_heroteam();
   } else {
-    clear_has_team();
+    clear_has_heroteam();
   }
-  // @@protoc_insertion_point(field_set_allocated:PBC2SUpdateHeroTeamReq.Team)
+  // @@protoc_insertion_point(field_set_allocated:PBC2SUpdateHeroTeamReq.HeroTeam)
 }
 
 // -------------------------------------------------------------------
@@ -3888,7 +4047,7 @@ inline void PBS2CLotteryRes::set_lotteryresult(::google::protobuf::int32 value) 
 
 // -------------------------------------------------------------------
 
-// Player
+// PBPlayer
 
 // -------------------------------------------------------------------
 
@@ -3918,31 +4077,31 @@ inline void PBS2CGetPlayerListRes::set_getplayerlistresult(::google::protobuf::i
   // @@protoc_insertion_point(field_set:PBS2CGetPlayerListRes.GetPlayerListResult)
 }
 
-// repeated .Player PlayerList = 2;
+// repeated .PBPlayer PlayerList = 2;
 inline int PBS2CGetPlayerListRes::playerlist_size() const {
   return playerlist_.size();
 }
 inline void PBS2CGetPlayerListRes::clear_playerlist() {
   playerlist_.Clear();
 }
-inline const ::Player& PBS2CGetPlayerListRes::playerlist(int index) const {
+inline const ::PBPlayer& PBS2CGetPlayerListRes::playerlist(int index) const {
   // @@protoc_insertion_point(field_get:PBS2CGetPlayerListRes.PlayerList)
   return playerlist_.Get(index);
 }
-inline ::Player* PBS2CGetPlayerListRes::mutable_playerlist(int index) {
+inline ::PBPlayer* PBS2CGetPlayerListRes::mutable_playerlist(int index) {
   // @@protoc_insertion_point(field_mutable:PBS2CGetPlayerListRes.PlayerList)
   return playerlist_.Mutable(index);
 }
-inline ::Player* PBS2CGetPlayerListRes::add_playerlist() {
+inline ::PBPlayer* PBS2CGetPlayerListRes::add_playerlist() {
   // @@protoc_insertion_point(field_add:PBS2CGetPlayerListRes.PlayerList)
   return playerlist_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Player >&
+inline const ::google::protobuf::RepeatedPtrField< ::PBPlayer >&
 PBS2CGetPlayerListRes::playerlist() const {
   // @@protoc_insertion_point(field_list:PBS2CGetPlayerListRes.PlayerList)
   return playerlist_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::Player >*
+inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
 PBS2CGetPlayerListRes::mutable_playerlist() {
   // @@protoc_insertion_point(field_mutable_list:PBS2CGetPlayerListRes.PlayerList)
   return &playerlist_;
