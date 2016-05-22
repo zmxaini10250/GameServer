@@ -55,7 +55,7 @@ class CHero
 class CHeroPack
 {
     public:
-        CHeroPack()
+        CHeroPack(){}
         ~CHeroPack(){}
         bool isFull();
         int AddHero(int HeroID);

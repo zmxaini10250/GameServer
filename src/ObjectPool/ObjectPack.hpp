@@ -58,6 +58,11 @@ class CObjectPack
                 return wp;
             }
     public:
+        const std::unordered_map<int, std::shared_ptr<T>>& GetObjectMap()
+        {
+            return ObjectMap;
+        }
+
         bool isFull()
         {
             return FreeSpaceStack.empty();

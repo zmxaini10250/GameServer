@@ -2,7 +2,6 @@
 
 int CHeroPack::AddHero(int HeroID)
 {
-
     return 0;
 }
 

@@ -27,11 +27,11 @@ enum eMessageType
     TypeC2SDeleteHeroReq        = 17;
     TypeS2CDeleteHeroRes        = 18;
 
-    TypeC2SGetHeroTeamReq           = 19;
-    TypeS2CGetHeroTeamRes           = 20;
+    TypeC2SGetHeroTeamReq       = 19;
+    TypeS2CGetHeroTeamRes       = 20;
 
-    TypeC2SUpdateHeroTeamReq        = 21;
-    TypeS2CUpdateHeroTeamRes        = 22;
+    TypeC2SUpdateHeroTeamReq    = 21;
+    TypeS2CUpdateHeroTeamRes    = 22;
 
     TypeC2SLotteryReq           = 23;
     TypeS2CLotteryRes           = 24;
@@ -188,7 +188,7 @@ message PBS2CGetHeroTeamRes
 //TypeC2SUpdateHeroTeamReq    
 message PBC2SUpdateHeroTeamReq
 {
-    required PBHeroTeam HeroTeam              = 1;
+    required PBHeroTeam HeroTeam        = 1;
 }
 
 //TypeS2CUpdateHeroTeamRes 
@@ -221,7 +221,7 @@ message PBPlayer
 message PBS2CGetPlayerListRes
 {
     required int32 GetPlayerListResult  = 1;
-    repeated PBPlayer PlayerList          = 2;
+    repeated PBPlayer PlayerList        = 2;
 }
 
 //TypeC2SPlayerFightReq   

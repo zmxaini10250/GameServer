@@ -6,7 +6,7 @@ SET(CMAKE_CXX_COMPILER g++)
 #SET(CMAKE_C_COMPILER clang)
 #SET(CMAKE_CXX_COMPILER clang++)
 
-add_definitions(-g -std=c++14 -Werror)
+add_definitions(-g -std=c++14)
 
 exec_program(protoc ./src/protobuf ARGS "*.proto --cpp_out=.")
 
