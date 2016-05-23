@@ -2,17 +2,9 @@
 #define _HERO_H_
 
 #include "../ObjectPool/ObjectPack.hpp"
+#include "../protobuf/ClientMessage.pb.h"
 
 const int HeroPackSize = 50;
-
-class CHeroInfo
-{
-    public:
-        CHeroInfo(){}
-        ~CHeroInfo(){}
-    private:
-
-};
 
 class CHeroAttribute
 {
@@ -43,6 +35,7 @@ class CHero
     public:
         CHero(){}
         ~CHero(){}
+        int Hero2PB(PBHero& pb)const;
     private:
         int HeroInfoID;
         int HeroAttributeID;
@@ -59,6 +52,7 @@ class CHeroPack
         ~CHeroPack(){}
         bool isFull();
         int AddHero(int HeroID);
+        int HeroList2PB(PBS2CGetHeroListRes& pb)const;
     private:
         CObjectPack<CHero, HeroPackSize> pack;
 };

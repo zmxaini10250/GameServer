@@ -58,7 +58,7 @@ class CObjectPack
                 return wp;
             }
     public:
-        const std::unordered_map<int, std::shared_ptr<T>>& GetObjectMap()
+        const std::unordered_map<int, std::shared_ptr<T>> GetObjectMap()
         {
             return ObjectMap;
         }

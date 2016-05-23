@@ -1177,13 +1177,33 @@ class PBHero : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional int32 HeroInfoID = 1;
+  inline bool has_heroinfoid() const;
+  inline void clear_heroinfoid();
+  static const int kHeroInfoIDFieldNumber = 1;
+  inline ::google::protobuf::int32 heroinfoid() const;
+  inline void set_heroinfoid(::google::protobuf::int32 value);
+
+  // optional int32 HeroSkillID = 2;
+  inline bool has_heroskillid() const;
+  inline void clear_heroskillid();
+  static const int kHeroSkillIDFieldNumber = 2;
+  inline ::google::protobuf::int32 heroskillid() const;
+  inline void set_heroskillid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PBHero)
  private:
+  inline void set_has_heroinfoid();
+  inline void clear_has_heroinfoid();
+  inline void set_has_heroskillid();
+  inline void clear_has_heroskillid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::google::protobuf::int32 heroinfoid_;
+  ::google::protobuf::int32 heroskillid_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
@@ -3587,6 +3607,54 @@ inline void PBS2CGetPlayerInfoRes::set_allocated_playerinfo(::PBPlayerInfo* play
 // -------------------------------------------------------------------
 
 // PBHero
+
+// optional int32 HeroInfoID = 1;
+inline bool PBHero::has_heroinfoid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBHero::set_has_heroinfoid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBHero::clear_has_heroinfoid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBHero::clear_heroinfoid() {
+  heroinfoid_ = 0;
+  clear_has_heroinfoid();
+}
+inline ::google::protobuf::int32 PBHero::heroinfoid() const {
+  // @@protoc_insertion_point(field_get:PBHero.HeroInfoID)
+  return heroinfoid_;
+}
+inline void PBHero::set_heroinfoid(::google::protobuf::int32 value) {
+  set_has_heroinfoid();
+  heroinfoid_ = value;
+  // @@protoc_insertion_point(field_set:PBHero.HeroInfoID)
+}
+
+// optional int32 HeroSkillID = 2;
+inline bool PBHero::has_heroskillid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PBHero::set_has_heroskillid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PBHero::clear_has_heroskillid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PBHero::clear_heroskillid() {
+  heroskillid_ = 0;
+  clear_has_heroskillid();
+}
+inline ::google::protobuf::int32 PBHero::heroskillid() const {
+  // @@protoc_insertion_point(field_get:PBHero.HeroSkillID)
+  return heroskillid_;
+}
+inline void PBHero::set_heroskillid(::google::protobuf::int32 value) {
+  set_has_heroskillid();
+  heroskillid_ = value;
+  // @@protoc_insertion_point(field_set:PBHero.HeroSkillID)
+}
 
 // -------------------------------------------------------------------
 

@@ -120,6 +120,8 @@ message PBC2SGetHeroListReq
 //TypeS2CGetHeroListRes   
 message PBHero
 {
+    optional int32 HeroInfoID           = 1;
+    optional int32 HeroSkillID          = 2;
 }
 
 message PBS2CGetHeroListRes
