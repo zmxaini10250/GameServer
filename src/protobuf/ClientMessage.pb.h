@@ -1184,26 +1184,16 @@ class PBHero : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 heroinfoid() const;
   inline void set_heroinfoid(::google::protobuf::int32 value);
 
-  // optional int32 HeroSkillID = 2;
-  inline bool has_heroskillid() const;
-  inline void clear_heroskillid();
-  static const int kHeroSkillIDFieldNumber = 2;
-  inline ::google::protobuf::int32 heroskillid() const;
-  inline void set_heroskillid(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:PBHero)
  private:
   inline void set_has_heroinfoid();
   inline void clear_has_heroinfoid();
-  inline void set_has_heroskillid();
-  inline void clear_has_heroskillid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 heroinfoid_;
-  ::google::protobuf::int32 heroskillid_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
@@ -1437,13 +1427,95 @@ class PBHeroInfo : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional .PBHero Hero = 1;
+  inline bool has_hero() const;
+  inline void clear_hero();
+  static const int kHeroFieldNumber = 1;
+  inline const ::PBHero& hero() const;
+  inline ::PBHero* mutable_hero();
+  inline ::PBHero* release_hero();
+  inline void set_allocated_hero(::PBHero* hero);
+
+  // optional int32 Speed = 2;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 2;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
+
+  // optional int32 Defend = 3;
+  inline bool has_defend() const;
+  inline void clear_defend();
+  static const int kDefendFieldNumber = 3;
+  inline ::google::protobuf::int32 defend() const;
+  inline void set_defend(::google::protobuf::int32 value);
+
+  // optional int32 Avoid = 4;
+  inline bool has_avoid() const;
+  inline void clear_avoid();
+  static const int kAvoidFieldNumber = 4;
+  inline ::google::protobuf::int32 avoid() const;
+  inline void set_avoid(::google::protobuf::int32 value);
+
+  // optional int32 Attach = 5;
+  inline bool has_attach() const;
+  inline void clear_attach();
+  static const int kAttachFieldNumber = 5;
+  inline ::google::protobuf::int32 attach() const;
+  inline void set_attach(::google::protobuf::int32 value);
+
+  // optional int32 HealthPoint = 6;
+  inline bool has_healthpoint() const;
+  inline void clear_healthpoint();
+  static const int kHealthPointFieldNumber = 6;
+  inline ::google::protobuf::int32 healthpoint() const;
+  inline void set_healthpoint(::google::protobuf::int32 value);
+
+  // optional int32 HeroSkillID = 7;
+  inline bool has_heroskillid() const;
+  inline void clear_heroskillid();
+  static const int kHeroSkillIDFieldNumber = 7;
+  inline ::google::protobuf::int32 heroskillid() const;
+  inline void set_heroskillid(::google::protobuf::int32 value);
+
+  // optional int32 Empirical = 8;
+  inline bool has_empirical() const;
+  inline void clear_empirical();
+  static const int kEmpiricalFieldNumber = 8;
+  inline ::google::protobuf::int32 empirical() const;
+  inline void set_empirical(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:PBHeroInfo)
  private:
+  inline void set_has_hero();
+  inline void clear_has_hero();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_defend();
+  inline void clear_has_defend();
+  inline void set_has_avoid();
+  inline void clear_has_avoid();
+  inline void set_has_attach();
+  inline void clear_has_attach();
+  inline void set_has_healthpoint();
+  inline void clear_has_healthpoint();
+  inline void set_has_heroskillid();
+  inline void clear_has_heroskillid();
+  inline void set_has_empirical();
+  inline void clear_has_empirical();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::PBHero* hero_;
+  ::google::protobuf::int32 speed_;
+  ::google::protobuf::int32 defend_;
+  ::google::protobuf::int32 avoid_;
+  ::google::protobuf::int32 attach_;
+  ::google::protobuf::int32 healthpoint_;
+  ::google::protobuf::int32 heroskillid_;
+  ::google::protobuf::int32 empirical_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
@@ -3632,30 +3704,6 @@ inline void PBHero::set_heroinfoid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PBHero.HeroInfoID)
 }
 
-// optional int32 HeroSkillID = 2;
-inline bool PBHero::has_heroskillid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PBHero::set_has_heroskillid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void PBHero::clear_has_heroskillid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void PBHero::clear_heroskillid() {
-  heroskillid_ = 0;
-  clear_has_heroskillid();
-}
-inline ::google::protobuf::int32 PBHero::heroskillid() const {
-  // @@protoc_insertion_point(field_get:PBHero.HeroSkillID)
-  return heroskillid_;
-}
-inline void PBHero::set_heroskillid(::google::protobuf::int32 value) {
-  set_has_heroskillid();
-  heroskillid_ = value;
-  // @@protoc_insertion_point(field_set:PBHero.HeroSkillID)
-}
-
 // -------------------------------------------------------------------
 
 // PBS2CGetHeroListRes
@@ -3745,6 +3793,215 @@ inline void PBC2SGetHeroInfoReq::set_heroid(::google::protobuf::int32 value) {
 // -------------------------------------------------------------------
 
 // PBHeroInfo
+
+// optional .PBHero Hero = 1;
+inline bool PBHeroInfo::has_hero() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBHeroInfo::set_has_hero() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBHeroInfo::clear_has_hero() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBHeroInfo::clear_hero() {
+  if (hero_ != NULL) hero_->::PBHero::Clear();
+  clear_has_hero();
+}
+inline const ::PBHero& PBHeroInfo::hero() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Hero)
+  return hero_ != NULL ? *hero_ : *default_instance_->hero_;
+}
+inline ::PBHero* PBHeroInfo::mutable_hero() {
+  set_has_hero();
+  if (hero_ == NULL) hero_ = new ::PBHero;
+  // @@protoc_insertion_point(field_mutable:PBHeroInfo.Hero)
+  return hero_;
+}
+inline ::PBHero* PBHeroInfo::release_hero() {
+  clear_has_hero();
+  ::PBHero* temp = hero_;
+  hero_ = NULL;
+  return temp;
+}
+inline void PBHeroInfo::set_allocated_hero(::PBHero* hero) {
+  delete hero_;
+  hero_ = hero;
+  if (hero) {
+    set_has_hero();
+  } else {
+    clear_has_hero();
+  }
+  // @@protoc_insertion_point(field_set_allocated:PBHeroInfo.Hero)
+}
+
+// optional int32 Speed = 2;
+inline bool PBHeroInfo::has_speed() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PBHeroInfo::set_has_speed() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PBHeroInfo::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PBHeroInfo::clear_speed() {
+  speed_ = 0;
+  clear_has_speed();
+}
+inline ::google::protobuf::int32 PBHeroInfo::speed() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Speed)
+  return speed_;
+}
+inline void PBHeroInfo::set_speed(::google::protobuf::int32 value) {
+  set_has_speed();
+  speed_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.Speed)
+}
+
+// optional int32 Defend = 3;
+inline bool PBHeroInfo::has_defend() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PBHeroInfo::set_has_defend() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PBHeroInfo::clear_has_defend() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PBHeroInfo::clear_defend() {
+  defend_ = 0;
+  clear_has_defend();
+}
+inline ::google::protobuf::int32 PBHeroInfo::defend() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Defend)
+  return defend_;
+}
+inline void PBHeroInfo::set_defend(::google::protobuf::int32 value) {
+  set_has_defend();
+  defend_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.Defend)
+}
+
+// optional int32 Avoid = 4;
+inline bool PBHeroInfo::has_avoid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PBHeroInfo::set_has_avoid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PBHeroInfo::clear_has_avoid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PBHeroInfo::clear_avoid() {
+  avoid_ = 0;
+  clear_has_avoid();
+}
+inline ::google::protobuf::int32 PBHeroInfo::avoid() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Avoid)
+  return avoid_;
+}
+inline void PBHeroInfo::set_avoid(::google::protobuf::int32 value) {
+  set_has_avoid();
+  avoid_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.Avoid)
+}
+
+// optional int32 Attach = 5;
+inline bool PBHeroInfo::has_attach() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PBHeroInfo::set_has_attach() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PBHeroInfo::clear_has_attach() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PBHeroInfo::clear_attach() {
+  attach_ = 0;
+  clear_has_attach();
+}
+inline ::google::protobuf::int32 PBHeroInfo::attach() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Attach)
+  return attach_;
+}
+inline void PBHeroInfo::set_attach(::google::protobuf::int32 value) {
+  set_has_attach();
+  attach_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.Attach)
+}
+
+// optional int32 HealthPoint = 6;
+inline bool PBHeroInfo::has_healthpoint() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PBHeroInfo::set_has_healthpoint() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PBHeroInfo::clear_has_healthpoint() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void PBHeroInfo::clear_healthpoint() {
+  healthpoint_ = 0;
+  clear_has_healthpoint();
+}
+inline ::google::protobuf::int32 PBHeroInfo::healthpoint() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.HealthPoint)
+  return healthpoint_;
+}
+inline void PBHeroInfo::set_healthpoint(::google::protobuf::int32 value) {
+  set_has_healthpoint();
+  healthpoint_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.HealthPoint)
+}
+
+// optional int32 HeroSkillID = 7;
+inline bool PBHeroInfo::has_heroskillid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void PBHeroInfo::set_has_heroskillid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void PBHeroInfo::clear_has_heroskillid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void PBHeroInfo::clear_heroskillid() {
+  heroskillid_ = 0;
+  clear_has_heroskillid();
+}
+inline ::google::protobuf::int32 PBHeroInfo::heroskillid() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.HeroSkillID)
+  return heroskillid_;
+}
+inline void PBHeroInfo::set_heroskillid(::google::protobuf::int32 value) {
+  set_has_heroskillid();
+  heroskillid_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.HeroSkillID)
+}
+
+// optional int32 Empirical = 8;
+inline bool PBHeroInfo::has_empirical() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void PBHeroInfo::set_has_empirical() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void PBHeroInfo::clear_has_empirical() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void PBHeroInfo::clear_empirical() {
+  empirical_ = 0;
+  clear_has_empirical();
+}
+inline ::google::protobuf::int32 PBHeroInfo::empirical() const {
+  // @@protoc_insertion_point(field_get:PBHeroInfo.Empirical)
+  return empirical_;
+}
+inline void PBHeroInfo::set_empirical(::google::protobuf::int32 value) {
+  set_has_empirical();
+  empirical_ = value;
+  // @@protoc_insertion_point(field_set:PBHeroInfo.Empirical)
+}
 
 // -------------------------------------------------------------------
 

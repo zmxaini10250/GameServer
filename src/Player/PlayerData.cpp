@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 
+#include "../Hero/Hero.h"
 #include "../TCPServer/TCPClientSocket.h"
 
 std::weak_ptr<CTCPClientSocket> CPlayer::GetSocket()
@@ -36,6 +37,11 @@ int CPlayer::PlayerInfo2PB(PBPlayerInfo &PlayerInfo)
 std::string CPlayer::GetUsername()
 {
     return Username;
+}
+
+const CHeroPack& CPlayer::GetHeroPack()const
+{
+    return HeroPack;
 }
 ///////////////////////////////////////////////////////////////////////////
 

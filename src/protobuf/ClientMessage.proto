@@ -121,7 +121,6 @@ message PBC2SGetHeroListReq
 message PBHero
 {
     optional int32 HeroInfoID           = 1;
-    optional int32 HeroSkillID          = 2;
 }
 
 message PBS2CGetHeroListRes
@@ -139,6 +138,14 @@ message PBC2SGetHeroInfoReq
 //TypeS2CGetHeroInfoRes
 message PBHeroInfo
 {
+    optional PBHero Hero                = 1;
+    optional int32 Speed                = 2;
+    optional int32 Defend               = 3;
+    optional int32 Avoid                = 4;
+    optional int32 Attach               = 5;
+    optional int32 HealthPoint          = 6;
+    optional int32 HeroSkillID          = 7;
+    optional int32 Empirical            = 8;
 }
 
 message PBS2CGetHeroInfoRes

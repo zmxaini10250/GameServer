@@ -8,6 +8,7 @@
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
 #include "../protobuf/ClientMessage.pb.h"
+#include "../Hero/Hero.h"
 
 class CTCPClientSocket;
 
@@ -31,11 +32,12 @@ class CPlayer
         int GetGold();
         int ConsumeGold(int ConsumeNum);
         int AddGold(int AddNum);
-
+        const CHeroPack& GetHeroPack()const;
         int GetPlayerID();
         
         std::string GetUsername();
     private:
+        CHeroPack HeroPack;
         std::weak_ptr<CTCPClientSocket> socketPtr;
         std::string Username;
         int Gold;

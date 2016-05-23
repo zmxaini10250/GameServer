@@ -118,6 +118,16 @@ int GetPlayerInfo(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetHeroList(const Data& data, std::weak_ptr<CPlayer> player)
 {
+    if (SendCheck(player))
+    {
+        return -1;
+    }
+    PBS2CGetHeroListRes res;
+    if (player.lock()->GetHeroPack().HeroList2PB(res) != 0)
+    {
+        return -1;
+    }
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CGetHeroListRes, res);
     return 0;
 }
 

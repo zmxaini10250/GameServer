@@ -9,7 +9,11 @@
 int CHero::Hero2PB(PBHero& pb)const
 {
     pb.set_heroinfoid(HeroInfoID);
-    pb.set_heroskillid(HeroSkillID);
+    return 0;
+}
+
+int CHero::HeroInfo2PB(PBHeroInfo& pb)const
+{
     return 0;
 }
 
@@ -30,4 +34,5 @@ int CHeroPack::HeroList2PB(PBS2CGetHeroListRes& pb)const
     {
         it->second->Hero2PB(*pb.add_herolist());
     }
+    return 0;
 }

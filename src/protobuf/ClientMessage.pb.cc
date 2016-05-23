@@ -315,9 +315,8 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetHeroListReq));
   PBHero_descriptor_ = file->message_type(12);
-  static const int PBHero_offsets_[2] = {
+  static const int PBHero_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHero, heroinfoid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHero, heroskillid_),
   };
   PBHero_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -362,7 +361,15 @@ void protobuf_AssignDesc_ClientMessage_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(PBC2SGetHeroInfoReq));
   PBHeroInfo_descriptor_ = file->message_type(15);
-  static const int PBHeroInfo_offsets_[1] = {
+  static const int PBHeroInfo_offsets_[8] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, hero_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, speed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, defend_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, avoid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, attach_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, healthpoint_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, heroskillid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PBHeroInfo, empirical_),
   };
   PBHeroInfo_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -821,51 +828,55 @@ void protobuf_AddDesc_ClientMessage_2eproto() {
     "\n\010Username\030\002 \001(\t\022\014\n\004Gold\030\003 \001(\005\"W\n\025PBS2CG"
     "etPlayerInfoRes\022\033\n\023GetPlayerInfoResult\030\001"
     " \002(\005\022!\n\nPlayerInfo\030\002 \001(\0132\r.PBPlayerInfo\""
-    "\025\n\023PBC2SGetHeroListReq\"1\n\006PBHero\022\022\n\nHero"
-    "InfoID\030\001 \001(\005\022\023\n\013HeroSkillID\030\002 \001(\005\"K\n\023PBS"
-    "2CGetHeroListRes\022\031\n\021GetHeroListResult\030\001 "
-    "\002(\005\022\031\n\010HeroList\030\002 \003(\0132\007.PBHero\"%\n\023PBC2SG"
-    "etHeroInfoReq\022\016\n\006HeroID\030\001 \002(\005\"\014\n\nPBHeroI"
-    "nfo\"O\n\023PBS2CGetHeroInfoRes\022\031\n\021GetHeroInf"
-    "oResult\030\001 \002(\005\022\035\n\010HeroInfo\030\002 \001(\0132\013.PBHero"
-    "Info\")\n\023PBC2SHeroLevelUpReq\022\022\n\nHeroPackI"
-    "D\030\001 \002(\005\"0\n\023PBS2CHeroLevelUpRes\022\031\n\021HeroLe"
-    "velUpResult\030\001 \002(\005\"(\n\022PBC2SDeleteHeroReq\022"
-    "\022\n\nHeroPackID\030\001 \002(\005\".\n\022PBS2CDeleteHeroRe"
-    "s\022\030\n\020DeleteHeroResult\030\001 \002(\005\"\025\n\023PBC2SGetH"
-    "eroTeamReq\"\014\n\nPBHeroTeam\"O\n\023PBS2CGetHero"
-    "TeamRes\022\031\n\021GetHeroTeamResult\030\001 \002(\005\022\035\n\010He"
-    "roTeam\030\002 \001(\0132\013.PBHeroTeam\"7\n\026PBC2SUpdate"
-    "HeroTeamReq\022\035\n\010HeroTeam\030\001 \002(\0132\013.PBHeroTe"
-    "am\"6\n\026PBS2CUpdateHeroTeamRes\022\034\n\024UpdateHe"
-    "roTeamResult\030\001 \002(\005\"\021\n\017PBC2SLotteryReq\"(\n"
-    "\017PBS2CLotteryRes\022\025\n\rLotteryResult\030\001 \002(\005\""
-    "\027\n\025PBC2SGetPlayerListReq\"\n\n\010PBPlayer\"S\n\025"
-    "PBS2CGetPlayerListRes\022\033\n\023GetPlayerListRe"
-    "sult\030\001 \002(\005\022\035\n\nPlayerList\030\002 \003(\0132\t.PBPlaye"
-    "r\"+\n\023PBC2SPlayerFightReq\022\024\n\014DestPlayerID"
-    "\030\001 \002(\005\"\r\n\013FightReport\"N\n\023PBS2CPlayerFigh"
-    "tRes\022\031\n\021PlayerFightResult\030\001 \002(\005\022\034\n\006Repor"
-    "t\030\002 \001(\0132\014.FightReport*\204\006\n\014eMessageType\022\030"
-    "\n\024TypeC2SLoginCheckReq\020\001\022\030\n\024TypeS2CLogin"
-    "CheckRes\020\002\022\033\n\027TypeC2SLoginRegisterReq\020\003\022"
-    "\033\n\027TypeS2CLoginRegisterRes\020\004\022\030\n\024TypeC2SC"
-    "reateUserReq\020\005\022\030\n\024TypeS2CCreateUserRes\020\006"
-    "\022\030\n\024TypeC2SDeleteUserReq\020\007\022\030\n\024TypeS2CDel"
-    "eteUserRes\020\010\022\033\n\027TypeC2SGetPlayerInfoReq\020"
-    "\t\022\033\n\027TypeS2CGetPlayerInfoRes\020\n\022\031\n\025TypeC2"
-    "SGetHeroListReq\020\013\022\031\n\025TypeS2CGetHeroListR"
-    "es\020\014\022\031\n\025TypeC2SGetHeroInfoReq\020\r\022\031\n\025TypeS"
-    "2CGetHeroInfoRes\020\016\022\031\n\025TypeC2SHeroLevelUp"
-    "Req\020\017\022\031\n\025TypeS2CHeroLevelUpRes\020\020\022\030\n\024Type"
-    "C2SDeleteHeroReq\020\021\022\030\n\024TypeS2CDeleteHeroR"
-    "es\020\022\022\031\n\025TypeC2SGetHeroTeamReq\020\023\022\031\n\025TypeS"
-    "2CGetHeroTeamRes\020\024\022\034\n\030TypeC2SUpdateHeroT"
-    "eamReq\020\025\022\034\n\030TypeS2CUpdateHeroTeamRes\020\026\022\025"
-    "\n\021TypeC2SLotteryReq\020\027\022\025\n\021TypeS2CLotteryR"
-    "es\020\030\022\033\n\027TypeC2SGetPlayerListReq\020\031\022\033\n\027Typ"
-    "eS2CGetPlayerListRes\020\032\022\031\n\025TypeC2SPlayerF"
-    "ightReq\020\033\022\031\n\025TypeS2CPlayerFightRes\020\034", 2396);
+    "\025\n\023PBC2SGetHeroListReq\"\034\n\006PBHero\022\022\n\nHero"
+    "InfoID\030\001 \001(\005\"K\n\023PBS2CGetHeroListRes\022\031\n\021G"
+    "etHeroListResult\030\001 \002(\005\022\031\n\010HeroList\030\002 \003(\013"
+    "2\007.PBHero\"%\n\023PBC2SGetHeroInfoReq\022\016\n\006Hero"
+    "ID\030\001 \002(\005\"\236\001\n\nPBHeroInfo\022\025\n\004Hero\030\001 \001(\0132\007."
+    "PBHero\022\r\n\005Speed\030\002 \001(\005\022\016\n\006Defend\030\003 \001(\005\022\r\n"
+    "\005Avoid\030\004 \001(\005\022\016\n\006Attach\030\005 \001(\005\022\023\n\013HealthPo"
+    "int\030\006 \001(\005\022\023\n\013HeroSkillID\030\007 \001(\005\022\021\n\tEmpiri"
+    "cal\030\010 \001(\005\"O\n\023PBS2CGetHeroInfoRes\022\031\n\021GetH"
+    "eroInfoResult\030\001 \002(\005\022\035\n\010HeroInfo\030\002 \001(\0132\013."
+    "PBHeroInfo\")\n\023PBC2SHeroLevelUpReq\022\022\n\nHer"
+    "oPackID\030\001 \002(\005\"0\n\023PBS2CHeroLevelUpRes\022\031\n\021"
+    "HeroLevelUpResult\030\001 \002(\005\"(\n\022PBC2SDeleteHe"
+    "roReq\022\022\n\nHeroPackID\030\001 \002(\005\".\n\022PBS2CDelete"
+    "HeroRes\022\030\n\020DeleteHeroResult\030\001 \002(\005\"\025\n\023PBC"
+    "2SGetHeroTeamReq\"\014\n\nPBHeroTeam\"O\n\023PBS2CG"
+    "etHeroTeamRes\022\031\n\021GetHeroTeamResult\030\001 \002(\005"
+    "\022\035\n\010HeroTeam\030\002 \001(\0132\013.PBHeroTeam\"7\n\026PBC2S"
+    "UpdateHeroTeamReq\022\035\n\010HeroTeam\030\001 \002(\0132\013.PB"
+    "HeroTeam\"6\n\026PBS2CUpdateHeroTeamRes\022\034\n\024Up"
+    "dateHeroTeamResult\030\001 \002(\005\"\021\n\017PBC2SLottery"
+    "Req\"(\n\017PBS2CLotteryRes\022\025\n\rLotteryResult\030"
+    "\001 \002(\005\"\027\n\025PBC2SGetPlayerListReq\"\n\n\010PBPlay"
+    "er\"S\n\025PBS2CGetPlayerListRes\022\033\n\023GetPlayer"
+    "ListResult\030\001 \002(\005\022\035\n\nPlayerList\030\002 \003(\0132\t.P"
+    "BPlayer\"+\n\023PBC2SPlayerFightReq\022\024\n\014DestPl"
+    "ayerID\030\001 \002(\005\"\r\n\013FightReport\"N\n\023PBS2CPlay"
+    "erFightRes\022\031\n\021PlayerFightResult\030\001 \002(\005\022\034\n"
+    "\006Report\030\002 \001(\0132\014.FightReport*\204\006\n\014eMessage"
+    "Type\022\030\n\024TypeC2SLoginCheckReq\020\001\022\030\n\024TypeS2"
+    "CLoginCheckRes\020\002\022\033\n\027TypeC2SLoginRegister"
+    "Req\020\003\022\033\n\027TypeS2CLoginRegisterRes\020\004\022\030\n\024Ty"
+    "peC2SCreateUserReq\020\005\022\030\n\024TypeS2CCreateUse"
+    "rRes\020\006\022\030\n\024TypeC2SDeleteUserReq\020\007\022\030\n\024Type"
+    "S2CDeleteUserRes\020\010\022\033\n\027TypeC2SGetPlayerIn"
+    "foReq\020\t\022\033\n\027TypeS2CGetPlayerInfoRes\020\n\022\031\n\025"
+    "TypeC2SGetHeroListReq\020\013\022\031\n\025TypeS2CGetHer"
+    "oListRes\020\014\022\031\n\025TypeC2SGetHeroInfoReq\020\r\022\031\n"
+    "\025TypeS2CGetHeroInfoRes\020\016\022\031\n\025TypeC2SHeroL"
+    "evelUpReq\020\017\022\031\n\025TypeS2CHeroLevelUpRes\020\020\022\030"
+    "\n\024TypeC2SDeleteHeroReq\020\021\022\030\n\024TypeS2CDelet"
+    "eHeroRes\020\022\022\031\n\025TypeC2SGetHeroTeamReq\020\023\022\031\n"
+    "\025TypeS2CGetHeroTeamRes\020\024\022\034\n\030TypeC2SUpdat"
+    "eHeroTeamReq\020\025\022\034\n\030TypeS2CUpdateHeroTeamR"
+    "es\020\026\022\025\n\021TypeC2SLotteryReq\020\027\022\025\n\021TypeS2CLo"
+    "tteryRes\020\030\022\033\n\027TypeC2SGetPlayerListReq\020\031\022"
+    "\033\n\027TypeS2CGetPlayerListRes\020\032\022\031\n\025TypeC2SP"
+    "layerFightReq\020\033\022\031\n\025TypeS2CPlayerFightRes"
+    "\020\034", 2522);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ClientMessage.proto", &protobuf_RegisterTypes);
   PBC2SLoginCheckReq::default_instance_ = new PBC2SLoginCheckReq();
@@ -3915,7 +3926,6 @@ void PBC2SGetHeroListReq::Swap(PBC2SGetHeroListReq* other) {
 
 #ifndef _MSC_VER
 const int PBHero::kHeroInfoIDFieldNumber;
-const int PBHero::kHeroSkillIDFieldNumber;
 #endif  // !_MSC_VER
 
 PBHero::PBHero()
@@ -3937,7 +3947,6 @@ PBHero::PBHero(const PBHero& from)
 void PBHero::SharedCtor() {
   _cached_size_ = 0;
   heroinfoid_ = 0;
-  heroskillid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3973,21 +3982,7 @@ PBHero* PBHero::New() const {
 }
 
 void PBHero::Clear() {
-#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
-  &reinterpret_cast<PBHero*>(16)->f) - \
-   reinterpret_cast<char*>(16))
-
-#define ZR_(first, last) do {                              \
-    size_t f = OFFSET_OF_FIELD_(first);                    \
-    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
-    ::memset(&first, 0, n);                                \
-  } while (0)
-
-  ZR_(heroinfoid_, heroskillid_);
-
-#undef OFFSET_OF_FIELD_
-#undef ZR_
-
+  heroinfoid_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -4009,21 +4004,6 @@ bool PBHero::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &heroinfoid_)));
           set_has_heroinfoid();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_HeroSkillID;
-        break;
-      }
-
-      // optional int32 HeroSkillID = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_HeroSkillID:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &heroskillid_)));
-          set_has_heroskillid();
         } else {
           goto handle_unusual;
         }
@@ -4061,11 +4041,6 @@ void PBHero::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->heroinfoid(), output);
   }
 
-  // optional int32 HeroSkillID = 2;
-  if (has_heroskillid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->heroskillid(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -4079,11 +4054,6 @@ void PBHero::SerializeWithCachedSizes(
   // optional int32 HeroInfoID = 1;
   if (has_heroinfoid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->heroinfoid(), target);
-  }
-
-  // optional int32 HeroSkillID = 2;
-  if (has_heroskillid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->heroskillid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4103,13 +4073,6 @@ int PBHero::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->heroinfoid());
-    }
-
-    // optional int32 HeroSkillID = 2;
-    if (has_heroskillid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->heroskillid());
     }
 
   }
@@ -4142,9 +4105,6 @@ void PBHero::MergeFrom(const PBHero& from) {
     if (from.has_heroinfoid()) {
       set_heroinfoid(from.heroinfoid());
     }
-    if (from.has_heroskillid()) {
-      set_heroskillid(from.heroskillid());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -4169,7 +4129,6 @@ bool PBHero::IsInitialized() const {
 void PBHero::Swap(PBHero* other) {
   if (other != this) {
     std::swap(heroinfoid_, other->heroinfoid_);
-    std::swap(heroskillid_, other->heroskillid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -4673,6 +4632,14 @@ void PBC2SGetHeroInfoReq::Swap(PBC2SGetHeroInfoReq* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int PBHeroInfo::kHeroFieldNumber;
+const int PBHeroInfo::kSpeedFieldNumber;
+const int PBHeroInfo::kDefendFieldNumber;
+const int PBHeroInfo::kAvoidFieldNumber;
+const int PBHeroInfo::kAttachFieldNumber;
+const int PBHeroInfo::kHealthPointFieldNumber;
+const int PBHeroInfo::kHeroSkillIDFieldNumber;
+const int PBHeroInfo::kEmpiricalFieldNumber;
 #endif  // !_MSC_VER
 
 PBHeroInfo::PBHeroInfo()
@@ -4682,6 +4649,7 @@ PBHeroInfo::PBHeroInfo()
 }
 
 void PBHeroInfo::InitAsDefaultInstance() {
+  hero_ = const_cast< ::PBHero*>(&::PBHero::default_instance());
 }
 
 PBHeroInfo::PBHeroInfo(const PBHeroInfo& from)
@@ -4693,6 +4661,14 @@ PBHeroInfo::PBHeroInfo(const PBHeroInfo& from)
 
 void PBHeroInfo::SharedCtor() {
   _cached_size_ = 0;
+  hero_ = NULL;
+  speed_ = 0;
+  defend_ = 0;
+  avoid_ = 0;
+  attach_ = 0;
+  healthpoint_ = 0;
+  heroskillid_ = 0;
+  empirical_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -4703,6 +4679,7 @@ PBHeroInfo::~PBHeroInfo() {
 
 void PBHeroInfo::SharedDtor() {
   if (this != default_instance_) {
+    delete hero_;
   }
 }
 
@@ -4728,6 +4705,26 @@ PBHeroInfo* PBHeroInfo::New() const {
 }
 
 void PBHeroInfo::Clear() {
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<PBHeroInfo*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 255) {
+    ZR_(speed_, empirical_);
+    if (has_hero()) {
+      if (hero_ != NULL) hero_->::PBHero::Clear();
+    }
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -4741,14 +4738,136 @@ bool PBHeroInfo::MergePartialFromCodedStream(
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .PBHero Hero = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_hero()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_Speed;
+        break;
+      }
+
+      // optional int32 Speed = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_Speed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &speed_)));
+          set_has_speed();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_Defend;
+        break;
+      }
+
+      // optional int32 Defend = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_Defend:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &defend_)));
+          set_has_defend();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_Avoid;
+        break;
+      }
+
+      // optional int32 Avoid = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_Avoid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &avoid_)));
+          set_has_avoid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_Attach;
+        break;
+      }
+
+      // optional int32 Attach = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_Attach:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &attach_)));
+          set_has_attach();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(48)) goto parse_HealthPoint;
+        break;
+      }
+
+      // optional int32 HealthPoint = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_HealthPoint:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &healthpoint_)));
+          set_has_healthpoint();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_HeroSkillID;
+        break;
+      }
+
+      // optional int32 HeroSkillID = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_HeroSkillID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &heroskillid_)));
+          set_has_heroskillid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(64)) goto parse_Empirical;
+        break;
+      }
+
+      // optional int32 Empirical = 8;
+      case 8: {
+        if (tag == 64) {
+         parse_Empirical:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &empirical_)));
+          set_has_empirical();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
   }
 success:
   // @@protoc_insertion_point(parse_success:PBHeroInfo)
@@ -4762,6 +4881,47 @@ failure:
 void PBHeroInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:PBHeroInfo)
+  // optional .PBHero Hero = 1;
+  if (has_hero()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->hero(), output);
+  }
+
+  // optional int32 Speed = 2;
+  if (has_speed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->speed(), output);
+  }
+
+  // optional int32 Defend = 3;
+  if (has_defend()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->defend(), output);
+  }
+
+  // optional int32 Avoid = 4;
+  if (has_avoid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->avoid(), output);
+  }
+
+  // optional int32 Attach = 5;
+  if (has_attach()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->attach(), output);
+  }
+
+  // optional int32 HealthPoint = 6;
+  if (has_healthpoint()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->healthpoint(), output);
+  }
+
+  // optional int32 HeroSkillID = 7;
+  if (has_heroskillid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->heroskillid(), output);
+  }
+
+  // optional int32 Empirical = 8;
+  if (has_empirical()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->empirical(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -4772,6 +4932,48 @@ void PBHeroInfo::SerializeWithCachedSizes(
 ::google::protobuf::uint8* PBHeroInfo::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:PBHeroInfo)
+  // optional .PBHero Hero = 1;
+  if (has_hero()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->hero(), target);
+  }
+
+  // optional int32 Speed = 2;
+  if (has_speed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->speed(), target);
+  }
+
+  // optional int32 Defend = 3;
+  if (has_defend()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->defend(), target);
+  }
+
+  // optional int32 Avoid = 4;
+  if (has_avoid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->avoid(), target);
+  }
+
+  // optional int32 Attach = 5;
+  if (has_attach()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->attach(), target);
+  }
+
+  // optional int32 HealthPoint = 6;
+  if (has_healthpoint()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->healthpoint(), target);
+  }
+
+  // optional int32 HeroSkillID = 7;
+  if (has_heroskillid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->heroskillid(), target);
+  }
+
+  // optional int32 Empirical = 8;
+  if (has_empirical()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->empirical(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -4783,6 +4985,64 @@ void PBHeroInfo::SerializeWithCachedSizes(
 int PBHeroInfo::ByteSize() const {
   int total_size = 0;
 
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional .PBHero Hero = 1;
+    if (has_hero()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->hero());
+    }
+
+    // optional int32 Speed = 2;
+    if (has_speed()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->speed());
+    }
+
+    // optional int32 Defend = 3;
+    if (has_defend()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->defend());
+    }
+
+    // optional int32 Avoid = 4;
+    if (has_avoid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->avoid());
+    }
+
+    // optional int32 Attach = 5;
+    if (has_attach()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->attach());
+    }
+
+    // optional int32 HealthPoint = 6;
+    if (has_healthpoint()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->healthpoint());
+    }
+
+    // optional int32 HeroSkillID = 7;
+    if (has_heroskillid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->heroskillid());
+    }
+
+    // optional int32 Empirical = 8;
+    if (has_empirical()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->empirical());
+    }
+
+  }
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -4808,6 +5068,32 @@ void PBHeroInfo::MergeFrom(const ::google::protobuf::Message& from) {
 
 void PBHeroInfo::MergeFrom(const PBHeroInfo& from) {
   GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_hero()) {
+      mutable_hero()->::PBHero::MergeFrom(from.hero());
+    }
+    if (from.has_speed()) {
+      set_speed(from.speed());
+    }
+    if (from.has_defend()) {
+      set_defend(from.defend());
+    }
+    if (from.has_avoid()) {
+      set_avoid(from.avoid());
+    }
+    if (from.has_attach()) {
+      set_attach(from.attach());
+    }
+    if (from.has_healthpoint()) {
+      set_healthpoint(from.healthpoint());
+    }
+    if (from.has_heroskillid()) {
+      set_heroskillid(from.heroskillid());
+    }
+    if (from.has_empirical()) {
+      set_empirical(from.empirical());
+    }
+  }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -4830,6 +5116,15 @@ bool PBHeroInfo::IsInitialized() const {
 
 void PBHeroInfo::Swap(PBHeroInfo* other) {
   if (other != this) {
+    std::swap(hero_, other->hero_);
+    std::swap(speed_, other->speed_);
+    std::swap(defend_, other->defend_);
+    std::swap(avoid_, other->avoid_);
+    std::swap(attach_, other->attach_);
+    std::swap(healthpoint_, other->healthpoint_);
+    std::swap(heroskillid_, other->heroskillid_);
+    std::swap(empirical_, other->empirical_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }

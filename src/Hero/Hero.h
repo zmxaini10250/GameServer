@@ -16,7 +16,7 @@ class CHeroAttribute
         int Defend;
         int Avoid;
         int Attach;
-        int HealthPoint;
+        int BaseHealthPoint;
 
         int HealthPointGrow;
 };
@@ -36,6 +36,7 @@ class CHero
         CHero(){}
         ~CHero(){}
         int Hero2PB(PBHero& pb)const;
+        int HeroInfo2PB(PBHeroInfo& pb)const;
     private:
         int HeroInfoID;
         int HeroAttributeID;
