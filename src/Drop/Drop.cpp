@@ -6,10 +6,10 @@ int NumericalDropAdd(int Number, int DropGoodsType, CPlayer& player)
 {
     switch(DropGoodsType)
     {
-        case (int)Gold:
+        case (int)DropGold:
             player.AddGold(Number);
             break;
-        case (int)Empirical:
+        case (int)DropEmpirical:
             player.AddEmpirical(Number);
             break;
         default:
@@ -22,7 +22,7 @@ bool NonCumulativeCheckPack(int Number, int DropGoodsType, CPlayer& player)
 {
     switch(DropGoodsType)
     {
-        case (int)Hero:
+        case (int)DropHero:
             return player.GetHeroData().GetHeroPack().GetFreeSpace() >= Number;
         default:
             return false;
@@ -34,7 +34,7 @@ int NonCumulativeDropAdd(int Number, int DropGoodsType, CPlayer& player)
 {
     switch(DropGoodsType)
     {
-        case (int)Hero:
+        case (int)DropHero:
             for (int i = 0; i < Number; ++i)
             {
                 player.GetHeroData().GetHeroPack().AddHero(1);
@@ -50,10 +50,10 @@ bool CDrop::CheckPack()
     AlreadyCheck = true;
     switch(DropType)
     {
-        case (int)Numerical:
+        case (int)DropNumerical:
             CheckResult = true;
             break;
-        case (int)NonCumulative:
+        case (int)DropNonCumulative:
             CheckResult = NonCumulativeCheckPack(Number, DropGoodsType, player);
             break;
         default:
@@ -68,9 +68,9 @@ int CDrop::DropAdd()
     {
         switch(DropType)
         {
-            case (int)Numerical:
+            case (int)DropNumerical:
                 return NumericalDropAdd(Number, DropGoodsType, player);
-            case (int)NonCumulative:
+            case (int)DropNonCumulative:
                 return NonCumulativeDropAdd(Number, DropGoodsType, player);
             default:
                 return -1;

@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <memory>
 
+
+#include <lua5.1/lua.h>
+#include <lua5.1/lualib.h>
+#include <lua5.1/lauxlib.h>
+#include "../LuaTinker/lua_tinker.h"
+
 #include "Data.h"
 #include "../DBServer/DBServer.h"
 #include "../TCPServer/TCPClientSocket.h"
@@ -10,6 +16,9 @@
 #include "../protobuf/ClientMessage.pb.h"
 #include "../Hero/Hero.h"
 #include "../Consume/Consume.h"
+#include "../Drop/Drop.h"
+
+
 bool SendCheck(std::weak_ptr<CPlayer> player)
 {
     if(player.expired())
@@ -168,7 +177,7 @@ int HeroLevelUp(const Data& data, std::weak_ptr<CPlayer> player)
     {
         return -1;
     }
-    CConsume consume((int)Numerical, (int)Empirical, p.lock()->GetUpLevelEmpirical(), *player.lock());
+    CConsume consume((int)ConsumeNumerical, (int)ConsumeEmpirical, p.lock()->GetUpLevelEmpirical(), *player.lock());
     if (!consume.CheckConsume())
     {
         return -1;
@@ -224,12 +233,41 @@ int UpdateHeroTeam(const Data& data, std::weak_ptr<CPlayer> player)
     return 0;
 }
 
+int LotteryLogic(CPlayer& player)
+{
+	lua_State* L = lua_open();
+	luaopen_base(L);
+	lua_tinker::dofile(L, "../LuaCfg/Lottery.lua");
+
+	int ConsumeNumber = lua_tinker::get<int>(L, "LotteryConsume");
+    int DropNumber = lua_tinker::get<int>(L, "LotteryDrop");
+
+    lua_close(L);
+
+    CConsume consume((int)ConsumeNumerical, (int)ConsumeGold, ConsumeNumber, player);
+    if (!consume.CheckConsume())
+    {
+        return -1;
+    }
+    CDrop drop(DropNumber, (int)DropNonCumulative, (int)DropHero, player);
+    if (!drop.CheckPack())
+    {
+        return -1;
+    }
+    consume.ConsumeReduce();
+    drop.DropAdd();
+    return 0;
+}
+
 int Lottery(const Data& data, std::weak_ptr<CPlayer> player)
 {
     if (SendCheck(player))
     {
         return -1;
     }
+    PBS2CLotteryRes res;
+    LotteryLogic(*player.lock());
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CLotteryRes, res);
     return 0;
 }
 
@@ -239,6 +277,7 @@ int GetPlayerList(const Data& data, std::weak_ptr<CPlayer> player)
     {
         return -1;
     }
+
     return 0;
 }
 

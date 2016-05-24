@@ -5,9 +5,9 @@ bool NumericalCheckConsume(int Number, int ConsumeGoodsType, CPlayer& player)
 {
     switch(ConsumeGoodsType)
     {
-        case (int)Gold:
+        case (int)ConsumeGold:
             return player.GetGold() >= Number;
-        case (int)Empirical:
+        case (int)ConsumeEmpirical:
             return player.GetEmpirical() >= Number;
         default:
             return false;
@@ -19,10 +19,10 @@ int NumericalConsumeReduce(int Number, int ConsumeGoodsType, CPlayer& player)
 {
     switch(ConsumeGoodsType)
     {
-        case (int)Gold:
+        case (int)ConsumeGold:
             player.ConsumeGold(Number);
             break;
-        case (int)Empirical:
+        case (int)ConsumeEmpirical:
             player.ConsumeEmpirical(Number);
             break;
         default:
@@ -36,7 +36,7 @@ bool CConsume::CheckConsume()
     AlreadyCheck = true;
     switch(ConsumeType)
     {
-        case (int)Numerical:
+        case (int)ConsumeNumerical:
             CheckResult = NumericalCheckConsume(Number, ConsumeGoodsType, player);
             break;
         default:
@@ -51,7 +51,7 @@ int CConsume::ConsumeReduce()
     {
         switch(ConsumeType)
         {
-            case (int)Numerical:
+            case (int)ConsumeNumerical:
                 return NumericalConsumeReduce(Number, ConsumeGoodsType, player);
             default:
                 return -1;

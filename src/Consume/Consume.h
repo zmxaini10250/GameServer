@@ -5,13 +5,13 @@ class CPlayer;
 
 enum eConsumeType
 {
-    Numerical = 0
+    ConsumeNumerical = 0
 };
 
 enum eConsumeGoodsType
 {
-    Gold = 0,
-    Empirical
+    ConsumeGold = 0,
+    ConsumeEmpirical
 };
 
 class CConsume

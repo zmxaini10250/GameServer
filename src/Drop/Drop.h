@@ -5,15 +5,15 @@ class CPlayer;
 
 enum eDropType
 {
-    Numerical = 0,
-    NonCumulative
+    DropNumerical = 0,
+    DropNonCumulative
 };
 
 enum eDropGoodsType
 {
-    Gold = 0,
-    Empirical,
-    Hero
+    DropGold = 0,
+    DropEmpirical,
+    DropHero
 };
 
 class CDrop
