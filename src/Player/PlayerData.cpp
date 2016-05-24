@@ -5,6 +5,8 @@
 
 #include "../Hero/Hero.h"
 #include "../TCPServer/TCPClientSocket.h"
+#include "../ObjectPool/SingletonObject.hpp"
+#include "../ObjectPool/ObjectPool.hpp"
 
 std::weak_ptr<CTCPClientSocket> CPlayer::GetSocket()
 {
@@ -30,7 +32,7 @@ int CPlayer::PlayerInfo2PB(PBPlayerInfo &PlayerInfo)
     PlayerInfo.set_playerid(PlayerID);
     PlayerInfo.set_username(Username);
     PlayerInfo.set_gold(Gold);
-    
+    PlayerInfo.set_empirical(Empirical);   
     return 0;
 }
 
@@ -39,10 +41,48 @@ std::string CPlayer::GetUsername()
     return Username;
 }
 
-const CHeroPack& CPlayer::GetHeroPack()const
+CHeroData& CPlayer::GetHeroData()
 {
-    return HeroPack;
+    return HeroData;
 }
+
+int CPlayer::GetGold()
+{
+    return Gold;
+}
+
+int CPlayer::ConsumeGold(int ConsumeNum)
+{
+    Gold -= ConsumeNum;
+    return 0;
+}
+
+int CPlayer::AddGold(int AddNum)
+{
+    Gold += AddNum;
+    return 0;
+}
+
+int CPlayer::GetEmpirical()
+{
+    return Empirical;
+}
+
+
+int CPlayer::ConsumeEmpirical(int ConsumeNum)
+{
+    Empirical -= ConsumeNum;
+    return 0;
+}
+
+
+int CPlayer::AddEmpirical(int AddNum)
+{
+    Empirical += AddNum;
+    return 0;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////
 
 std::weak_ptr<CPlayer> CPlayerManager::CreatePlayer(int PlayerID,const std::weak_ptr<CTCPClientSocket>& socketPtr)

@@ -104,6 +104,7 @@ message PBPlayerInfo
     optional int32 PlayerID             = 1;
     optional string Username            = 2;
     optional int32 Gold                 = 3;
+    optional int32 Empirical            = 4;
 }
 
 message PBS2CGetPlayerInfoRes
@@ -121,6 +122,7 @@ message PBC2SGetHeroListReq
 message PBHero
 {
     optional int32 HeroInfoID           = 1;
+    optional int32 HeroIndex            = 2;
 }
 
 message PBS2CGetHeroListRes
@@ -132,7 +134,7 @@ message PBS2CGetHeroListRes
 //TypeC2SGetHeroInfoReq   
 message PBC2SGetHeroInfoReq
 {
-    required int32 HeroID               = 1;
+    required int32 HeroIndex            = 1;
 }
 
 //TypeS2CGetHeroInfoRes
@@ -143,9 +145,8 @@ message PBHeroInfo
     optional int32 Defend               = 3;
     optional int32 Avoid                = 4;
     optional int32 Attach               = 5;
-    optional int32 HealthPoint          = 6;
-    optional int32 HeroSkillID          = 7;
-    optional int32 Empirical            = 8;
+    optional int32 HeroSkillID          = 6;
+    optional int32 Level                = 7;
 }
 
 message PBS2CGetHeroInfoRes
@@ -157,7 +158,7 @@ message PBS2CGetHeroInfoRes
 //TypeC2SHeroLevelUpReq   
 message PBC2SHeroLevelUpReq
 {
-    required int32 HeroPackID           = 1;
+    required int32 HeroIndex            = 1;
 }
 
 //TypeS2CHeroLevelUpRes   
@@ -169,7 +170,7 @@ message PBS2CHeroLevelUpRes
 //TypeC2SDeleteHeroReq 
 message PBC2SDeleteHeroReq
 {
-    required int32 HeroPackID           = 1;
+    required int32 HeroIndex            = 1;
 }
 
 //TypeS2CDeleteHeroRes    
@@ -186,6 +187,12 @@ message PBC2SGetHeroTeamReq
 //TypeS2CGetHeroTeamRes       
 message PBHeroTeam
 {
+    optional int32 HealthPoint          = 1;
+    optional int32 Speed                = 2;
+    optional int32 Defend               = 3;
+    optional int32 Avoid                = 4;
+    optional int32 Attach               = 5;
+    repeated int32 HeroInfoID           = 6;
 }
 
 message PBS2CGetHeroTeamRes
@@ -197,7 +204,7 @@ message PBS2CGetHeroTeamRes
 //TypeC2SUpdateHeroTeamReq    
 message PBC2SUpdateHeroTeamReq
 {
-    required PBHeroTeam HeroTeam        = 1;
+    repeated int32 HeroIndex            = 1;
 }
 
 //TypeS2CUpdateHeroTeamRes 

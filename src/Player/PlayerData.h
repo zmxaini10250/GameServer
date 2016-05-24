@@ -5,10 +5,10 @@
 #include <unordered_map>
 #include <string>
 
-#include "../ObjectPool/ObjectPool.hpp"
-#include "../ObjectPool/SingletonObject.hpp"
-#include "../protobuf/ClientMessage.pb.h"
 #include "../Hero/Hero.h"
+#include "../protobuf/ClientMessage.pb.h"
+#include "../ObjectPool/SingletonObject.hpp"
+#include "../ObjectPool/ObjectPool.hpp"
 
 class CTCPClientSocket;
 
@@ -29,18 +29,24 @@ class CPlayer
         void SetSocket(const std::weak_ptr<CTCPClientSocket>& Socket);
 
         int PlayerInfo2PB(PBPlayerInfo &PlayerInfo);
+        CHeroData& GetHeroData();
+        int GetPlayerID();
+
         int GetGold();
         int ConsumeGold(int ConsumeNum);
         int AddGold(int AddNum);
-        const CHeroPack& GetHeroPack()const;
-        int GetPlayerID();
+
+        int GetEmpirical();
+        int ConsumeEmpirical(int ConsumeNum);
+        int AddEmpirical(int AddNum);
         
         std::string GetUsername();
     private:
-        CHeroPack HeroPack;
+        CHeroData HeroData;
         std::weak_ptr<CTCPClientSocket> socketPtr;
         std::string Username;
         int Gold;
+        int Empirical;
         int PlayerID;
         int PlayerGuild;
 };

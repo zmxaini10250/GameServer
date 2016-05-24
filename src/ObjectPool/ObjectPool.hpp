@@ -1,5 +1,5 @@
-#ifndef _OBJECTPOOL_HPP_
-#define _OBJECTPOOL_HPP_
+#ifndef _OBJECTPACK_HPP_
+#define _OBJECTPACK_HPP_
 
 #include <type_traits>
 #include <memory>

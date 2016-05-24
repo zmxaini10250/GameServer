@@ -57,6 +57,27 @@ class CObjectPack
                 ObjectMap.insert(std::make_pair(space - PackBlock, std::move(p)));
                 return wp;
             }
+
+        int RemoveObject(int index)
+        {
+            typename std::unordered_map<int, std::shared_ptr<T>>::const_iterator it = ObjectMap.find(index);
+            if (it != ObjectMap.cend())
+            {
+                ObjectMap.erase(it);
+                return  0;
+            }
+            return -1;
+        }
+
+        std::weak_ptr<T> GetObject(int index)
+        {
+            typename std::unordered_map<int, std::shared_ptr<T>>::const_iterator it = ObjectMap.find(index);
+            if (it != ObjectMap.cend())
+            {
+                return std::weak_ptr<T>(it->second);
+            }
+            return std::weak_ptr<T>();
+        }
     public:
         const std::unordered_map<int, std::shared_ptr<T>>& GetObjectMap()const
         {
@@ -66,6 +87,11 @@ class CObjectPack
         bool isFull()
         {
             return FreeSpaceStack.empty();
+        }
+        
+        int GetFreeSpace()
+        {
+            return FreeSpaceStack.size();
         }
 
         CObjectPack()
