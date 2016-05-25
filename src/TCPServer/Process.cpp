@@ -233,7 +233,7 @@ int UpdateHeroTeam(const Data& data, std::weak_ptr<CPlayer> player)
     return 0;
 }
 
-int LotteryLogic(CPlayer& player)
+int BuyHeroLogic(CPlayer& player)
 {
 	lua_State* L = lua_open();
 	luaopen_base(L);
@@ -259,15 +259,15 @@ int LotteryLogic(CPlayer& player)
     return 0;
 }
 
-int Lottery(const Data& data, std::weak_ptr<CPlayer> player)
+int BuyHero(const Data& data, std::weak_ptr<CPlayer> player)
 {
     if (SendCheck(player))
     {
         return -1;
     }
-    PBS2CLotteryRes res;
-    LotteryLogic(*player.lock());
-    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CLotteryRes, res);
+    PBS2CBuyHeroRes res;
+    BuyHeroLogic(*player.lock());
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CBuyHeroRes, res);
     return 0;
 }
 
