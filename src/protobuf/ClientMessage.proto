@@ -33,14 +33,11 @@ enum eMessageType
     TypeC2SUpdateHeroTeamReq    = 21;
     TypeS2CUpdateHeroTeamRes    = 22;
 
-    TypeC2SLotteryReq           = 23;
-    TypeS2CLotteryRes           = 24;
+    TypeC2SBuyHeroReq           = 23;
+    TypeS2CBuyHeroRes           = 24;
 
     TypeC2SGetPlayerListReq     = 25;
     TypeS2CGetPlayerListRes     = 26;
-
-    TypeC2SPlayerFightReq       = 27;
-    TypeS2CPlayerFightRes       = 28;
 }
 
 //TypeC2SLoginCheckReq
@@ -213,15 +210,16 @@ message PBS2CUpdateHeroTeamRes
     required int32 UpdateHeroTeamResult = 1;
 }
 
-//TypeC2SLotteryReq       
-message PBC2SLotteryReq
+//TypeC2SBuyHeroReq       
+message PBC2SBuyHeroReq
 {
+    optional int32 HeroID               = 1;
 }
 
-//TypeS2CLotteryRes       
-message PBS2CLotteryRes
+//TypeS2CBuyHeroRes       
+message PBS2CBuyHeroRes
 {
-    required int32 LotteryResult        = 1;
+    required int32 BuyHeroResult        = 1;
 }
 
 //TypeC2SGetPlayerListReq 
@@ -232,28 +230,13 @@ message PBC2SGetPlayerListReq
 //TypeS2CGetPlayerListRes 
 message PBPlayer
 {
+    optional int32 PlayerID             = 1;
+    optional string Username            = 2;
 }
 
 message PBS2CGetPlayerListRes
 {
     required int32 GetPlayerListResult  = 1;
     repeated PBPlayer PlayerList        = 2;
-}
-
-//TypeC2SPlayerFightReq   
-message PBC2SPlayerFightReq
-{
-    required int32 DestPlayerID         = 1;
-}
-
-//TypeS2CPlayerFightRes   
-message FightReport
-{
-}
-
-message PBS2CPlayerFightRes
-{
-    required int32 PlayerFightResult    = 1;
-    optional FightReport Report         = 2;
 }
 
