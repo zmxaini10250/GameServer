@@ -48,7 +48,6 @@ class CPlayer
         int Gold;
         int Empirical;
         int PlayerID;
-        int PlayerGuild;
 };
 
 class CPlayerManager

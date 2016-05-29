@@ -63,6 +63,10 @@ class PBS2CBuyHeroRes;
 class PBC2SGetPlayerListReq;
 class PBPlayer;
 class PBS2CGetPlayerListRes;
+class PBC2SAddGoldReq;
+class PBS2CAddGoldRes;
+class PBC2SAddEmpiricalReq;
+class PBS2CAddEmpiricalRes;
 
 enum eMessageType {
   TypeC2SLoginCheckReq = 1,
@@ -90,11 +94,15 @@ enum eMessageType {
   TypeC2SBuyHeroReq = 23,
   TypeS2CBuyHeroRes = 24,
   TypeC2SGetPlayerListReq = 25,
-  TypeS2CGetPlayerListRes = 26
+  TypeS2CGetPlayerListRes = 26,
+  TypeC2SAddGoldReq = 27,
+  TypeS2CAddGoldRes = 28,
+  TypeC2SAddEmpiricalReq = 29,
+  TypeS2CAddEmpiricalRes = 30
 };
 bool eMessageType_IsValid(int value);
 const eMessageType eMessageType_MIN = TypeC2SLoginCheckReq;
-const eMessageType eMessageType_MAX = TypeS2CGetPlayerListRes;
+const eMessageType eMessageType_MAX = TypeS2CAddEmpiricalRes;
 const int eMessageType_ARRAYSIZE = eMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* eMessageType_descriptor();
@@ -2801,6 +2809,322 @@ class PBS2CGetPlayerListRes : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static PBS2CGetPlayerListRes* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class PBC2SAddGoldReq : public ::google::protobuf::Message {
+ public:
+  PBC2SAddGoldReq();
+  virtual ~PBC2SAddGoldReq();
+
+  PBC2SAddGoldReq(const PBC2SAddGoldReq& from);
+
+  inline PBC2SAddGoldReq& operator=(const PBC2SAddGoldReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBC2SAddGoldReq& default_instance();
+
+  void Swap(PBC2SAddGoldReq* other);
+
+  // implements Message ----------------------------------------------
+
+  PBC2SAddGoldReq* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PBC2SAddGoldReq& from);
+  void MergeFrom(const PBC2SAddGoldReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 GoldNumber = 1;
+  inline bool has_goldnumber() const;
+  inline void clear_goldnumber();
+  static const int kGoldNumberFieldNumber = 1;
+  inline ::google::protobuf::int32 goldnumber() const;
+  inline void set_goldnumber(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PBC2SAddGoldReq)
+ private:
+  inline void set_has_goldnumber();
+  inline void clear_has_goldnumber();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 goldnumber_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static PBC2SAddGoldReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PBS2CAddGoldRes : public ::google::protobuf::Message {
+ public:
+  PBS2CAddGoldRes();
+  virtual ~PBS2CAddGoldRes();
+
+  PBS2CAddGoldRes(const PBS2CAddGoldRes& from);
+
+  inline PBS2CAddGoldRes& operator=(const PBS2CAddGoldRes& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBS2CAddGoldRes& default_instance();
+
+  void Swap(PBS2CAddGoldRes* other);
+
+  // implements Message ----------------------------------------------
+
+  PBS2CAddGoldRes* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PBS2CAddGoldRes& from);
+  void MergeFrom(const PBS2CAddGoldRes& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 AddGoldResult = 1;
+  inline bool has_addgoldresult() const;
+  inline void clear_addgoldresult();
+  static const int kAddGoldResultFieldNumber = 1;
+  inline ::google::protobuf::int32 addgoldresult() const;
+  inline void set_addgoldresult(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PBS2CAddGoldRes)
+ private:
+  inline void set_has_addgoldresult();
+  inline void clear_has_addgoldresult();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 addgoldresult_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static PBS2CAddGoldRes* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PBC2SAddEmpiricalReq : public ::google::protobuf::Message {
+ public:
+  PBC2SAddEmpiricalReq();
+  virtual ~PBC2SAddEmpiricalReq();
+
+  PBC2SAddEmpiricalReq(const PBC2SAddEmpiricalReq& from);
+
+  inline PBC2SAddEmpiricalReq& operator=(const PBC2SAddEmpiricalReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBC2SAddEmpiricalReq& default_instance();
+
+  void Swap(PBC2SAddEmpiricalReq* other);
+
+  // implements Message ----------------------------------------------
+
+  PBC2SAddEmpiricalReq* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PBC2SAddEmpiricalReq& from);
+  void MergeFrom(const PBC2SAddEmpiricalReq& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 EmpiricalNumber = 1;
+  inline bool has_empiricalnumber() const;
+  inline void clear_empiricalnumber();
+  static const int kEmpiricalNumberFieldNumber = 1;
+  inline ::google::protobuf::int32 empiricalnumber() const;
+  inline void set_empiricalnumber(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PBC2SAddEmpiricalReq)
+ private:
+  inline void set_has_empiricalnumber();
+  inline void clear_has_empiricalnumber();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 empiricalnumber_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static PBC2SAddEmpiricalReq* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PBS2CAddEmpiricalRes : public ::google::protobuf::Message {
+ public:
+  PBS2CAddEmpiricalRes();
+  virtual ~PBS2CAddEmpiricalRes();
+
+  PBS2CAddEmpiricalRes(const PBS2CAddEmpiricalRes& from);
+
+  inline PBS2CAddEmpiricalRes& operator=(const PBS2CAddEmpiricalRes& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PBS2CAddEmpiricalRes& default_instance();
+
+  void Swap(PBS2CAddEmpiricalRes* other);
+
+  // implements Message ----------------------------------------------
+
+  PBS2CAddEmpiricalRes* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PBS2CAddEmpiricalRes& from);
+  void MergeFrom(const PBS2CAddEmpiricalRes& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 AddEmpiricalResult = 1;
+  inline bool has_addempiricalresult() const;
+  inline void clear_addempiricalresult();
+  static const int kAddEmpiricalResultFieldNumber = 1;
+  inline ::google::protobuf::int32 addempiricalresult() const;
+  inline void set_addempiricalresult(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:PBS2CAddEmpiricalRes)
+ private:
+  inline void set_has_addempiricalresult();
+  inline void clear_has_addempiricalresult();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 addempiricalresult_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static PBS2CAddEmpiricalRes* default_instance_;
+};
 // ===================================================================
 
 
@@ -4582,6 +4906,118 @@ inline ::google::protobuf::RepeatedPtrField< ::PBPlayer >*
 PBS2CGetPlayerListRes::mutable_playerlist() {
   // @@protoc_insertion_point(field_mutable_list:PBS2CGetPlayerListRes.PlayerList)
   return &playerlist_;
+}
+
+// -------------------------------------------------------------------
+
+// PBC2SAddGoldReq
+
+// optional int32 GoldNumber = 1;
+inline bool PBC2SAddGoldReq::has_goldnumber() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBC2SAddGoldReq::set_has_goldnumber() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBC2SAddGoldReq::clear_has_goldnumber() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBC2SAddGoldReq::clear_goldnumber() {
+  goldnumber_ = 0;
+  clear_has_goldnumber();
+}
+inline ::google::protobuf::int32 PBC2SAddGoldReq::goldnumber() const {
+  // @@protoc_insertion_point(field_get:PBC2SAddGoldReq.GoldNumber)
+  return goldnumber_;
+}
+inline void PBC2SAddGoldReq::set_goldnumber(::google::protobuf::int32 value) {
+  set_has_goldnumber();
+  goldnumber_ = value;
+  // @@protoc_insertion_point(field_set:PBC2SAddGoldReq.GoldNumber)
+}
+
+// -------------------------------------------------------------------
+
+// PBS2CAddGoldRes
+
+// required int32 AddGoldResult = 1;
+inline bool PBS2CAddGoldRes::has_addgoldresult() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBS2CAddGoldRes::set_has_addgoldresult() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBS2CAddGoldRes::clear_has_addgoldresult() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBS2CAddGoldRes::clear_addgoldresult() {
+  addgoldresult_ = 0;
+  clear_has_addgoldresult();
+}
+inline ::google::protobuf::int32 PBS2CAddGoldRes::addgoldresult() const {
+  // @@protoc_insertion_point(field_get:PBS2CAddGoldRes.AddGoldResult)
+  return addgoldresult_;
+}
+inline void PBS2CAddGoldRes::set_addgoldresult(::google::protobuf::int32 value) {
+  set_has_addgoldresult();
+  addgoldresult_ = value;
+  // @@protoc_insertion_point(field_set:PBS2CAddGoldRes.AddGoldResult)
+}
+
+// -------------------------------------------------------------------
+
+// PBC2SAddEmpiricalReq
+
+// optional int32 EmpiricalNumber = 1;
+inline bool PBC2SAddEmpiricalReq::has_empiricalnumber() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBC2SAddEmpiricalReq::set_has_empiricalnumber() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBC2SAddEmpiricalReq::clear_has_empiricalnumber() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBC2SAddEmpiricalReq::clear_empiricalnumber() {
+  empiricalnumber_ = 0;
+  clear_has_empiricalnumber();
+}
+inline ::google::protobuf::int32 PBC2SAddEmpiricalReq::empiricalnumber() const {
+  // @@protoc_insertion_point(field_get:PBC2SAddEmpiricalReq.EmpiricalNumber)
+  return empiricalnumber_;
+}
+inline void PBC2SAddEmpiricalReq::set_empiricalnumber(::google::protobuf::int32 value) {
+  set_has_empiricalnumber();
+  empiricalnumber_ = value;
+  // @@protoc_insertion_point(field_set:PBC2SAddEmpiricalReq.EmpiricalNumber)
+}
+
+// -------------------------------------------------------------------
+
+// PBS2CAddEmpiricalRes
+
+// required int32 AddEmpiricalResult = 1;
+inline bool PBS2CAddEmpiricalRes::has_addempiricalresult() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PBS2CAddEmpiricalRes::set_has_addempiricalresult() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PBS2CAddEmpiricalRes::clear_has_addempiricalresult() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PBS2CAddEmpiricalRes::clear_addempiricalresult() {
+  addempiricalresult_ = 0;
+  clear_has_addempiricalresult();
+}
+inline ::google::protobuf::int32 PBS2CAddEmpiricalRes::addempiricalresult() const {
+  // @@protoc_insertion_point(field_get:PBS2CAddEmpiricalRes.AddEmpiricalResult)
+  return addempiricalresult_;
+}
+inline void PBS2CAddEmpiricalRes::set_addempiricalresult(::google::protobuf::int32 value) {
+  set_has_addempiricalresult();
+  addempiricalresult_ = value;
+  // @@protoc_insertion_point(field_set:PBS2CAddEmpiricalRes.AddEmpiricalResult)
 }
 
 

@@ -38,6 +38,12 @@ enum eMessageType
 
     TypeC2SGetPlayerListReq     = 25;
     TypeS2CGetPlayerListRes     = 26;
+
+    TypeC2SAddGoldReq           = 27;
+    TypeS2CAddGoldRes           = 28;
+
+    TypeC2SAddEmpiricalReq      = 29;
+    TypeS2CAddEmpiricalRes      = 30;
 }
 
 //TypeC2SLoginCheckReq
@@ -240,3 +246,26 @@ message PBS2CGetPlayerListRes
     repeated PBPlayer PlayerList        = 2;
 }
 
+//TypeC2SAddGoldReq
+message PBC2SAddGoldReq
+{
+    optional int32 GoldNumber           = 1;
+}
+
+//TypeS2CAddGoldRes
+message PBS2CAddGoldRes
+{
+    required int32 AddGoldResult        = 1;
+}
+
+//TypeC2SAddEmpiricalReq
+message PBC2SAddEmpiricalReq
+{
+    optional int32 EmpiricalNumber      = 1;
+}
+
+//TypeS2CAddEmpiricalRes
+message PBS2CAddEmpiricalRes
+{
+    required int32 AddEmpiricalResult   = 1;
+}

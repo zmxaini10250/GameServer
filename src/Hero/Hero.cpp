@@ -23,7 +23,6 @@ int CHero::HeroInfo2PB(PBHeroInfo& pb)const
     }
     CHeroAttribute& attribute = *p.lock();
     attribute.HeroAttribute2PB(pb);
-    pb.set_heroskillid(HeroSkillID);
     pb.set_level(Level);
     return 0;
 }

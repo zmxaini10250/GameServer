@@ -34,15 +34,6 @@ class CHeroAttribute
         int HealthPointGrow;
 };
 
-class CHeroSkill
-{
-    public:
-        CHeroSkill(){}
-        virtual ~CHeroSkill(){}
-    protected:
-        void SkillEffect();
-};
-
 class CHero
 {
     public:
@@ -58,7 +49,6 @@ class CHero
     private:
         int HeroInfoID;
         int HeroAttributeID;
-        int HeroSkillID;
         int Level;
         int Empirical;
 };

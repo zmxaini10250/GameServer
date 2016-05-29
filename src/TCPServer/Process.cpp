@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <memory>
 
-
 #include <lua5.1/lua.h>
 #include <lua5.1/lualib.h>
 #include <lua5.1/lauxlib.h>
@@ -281,14 +280,27 @@ int GetPlayerList(const Data& data, std::weak_ptr<CPlayer> player)
     return 0;
 }
 
-int PlayerFight(const Data& data, std::weak_ptr<CPlayer> player)
+int AddGold(const Data& data, std::weak_ptr<CPlayer> player)
 {
     if (SendCheck(player))
     {
         return -1;
     }
+
     return 0;
 }
+
+int AddEmpirical(const Data& data, std::weak_ptr<CPlayer> player)
+{
+    if (SendCheck(player))
+    {
+        return -1;
+    }
+
+    return 0;
+}
+
+
 
 CProcess::CProcess()
 {
