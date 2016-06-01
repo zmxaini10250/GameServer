@@ -28,13 +28,16 @@ class CTCPClientSocket
         int SendBuff(int32_t type, ::google::protobuf::Message& message);
         std::weak_ptr<CPlayer> GetPlayer(){ return player; }
         int GetFormatData(Data &data);
+        void SetPlayer(std::weak_ptr<CPlayer> player);
+        int GetReadFD(){ return readfd; }
+        void SetLoginID(int Number);
     private:
         std::weak_ptr<CPlayer> player;
         int readfd;
+        int LoginID;
         CNetBuffer recvBuff;
-        
-
 };
+
 
 class CTCPClientSocketManager
 {

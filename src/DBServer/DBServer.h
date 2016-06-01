@@ -5,6 +5,7 @@
 #include "../ObjectPool/SingletonObject.hpp"
 #include "../protobuf/ClientMessage.pb.h"
 
+class CHeroAttribute;
 class CDBServer;
 
 typedef CSingletonObject<CDBServer> DBServer;
@@ -16,6 +17,9 @@ class CDBServer
         int LoginRegister(const char* LoginUsername, const char* LoginPassword, PBS2CLoginRegisterRes& PBRes);
         int CreateUser(int LoginID, const char* PlayName, PBS2CCreateUserRes& PBRes);
         int DeleteUser(int LoginID, PBS2CDeleteUserRes& PBRes);
+        int SavePlayerData(const DBPlayer& db);
+        int GetPlayerData(int LoginID, DBPlayer& db);
+        int GetHeroData(int HeroID, CHeroAttribute& hero);
     protected:
         const char* server = "localhost";
         const char* user = "root";

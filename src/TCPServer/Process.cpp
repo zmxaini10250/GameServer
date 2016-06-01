@@ -25,17 +25,26 @@ bool SendCheck(std::weak_ptr<CPlayer> player)
         return false;
     }
     std::shared_ptr<CPlayer> playerPtr = player.lock();
-    if (playerPtr->GetSocket().expired())
+    if (playerPtr->GetPlayerID() == 0 || playerPtr->GetSocket().expired())
     {
         return false;
     }
-    std::shared_ptr<CTCPClientSocket> TCPServer = playerPtr->GetSocket().lock();
+    std::shared_ptr<CTCPClientSocket> ClientSocket = playerPtr->GetSocket().lock();
+    if (ClientSocket->GetPlayer().expired())
+    {
+        return false;
+    }
     return true;
 }
 
 int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if(player.expired())
+    {
+        return -1;
+    }
+    std::shared_ptr<CPlayer> playerPtr = player.lock();
+    if (playerPtr->GetSocket().expired())
     {
         return -1;
     }
@@ -44,11 +53,34 @@ int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
     req.ParseFromArray(data.buffer, data.bufferLength);
 
     PBS2CLoginCheckRes res;
-    if(DBServer::GetInstance().LoginCheck(req.username().c_str(), req.password().c_str(), res) != 0)
+    if (DBServer::GetInstance().LoginCheck(req.username().c_str(), req.password().c_str(), res) != 0)
     {
         return -1;
     }
-
+    if (res.logincheckresult() > 0 && player.lock()->GetPlayerID() == 0)
+    {
+        DBPlayer playerData;
+        if (DBServer::GetInstance().GetPlayerData(res.logincheckresult(), playerData) == 0)
+        {
+            std::weak_ptr<CTCPClientSocket> socket = player.lock()->GetSocket();
+            std::weak_ptr<CPlayer> newPlayer = socket.lock()->GetPlayer();
+            if (newPlayer.expired())
+            {
+                newPlayer = PlayerManager::GetInstance().CreatePlayer(0, socket);
+                newPlayer.lock()->DB2Player(playerData);
+            }
+            else
+            {
+                if (player.lock()->GetPlayerID() != playerData.playerid())
+                {
+                    DBPlayer oldPlayerData;
+                    player.lock()->Player2DB(oldPlayerData);
+                    DBServer::GetInstance().SavePlayerData(oldPlayerData);
+                    newPlayer.lock()->DB2Player(playerData);
+                }
+            }
+        }
+    }
     player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CLoginCheckRes, res);
 
     return 0;
@@ -56,10 +88,16 @@ int LoginCheck(const Data& data, std::weak_ptr<CPlayer> player)
 
 int LoginRegister(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if(player.expired())
     {
         return -1;
     }
+    std::shared_ptr<CPlayer> playerPtr = player.lock();
+    if (playerPtr->GetSocket().expired())
+    {
+        return -1;
+    }
+
     PBC2SLoginRegisterReq req;
     req.ParseFromArray(data.buffer, data.bufferLength);
 
@@ -74,10 +112,16 @@ int LoginRegister(const Data& data, std::weak_ptr<CPlayer> player)
 
 int CreateUser(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if(player.expired())
     {
         return -1;
     }
+    std::shared_ptr<CPlayer> playerPtr = player.lock();
+    if (playerPtr->GetSocket().expired())
+    {
+        return -1;
+    }
+
     PBC2SCreateUserReq req;
     req.ParseFromArray(data.buffer, data.bufferLength);
 
@@ -93,7 +137,7 @@ int CreateUser(const Data& data, std::weak_ptr<CPlayer> player)
 
 int DeleteUser(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -112,7 +156,7 @@ int DeleteUser(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetPlayerInfo(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -127,7 +171,7 @@ int GetPlayerInfo(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetHeroList(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -142,7 +186,7 @@ int GetHeroList(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetHeroInfo(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -165,7 +209,7 @@ int GetHeroInfo(const Data& data, std::weak_ptr<CPlayer> player)
 
 int HeroLevelUp(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -191,7 +235,7 @@ int HeroLevelUp(const Data& data, std::weak_ptr<CPlayer> player)
 
 int DeleteHero(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -207,7 +251,7 @@ int DeleteHero(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetHeroTeam(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -219,7 +263,7 @@ int GetHeroTeam(const Data& data, std::weak_ptr<CPlayer> player)
 
 int UpdateHeroTeam(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -260,7 +304,7 @@ int BuyHeroLogic(CPlayer& player)
 
 int BuyHero(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
@@ -272,30 +316,43 @@ int BuyHero(const Data& data, std::weak_ptr<CPlayer> player)
 
 int GetPlayerList(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
-
+    PBS2CGetPlayerListRes res;
+    PlayerManager::GetInstance().PlayerList2PB(res);
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CGetPlayerListRes, res);
     return 0;
 }
 
 int AddGold(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
+    PBC2SAddGoldReq req;
+    req.ParseFromArray(data.buffer, data.bufferLength);
+    player.lock()->AddGold(req.goldnumber());
 
+    PBS2CAddGoldRes res;
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CAddGoldRes, res);
     return 0;
 }
 
 int AddEmpirical(const Data& data, std::weak_ptr<CPlayer> player)
 {
-    if (SendCheck(player))
+    if (!SendCheck(player))
     {
         return -1;
     }
+    PBC2SAddEmpiricalReq req;
+    req.ParseFromArray(data.buffer, data.bufferLength);
+    player.lock()->AddEmpirical(req.empiricalnumber());
+
+    PBS2CAddEmpiricalRes res;
+    player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CAddGoldRes, res);
 
     return 0;
 }

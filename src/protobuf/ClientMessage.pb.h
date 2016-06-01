@@ -67,6 +67,9 @@ class PBC2SAddGoldReq;
 class PBS2CAddGoldRes;
 class PBC2SAddEmpiricalReq;
 class PBS2CAddEmpiricalRes;
+class DBHero;
+class DBHeroInfo;
+class DBPlayer;
 
 enum eMessageType {
   TypeC2SLoginCheckReq = 1,
@@ -454,26 +457,16 @@ class PBS2CLoginRegisterRes : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 loginregisterresult() const;
   inline void set_loginregisterresult(::google::protobuf::int32 value);
 
-  // optional int32 LoginID = 2;
-  inline bool has_loginid() const;
-  inline void clear_loginid();
-  static const int kLoginIDFieldNumber = 2;
-  inline ::google::protobuf::int32 loginid() const;
-  inline void set_loginid(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:PBS2CLoginRegisterRes)
  private:
   inline void set_has_loginregisterresult();
   inline void clear_has_loginregisterresult();
-  inline void set_has_loginid();
-  inline void clear_has_loginid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::google::protobuf::int32 loginregisterresult_;
-  ::google::protobuf::int32 loginid_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
   friend void protobuf_ShutdownFile_ClientMessage_2eproto();
@@ -1487,17 +1480,10 @@ class PBHeroInfo : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 attach() const;
   inline void set_attach(::google::protobuf::int32 value);
 
-  // optional int32 HeroSkillID = 6;
-  inline bool has_heroskillid() const;
-  inline void clear_heroskillid();
-  static const int kHeroSkillIDFieldNumber = 6;
-  inline ::google::protobuf::int32 heroskillid() const;
-  inline void set_heroskillid(::google::protobuf::int32 value);
-
-  // optional int32 Level = 7;
+  // optional int32 Level = 6;
   inline bool has_level() const;
   inline void clear_level();
-  static const int kLevelFieldNumber = 7;
+  static const int kLevelFieldNumber = 6;
   inline ::google::protobuf::int32 level() const;
   inline void set_level(::google::protobuf::int32 value);
 
@@ -1513,8 +1499,6 @@ class PBHeroInfo : public ::google::protobuf::Message {
   inline void clear_has_avoid();
   inline void set_has_attach();
   inline void clear_has_attach();
-  inline void set_has_heroskillid();
-  inline void clear_has_heroskillid();
   inline void set_has_level();
   inline void clear_has_level();
 
@@ -1527,7 +1511,6 @@ class PBHeroInfo : public ::google::protobuf::Message {
   ::google::protobuf::int32 defend_;
   ::google::protobuf::int32 avoid_;
   ::google::protobuf::int32 attach_;
-  ::google::protobuf::int32 heroskillid_;
   ::google::protobuf::int32 level_;
   friend void  protobuf_AddDesc_ClientMessage_2eproto();
   friend void protobuf_AssignDesc_ClientMessage_2eproto();
@@ -3125,6 +3108,323 @@ class PBS2CAddEmpiricalRes : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static PBS2CAddEmpiricalRes* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class DBHero : public ::google::protobuf::Message {
+ public:
+  DBHero();
+  virtual ~DBHero();
+
+  DBHero(const DBHero& from);
+
+  inline DBHero& operator=(const DBHero& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DBHero& default_instance();
+
+  void Swap(DBHero* other);
+
+  // implements Message ----------------------------------------------
+
+  DBHero* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DBHero& from);
+  void MergeFrom(const DBHero& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Level = 1;
+  inline bool has_level() const;
+  inline void clear_level();
+  static const int kLevelFieldNumber = 1;
+  inline ::google::protobuf::int32 level() const;
+  inline void set_level(::google::protobuf::int32 value);
+
+  // optional int32 Empirical = 2;
+  inline bool has_empirical() const;
+  inline void clear_empirical();
+  static const int kEmpiricalFieldNumber = 2;
+  inline ::google::protobuf::int32 empirical() const;
+  inline void set_empirical(::google::protobuf::int32 value);
+
+  // optional bool InTeam = 3;
+  inline bool has_inteam() const;
+  inline void clear_inteam();
+  static const int kInTeamFieldNumber = 3;
+  inline bool inteam() const;
+  inline void set_inteam(bool value);
+
+  // optional int32 HeroID = 4;
+  inline bool has_heroid() const;
+  inline void clear_heroid();
+  static const int kHeroIDFieldNumber = 4;
+  inline ::google::protobuf::int32 heroid() const;
+  inline void set_heroid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:DBHero)
+ private:
+  inline void set_has_level();
+  inline void clear_has_level();
+  inline void set_has_empirical();
+  inline void clear_has_empirical();
+  inline void set_has_inteam();
+  inline void clear_has_inteam();
+  inline void set_has_heroid();
+  inline void clear_has_heroid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 level_;
+  ::google::protobuf::int32 empirical_;
+  bool inteam_;
+  ::google::protobuf::int32 heroid_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static DBHero* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DBHeroInfo : public ::google::protobuf::Message {
+ public:
+  DBHeroInfo();
+  virtual ~DBHeroInfo();
+
+  DBHeroInfo(const DBHeroInfo& from);
+
+  inline DBHeroInfo& operator=(const DBHeroInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DBHeroInfo& default_instance();
+
+  void Swap(DBHeroInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  DBHeroInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DBHeroInfo& from);
+  void MergeFrom(const DBHeroInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .DBHero HeroPack = 1;
+  inline int heropack_size() const;
+  inline void clear_heropack();
+  static const int kHeroPackFieldNumber = 1;
+  inline const ::DBHero& heropack(int index) const;
+  inline ::DBHero* mutable_heropack(int index);
+  inline ::DBHero* add_heropack();
+  inline const ::google::protobuf::RepeatedPtrField< ::DBHero >&
+      heropack() const;
+  inline ::google::protobuf::RepeatedPtrField< ::DBHero >*
+      mutable_heropack();
+
+  // @@protoc_insertion_point(class_scope:DBHeroInfo)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::DBHero > heropack_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static DBHeroInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DBPlayer : public ::google::protobuf::Message {
+ public:
+  DBPlayer();
+  virtual ~DBPlayer();
+
+  DBPlayer(const DBPlayer& from);
+
+  inline DBPlayer& operator=(const DBPlayer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DBPlayer& default_instance();
+
+  void Swap(DBPlayer* other);
+
+  // implements Message ----------------------------------------------
+
+  DBPlayer* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DBPlayer& from);
+  void MergeFrom(const DBPlayer& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 PlayerID = 1;
+  inline bool has_playerid() const;
+  inline void clear_playerid();
+  static const int kPlayerIDFieldNumber = 1;
+  inline ::google::protobuf::int32 playerid() const;
+  inline void set_playerid(::google::protobuf::int32 value);
+
+  // optional string PlayerName = 2;
+  inline bool has_playername() const;
+  inline void clear_playername();
+  static const int kPlayerNameFieldNumber = 2;
+  inline const ::std::string& playername() const;
+  inline void set_playername(const ::std::string& value);
+  inline void set_playername(const char* value);
+  inline void set_playername(const char* value, size_t size);
+  inline ::std::string* mutable_playername();
+  inline ::std::string* release_playername();
+  inline void set_allocated_playername(::std::string* playername);
+
+  // optional int32 Gold = 3;
+  inline bool has_gold() const;
+  inline void clear_gold();
+  static const int kGoldFieldNumber = 3;
+  inline ::google::protobuf::int32 gold() const;
+  inline void set_gold(::google::protobuf::int32 value);
+
+  // optional int32 Empirical = 4;
+  inline bool has_empirical() const;
+  inline void clear_empirical();
+  static const int kEmpiricalFieldNumber = 4;
+  inline ::google::protobuf::int32 empirical() const;
+  inline void set_empirical(::google::protobuf::int32 value);
+
+  // optional .DBHeroInfo hero = 5;
+  inline bool has_hero() const;
+  inline void clear_hero();
+  static const int kHeroFieldNumber = 5;
+  inline const ::DBHeroInfo& hero() const;
+  inline ::DBHeroInfo* mutable_hero();
+  inline ::DBHeroInfo* release_hero();
+  inline void set_allocated_hero(::DBHeroInfo* hero);
+
+  // @@protoc_insertion_point(class_scope:DBPlayer)
+ private:
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+  inline void set_has_playername();
+  inline void clear_has_playername();
+  inline void set_has_gold();
+  inline void clear_has_gold();
+  inline void set_has_empirical();
+  inline void clear_has_empirical();
+  inline void set_has_hero();
+  inline void clear_has_hero();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* playername_;
+  ::google::protobuf::int32 playerid_;
+  ::google::protobuf::int32 gold_;
+  ::DBHeroInfo* hero_;
+  ::google::protobuf::int32 empirical_;
+  friend void  protobuf_AddDesc_ClientMessage_2eproto();
+  friend void protobuf_AssignDesc_ClientMessage_2eproto();
+  friend void protobuf_ShutdownFile_ClientMessage_2eproto();
+
+  void InitAsDefaultInstance();
+  static DBPlayer* default_instance_;
+};
 // ===================================================================
 
 
@@ -3494,30 +3794,6 @@ inline void PBS2CLoginRegisterRes::set_loginregisterresult(::google::protobuf::i
   set_has_loginregisterresult();
   loginregisterresult_ = value;
   // @@protoc_insertion_point(field_set:PBS2CLoginRegisterRes.LoginRegisterResult)
-}
-
-// optional int32 LoginID = 2;
-inline bool PBS2CLoginRegisterRes::has_loginid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void PBS2CLoginRegisterRes::set_has_loginid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void PBS2CLoginRegisterRes::clear_has_loginid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void PBS2CLoginRegisterRes::clear_loginid() {
-  loginid_ = 0;
-  clear_has_loginid();
-}
-inline ::google::protobuf::int32 PBS2CLoginRegisterRes::loginid() const {
-  // @@protoc_insertion_point(field_get:PBS2CLoginRegisterRes.LoginID)
-  return loginid_;
-}
-inline void PBS2CLoginRegisterRes::set_loginid(::google::protobuf::int32 value) {
-  set_has_loginid();
-  loginid_ = value;
-  // @@protoc_insertion_point(field_set:PBS2CLoginRegisterRes.LoginID)
 }
 
 // -------------------------------------------------------------------
@@ -4168,39 +4444,15 @@ inline void PBHeroInfo::set_attach(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:PBHeroInfo.Attach)
 }
 
-// optional int32 HeroSkillID = 6;
-inline bool PBHeroInfo::has_heroskillid() const {
+// optional int32 Level = 6;
+inline bool PBHeroInfo::has_level() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void PBHeroInfo::set_has_heroskillid() {
+inline void PBHeroInfo::set_has_level() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void PBHeroInfo::clear_has_heroskillid() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void PBHeroInfo::clear_heroskillid() {
-  heroskillid_ = 0;
-  clear_has_heroskillid();
-}
-inline ::google::protobuf::int32 PBHeroInfo::heroskillid() const {
-  // @@protoc_insertion_point(field_get:PBHeroInfo.HeroSkillID)
-  return heroskillid_;
-}
-inline void PBHeroInfo::set_heroskillid(::google::protobuf::int32 value) {
-  set_has_heroskillid();
-  heroskillid_ = value;
-  // @@protoc_insertion_point(field_set:PBHeroInfo.HeroSkillID)
-}
-
-// optional int32 Level = 7;
-inline bool PBHeroInfo::has_level() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void PBHeroInfo::set_has_level() {
-  _has_bits_[0] |= 0x00000040u;
-}
 inline void PBHeroInfo::clear_has_level() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void PBHeroInfo::clear_level() {
   level_ = 0;
@@ -5018,6 +5270,333 @@ inline void PBS2CAddEmpiricalRes::set_addempiricalresult(::google::protobuf::int
   set_has_addempiricalresult();
   addempiricalresult_ = value;
   // @@protoc_insertion_point(field_set:PBS2CAddEmpiricalRes.AddEmpiricalResult)
+}
+
+// -------------------------------------------------------------------
+
+// DBHero
+
+// optional int32 Level = 1;
+inline bool DBHero::has_level() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DBHero::set_has_level() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DBHero::clear_has_level() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DBHero::clear_level() {
+  level_ = 0;
+  clear_has_level();
+}
+inline ::google::protobuf::int32 DBHero::level() const {
+  // @@protoc_insertion_point(field_get:DBHero.Level)
+  return level_;
+}
+inline void DBHero::set_level(::google::protobuf::int32 value) {
+  set_has_level();
+  level_ = value;
+  // @@protoc_insertion_point(field_set:DBHero.Level)
+}
+
+// optional int32 Empirical = 2;
+inline bool DBHero::has_empirical() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DBHero::set_has_empirical() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DBHero::clear_has_empirical() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DBHero::clear_empirical() {
+  empirical_ = 0;
+  clear_has_empirical();
+}
+inline ::google::protobuf::int32 DBHero::empirical() const {
+  // @@protoc_insertion_point(field_get:DBHero.Empirical)
+  return empirical_;
+}
+inline void DBHero::set_empirical(::google::protobuf::int32 value) {
+  set_has_empirical();
+  empirical_ = value;
+  // @@protoc_insertion_point(field_set:DBHero.Empirical)
+}
+
+// optional bool InTeam = 3;
+inline bool DBHero::has_inteam() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DBHero::set_has_inteam() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DBHero::clear_has_inteam() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DBHero::clear_inteam() {
+  inteam_ = false;
+  clear_has_inteam();
+}
+inline bool DBHero::inteam() const {
+  // @@protoc_insertion_point(field_get:DBHero.InTeam)
+  return inteam_;
+}
+inline void DBHero::set_inteam(bool value) {
+  set_has_inteam();
+  inteam_ = value;
+  // @@protoc_insertion_point(field_set:DBHero.InTeam)
+}
+
+// optional int32 HeroID = 4;
+inline bool DBHero::has_heroid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DBHero::set_has_heroid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DBHero::clear_has_heroid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DBHero::clear_heroid() {
+  heroid_ = 0;
+  clear_has_heroid();
+}
+inline ::google::protobuf::int32 DBHero::heroid() const {
+  // @@protoc_insertion_point(field_get:DBHero.HeroID)
+  return heroid_;
+}
+inline void DBHero::set_heroid(::google::protobuf::int32 value) {
+  set_has_heroid();
+  heroid_ = value;
+  // @@protoc_insertion_point(field_set:DBHero.HeroID)
+}
+
+// -------------------------------------------------------------------
+
+// DBHeroInfo
+
+// repeated .DBHero HeroPack = 1;
+inline int DBHeroInfo::heropack_size() const {
+  return heropack_.size();
+}
+inline void DBHeroInfo::clear_heropack() {
+  heropack_.Clear();
+}
+inline const ::DBHero& DBHeroInfo::heropack(int index) const {
+  // @@protoc_insertion_point(field_get:DBHeroInfo.HeroPack)
+  return heropack_.Get(index);
+}
+inline ::DBHero* DBHeroInfo::mutable_heropack(int index) {
+  // @@protoc_insertion_point(field_mutable:DBHeroInfo.HeroPack)
+  return heropack_.Mutable(index);
+}
+inline ::DBHero* DBHeroInfo::add_heropack() {
+  // @@protoc_insertion_point(field_add:DBHeroInfo.HeroPack)
+  return heropack_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::DBHero >&
+DBHeroInfo::heropack() const {
+  // @@protoc_insertion_point(field_list:DBHeroInfo.HeroPack)
+  return heropack_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::DBHero >*
+DBHeroInfo::mutable_heropack() {
+  // @@protoc_insertion_point(field_mutable_list:DBHeroInfo.HeroPack)
+  return &heropack_;
+}
+
+// -------------------------------------------------------------------
+
+// DBPlayer
+
+// optional int32 PlayerID = 1;
+inline bool DBPlayer::has_playerid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DBPlayer::set_has_playerid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DBPlayer::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DBPlayer::clear_playerid() {
+  playerid_ = 0;
+  clear_has_playerid();
+}
+inline ::google::protobuf::int32 DBPlayer::playerid() const {
+  // @@protoc_insertion_point(field_get:DBPlayer.PlayerID)
+  return playerid_;
+}
+inline void DBPlayer::set_playerid(::google::protobuf::int32 value) {
+  set_has_playerid();
+  playerid_ = value;
+  // @@protoc_insertion_point(field_set:DBPlayer.PlayerID)
+}
+
+// optional string PlayerName = 2;
+inline bool DBPlayer::has_playername() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DBPlayer::set_has_playername() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DBPlayer::clear_has_playername() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DBPlayer::clear_playername() {
+  if (playername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    playername_->clear();
+  }
+  clear_has_playername();
+}
+inline const ::std::string& DBPlayer::playername() const {
+  // @@protoc_insertion_point(field_get:DBPlayer.PlayerName)
+  return *playername_;
+}
+inline void DBPlayer::set_playername(const ::std::string& value) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(value);
+  // @@protoc_insertion_point(field_set:DBPlayer.PlayerName)
+}
+inline void DBPlayer::set_playername(const char* value) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(value);
+  // @@protoc_insertion_point(field_set_char:DBPlayer.PlayerName)
+}
+inline void DBPlayer::set_playername(const char* value, size_t size) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:DBPlayer.PlayerName)
+}
+inline ::std::string* DBPlayer::mutable_playername() {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    playername_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:DBPlayer.PlayerName)
+  return playername_;
+}
+inline ::std::string* DBPlayer::release_playername() {
+  clear_has_playername();
+  if (playername_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = playername_;
+    playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void DBPlayer::set_allocated_playername(::std::string* playername) {
+  if (playername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete playername_;
+  }
+  if (playername) {
+    set_has_playername();
+    playername_ = playername;
+  } else {
+    clear_has_playername();
+    playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:DBPlayer.PlayerName)
+}
+
+// optional int32 Gold = 3;
+inline bool DBPlayer::has_gold() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DBPlayer::set_has_gold() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DBPlayer::clear_has_gold() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DBPlayer::clear_gold() {
+  gold_ = 0;
+  clear_has_gold();
+}
+inline ::google::protobuf::int32 DBPlayer::gold() const {
+  // @@protoc_insertion_point(field_get:DBPlayer.Gold)
+  return gold_;
+}
+inline void DBPlayer::set_gold(::google::protobuf::int32 value) {
+  set_has_gold();
+  gold_ = value;
+  // @@protoc_insertion_point(field_set:DBPlayer.Gold)
+}
+
+// optional int32 Empirical = 4;
+inline bool DBPlayer::has_empirical() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DBPlayer::set_has_empirical() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DBPlayer::clear_has_empirical() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DBPlayer::clear_empirical() {
+  empirical_ = 0;
+  clear_has_empirical();
+}
+inline ::google::protobuf::int32 DBPlayer::empirical() const {
+  // @@protoc_insertion_point(field_get:DBPlayer.Empirical)
+  return empirical_;
+}
+inline void DBPlayer::set_empirical(::google::protobuf::int32 value) {
+  set_has_empirical();
+  empirical_ = value;
+  // @@protoc_insertion_point(field_set:DBPlayer.Empirical)
+}
+
+// optional .DBHeroInfo hero = 5;
+inline bool DBPlayer::has_hero() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DBPlayer::set_has_hero() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DBPlayer::clear_has_hero() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DBPlayer::clear_hero() {
+  if (hero_ != NULL) hero_->::DBHeroInfo::Clear();
+  clear_has_hero();
+}
+inline const ::DBHeroInfo& DBPlayer::hero() const {
+  // @@protoc_insertion_point(field_get:DBPlayer.hero)
+  return hero_ != NULL ? *hero_ : *default_instance_->hero_;
+}
+inline ::DBHeroInfo* DBPlayer::mutable_hero() {
+  set_has_hero();
+  if (hero_ == NULL) hero_ = new ::DBHeroInfo;
+  // @@protoc_insertion_point(field_mutable:DBPlayer.hero)
+  return hero_;
+}
+inline ::DBHeroInfo* DBPlayer::release_hero() {
+  clear_has_hero();
+  ::DBHeroInfo* temp = hero_;
+  hero_ = NULL;
+  return temp;
+}
+inline void DBPlayer::set_allocated_hero(::DBHeroInfo* hero) {
+  delete hero_;
+  hero_ = hero;
+  if (hero) {
+    set_has_hero();
+  } else {
+    clear_has_hero();
+  }
+  // @@protoc_insertion_point(field_set_allocated:DBPlayer.hero)
 }
 
 

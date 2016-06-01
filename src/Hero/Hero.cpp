@@ -2,21 +2,21 @@
 
 #include <unordered_map>
 #include <memory>
-
+#include <vector>
 #include "../protobuf/ClientMessage.pb.h"
 #include "../ObjectPool/ObjectPack.hpp"
 #include "../ObjectPool/SingletonObject.hpp"
-
+#include "../DBServer/DBServer.h"
 int CHero::Hero2PB(PBHero& pb)const
 {
-    pb.set_heroinfoid(HeroInfoID);
+    pb.set_heroinfoid(HeroID);
     return 0;
 }
 
 int CHero::HeroInfo2PB(PBHeroInfo& pb)const
 {
     Hero2PB(*pb.mutable_hero());
-    std::weak_ptr<CHeroAttribute> p = HeroAttributeManager::GetInstance().GetHeroAttribute(HeroAttributeID);
+    std::weak_ptr<CHeroAttribute> p = HeroAttributeManager::GetInstance().GetHeroAttribute(HeroID);
     if (p.expired())
     {
         return -1;
@@ -29,7 +29,18 @@ int CHero::HeroInfo2PB(PBHeroInfo& pb)const
 
 int CHeroPack::AddHero(int HeroID)
 {
-    return 0;
+    std::weak_ptr<CHeroAttribute> attribute = HeroAttributeManager::GetInstance().GetHeroAttribute(HeroID);
+    if (attribute.expired())
+    {
+        return -1;
+    }
+    int index = pack.CreateObjectIndex();
+    if (pack.GetObject(index).expired())
+    {
+        return -1;
+    }
+    pack.GetObject(index).lock()->SetHeroID(HeroID);
+    return index;
 }
 
 bool CHeroPack::isFull()
@@ -37,6 +48,12 @@ bool CHeroPack::isFull()
     return pack.isFull();
     //return true;
 }
+
+void CHeroPack::Clear()
+{
+    pack.Clear();
+}
+
 
 int CHeroPack::HeroList2PB(PBS2CGetHeroListRes& pb)const
 {
@@ -56,6 +73,11 @@ int CHeroPack::GetFreeSpace()
     return pack.GetFreeSpace();
 }
 
+const std::unordered_map<int, std::shared_ptr<CHero>>& CHeroPack::GetHeroMap()const
+{
+    return pack.GetObjectMap();
+}
+
 int CHero::GetUpLevelEmpirical()
 {
     return Level * 100;
@@ -68,19 +90,43 @@ int CHero::LevelUp()
     return 0;
 }
 
-int CHero::GetHeroAttributeID()
+int CHero::SetLevel(int Number)
 {
-    return HeroAttributeID;
+    if (Number > 0)
+    {
+        Level = Number;
+    }
+}
+int CHero::SetEmpircal(int Number)
+{
+    if (Number > 0)
+    {
+        Empirical = Number;
+    }
 }
 
-int CHero::GetLevel()
+int CHero::SetHeroID(int Number)
+{
+    HeroID = Number;
+}
+
+int CHero::GetHeroAttributeID()
+{
+    return HeroID;
+}
+
+int CHero::GetLevel()const
 {
     return Level;
+}
+int CHero::GetEmpirical()const
+{
+    return Empirical;
 }
 
 int CHero::GetHeroInfoID()
 {
-    return HeroInfoID;
+    return HeroID;
 }
 
 std::weak_ptr<CHero> CHeroPack::GetHero(int index)
@@ -126,14 +172,71 @@ int CHeroAttribute::GetHealthPoint(int level)const
     return level * 1000 * HealthPointGrow + BaseHealthPoint;
 }
 
+int CHeroAttribute::SetSpeed(int Number)
+{
+    Speed = Number;
+    return 0;
+}
+int CHeroAttribute::SetDefend(int Number)
+{
+    Defend = Number;
+    return 0;
+}
+
+int CHeroAttribute::SetAvoid(int Number)
+{
+    Avoid = Number;
+    return 0;
+}
+
+int CHeroAttribute::SetAttach(int Number)
+{
+    Attach = Number;
+    return 0;
+}
+
+int CHeroAttribute::SetBaseHealthPoint(int Number)
+{
+    BaseHealthPoint = Number;
+    return 0;
+}
+
+int CHeroAttribute::SetHealthPointGrow(int Number)
+{
+    HealthPointGrow = Number;
+    return 0;
+}
+
 std::weak_ptr<CHeroAttribute> CHeroAttributeManager::GetHeroAttribute(int HeroAttributeID)
 {
+    HeroAttributeList::const_iterator it = list.find(HeroAttributeID);
+    if (it != list.cend())
+    {
+        return std::weak_ptr<CHeroAttribute>(it->second);
+    }
+    HeroAttributePool::Ptr p(HeroAttributePool::GetInstance().CreateObject()); 
+    if (p != nullptr)
+    {
+        if (DBServer::GetInstance().GetHeroData(HeroAttributeID, *p) == 0)
+        {
+            list.insert(std::make_pair(HeroAttributeID, p));
+        }
+        else
+        {
+            return std::weak_ptr<CHeroAttribute>();
+        }
+    }  
     return std::weak_ptr<CHeroAttribute>();
 }
 
 const std::vector<int>& CHeroTeam::GetTeam()const
 {
     return team;
+}
+
+void CHeroTeam::Clear()
+{
+    team.clear();
 }
 
 int CHeroTeam::UpdateTeam(const std::vector<int>& newTeam)
@@ -171,6 +274,17 @@ int CHeroTeam::PB2Team(const PBC2SUpdateHeroTeamReq& pb)
         }
     }
     return 0;
+}
+        bool CHeroTeam::InTeam(int index)
+{
+    for (std::vector<int>::const_iterator it = team.begin(); it != team.cend(); ++it)
+    {
+        if (*it == index)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 CHeroPack& CHeroData::GetHeroPack()
@@ -227,4 +341,44 @@ int CHeroData::HeroTeam2PB(PBHeroTeam& pb)
         pb.set_attach(Attach);
         return 0;
     }
+}
+
+int CHeroData::DB2Hero(const DBHeroInfo &db)
+{
+    pack.Clear();
+    team.Clear();
+    std::vector<int> teamindex;
+    for (int i = 0; i < db.heropack_size(); ++i)
+    {
+        int index = pack.AddHero(db.heropack(i).heroid());
+        if (index == -1)
+        {
+            continue;
+        }
+        if (!pack.GetHero(index).expired())
+        {
+            pack.GetHero(index).lock()->SetEmpircal(db.heropack(i).empirical());
+            pack.GetHero(index).lock()->SetLevel(db.heropack(i).level());
+        }
+        if (db.heropack(i).inteam())
+        {
+            teamindex.push_back(index);
+        }
+    }
+    team.UpdateTeam(teamindex);
+    return 0;
+}
+
+int CHeroData::Hero2DB(DBHeroInfo &db)
+{
+    const std::unordered_map<int, std::shared_ptr<CHero>>& HeroMap = pack.GetHeroMap();
+    for (std::unordered_map<int, std::shared_ptr<CHero>>::const_iterator it = HeroMap.cbegin(); it != HeroMap.cend(); ++it)
+    {
+        DBHero *newhero = db.add_heropack();
+        newhero->set_level(it->second->GetLevel());
+        newhero->set_empirical(it->second->GetEmpirical());
+        newhero->set_heroid(it->second->GetHeroID());
+        newhero->set_inteam(team.InTeam(it->first));
+    }
+    return 0;
 }

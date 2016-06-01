@@ -70,7 +70,6 @@ message PBC2SLoginRegisterReq
 message PBS2CLoginRegisterRes
 {
     required int32 LoginRegisterResult  = 1;
-    optional int32 LoginID              = 2;
 }
 
 //TypeC2SCreateUserReq
@@ -148,8 +147,7 @@ message PBHeroInfo
     optional int32 Defend               = 3;
     optional int32 Avoid                = 4;
     optional int32 Attach               = 5;
-    optional int32 HeroSkillID          = 6;
-    optional int32 Level                = 7;
+    optional int32 Level                = 6;
 }
 
 message PBS2CGetHeroInfoRes
@@ -268,4 +266,27 @@ message PBC2SAddEmpiricalReq
 message PBS2CAddEmpiricalRes
 {
     required int32 AddEmpiricalResult   = 1;
+}
+
+/////////////////////////////////////////////////////////////////////////
+message DBHero
+{
+    optional int32 Level                = 1;
+    optional int32 Empirical            = 2;
+    optional bool InTeam                = 3;
+    optional int32 HeroID               = 4;
+}
+
+message DBHeroInfo
+{
+    repeated DBHero HeroPack            = 1;
+}
+
+message DBPlayer
+{
+    optional int32 PlayerID             = 1;
+    optional string PlayerName          = 2;
+    optional int32 Gold                 = 3;
+    optional int32 Empirical            = 4;
+    optional DBHeroInfo hero            = 5;
 }

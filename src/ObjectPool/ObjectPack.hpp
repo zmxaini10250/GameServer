@@ -93,6 +93,11 @@ class CObjectPack
         {
             return FreeSpaceStack.size();
         }
+        
+        void Clear()
+        {
+            ObjectMap.clear();
+        }
 
         CObjectPack()
         {

@@ -8,6 +8,7 @@
 
 #include "Data.h"
 #include "NetBuffer.h"
+#include "../Player/PlayerData.h"
 #include "../ObjectPool/ObjectPool.hpp"
 #include "../protobuf/ClientMessage.pb.h"
 
@@ -49,6 +50,16 @@ int CTCPClientSocket::GetFormatData(Data &data)
         return -1;
     }
     return 0;
+}
+
+void CTCPClientSocket::SetPlayer(std::weak_ptr<CPlayer> player)
+{
+    this->player = player;
+}
+
+void CTCPClientSocket::SetLoginID(int Number)
+{
+    LoginID = Number;
 }
 
 //////////////////////////////////////////////////////////////////////////////

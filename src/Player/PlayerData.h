@@ -16,13 +16,13 @@ class CPlayer;
 class CPlayerManager; 
 
 typedef CObjectPool<CPlayer> PlayerPool;
-typedef CSingletonObject<CPlayer> PlayerManager;
+typedef CSingletonObject<CPlayerManager> PlayerManager;
 
 
 class CPlayer
 {
     public:
-        CPlayer(int PlayerID, const std::weak_ptr<CTCPClientSocket>& socketPtr = std::weak_ptr<CTCPClientSocket>()):PlayerID(PlayerID), socketPtr(socketPtr){};
+        CPlayer(int PlayerID = 0, const std::weak_ptr<CTCPClientSocket>& socketPtr = std::weak_ptr<CTCPClientSocket>()):PlayerID(PlayerID), socketPtr(socketPtr){};
         ~CPlayer(){}
 
         std::weak_ptr<CTCPClientSocket> GetSocket();
@@ -31,7 +31,6 @@ class CPlayer
         int PlayerInfo2PB(PBPlayerInfo &PlayerInfo);
         CHeroData& GetHeroData();
         int GetPlayerID();
-
         int GetGold();
         int ConsumeGold(int ConsumeNum);
         int AddGold(int AddNum);
@@ -41,6 +40,9 @@ class CPlayer
         int AddEmpirical(int AddNum);
         
         std::string GetUsername();
+
+        int Player2DB(DBPlayer &db);
+        int DB2Player(const DBPlayer &db);
     private:
         CHeroData HeroData;
         std::weak_ptr<CTCPClientSocket> socketPtr;
@@ -55,6 +57,7 @@ class CPlayerManager
     public:
         std::weak_ptr<CPlayer> CreatePlayer(int PlayerID,const std::weak_ptr<CTCPClientSocket>& socketPtr = std::weak_ptr<CTCPClientSocket>());
         std::weak_ptr<CPlayer> GetPlayer(int PlayerID);
+        int PlayerList2PB(PBS2CGetPlayerListRes& res);
     protected:
         typedef std::unordered_map<int, PlayerPool::Ptr> PlayerList;
         PlayerList list;

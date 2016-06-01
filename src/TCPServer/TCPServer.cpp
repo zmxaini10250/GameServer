@@ -10,6 +10,7 @@
 #include "TCPServer.h"
 #include "TCPClientSocket.h"
 #include "Process.h"
+#include "../Player/PlayerData.h"
 
 const int MsgListMaxLength  = 1024;
 const int serverPort        = 59000;
@@ -89,19 +90,22 @@ int RecvData(int epollfd, int readfd)
     {
         return -1;
     }
-    std::shared_ptr<CTCPClientSocket> sp = p.lock();
-    if (sp == nullptr)
-    {
-        return -1;
-    }
-    nread = sp->RecvBuff();
+    nread = p.lock()->RecvBuff();
     if (nread > 0)
     {
         Data data;
         memset(&data, 0, sizeof(Data));
-        if (sp->GetFormatData(data) == 0)
+        if (p.lock()->GetFormatData(data) == 0)
         {
-            ProcessHandle::GetInstance().ProcessData(data, sp->GetPlayer());
+            if (p.lock()->GetPlayer().expired())
+            {
+                std::shared_ptr<CPlayer> player(std::make_shared<CPlayer>(0, p));
+                ProcessHandle::GetInstance().ProcessData(data, std::weak_ptr<CPlayer>(player));
+            }
+            else
+            {
+                ProcessHandle::GetInstance().ProcessData(data, p.lock()->GetPlayer());
+            }
         }
     }
     else
