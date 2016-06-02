@@ -64,7 +64,7 @@ int CHeroPack::HeroList2PB(PBS2CGetHeroListRes& pb)const
         hero->set_heroindex(it->first);
         it->second->Hero2PB(*hero);
     }
-    
+
     return 0;
 }
 
@@ -220,6 +220,7 @@ std::weak_ptr<CHeroAttribute> CHeroAttributeManager::GetHeroAttribute(int HeroAt
         if (DBServer::GetInstance().GetHeroData(HeroAttributeID, *p) == 0)
         {
             list.insert(std::make_pair(HeroAttributeID, p));
+            return std::weak_ptr<CHeroAttribute>(p);
         }
         else
         {
@@ -231,6 +232,7 @@ std::weak_ptr<CHeroAttribute> CHeroAttributeManager::GetHeroAttribute(int HeroAt
 
 const std::vector<int>& CHeroTeam::GetTeam()const
 {
+    int size = team.size();
     return team;
 }
 
@@ -253,8 +255,9 @@ int CHeroTeam::UpdateTeam(const std::vector<int>& newTeam)
         {
             return -1;
         }
-        return 0;
     }
+    int size = team.size();
+    return 0;
 }
 
 int CHeroTeam::PB2Team(const PBC2SUpdateHeroTeamReq& pb)
@@ -275,7 +278,7 @@ int CHeroTeam::PB2Team(const PBC2SUpdateHeroTeamReq& pb)
     }
     return 0;
 }
-        bool CHeroTeam::InTeam(int index)
+bool CHeroTeam::InTeam(int index)
 {
     for (std::vector<int>::const_iterator it = team.begin(); it != team.cend(); ++it)
     {
@@ -306,7 +309,7 @@ int CHeroData::HeroTeam2PB(PBHeroTeam& pb)
     int Attach = 0; 
 
     const std::vector<int>& teamVector = team.GetTeam();
-
+    int size = teamVector.size();
     int i = 0;
     for (std::vector<int>::const_iterator it = teamVector.cbegin(); it != teamVector.cend() && i < HeroTeamSize; ++it, ++i)
     {
@@ -334,13 +337,14 @@ int CHeroData::HeroTeam2PB(PBHeroTeam& pb)
         {
             return -1;
         }
-        pb.set_healthpoint(HealthPoint);
-        pb.set_speed(Speed);
-        pb.set_defend(Defend);
-        pb.set_avoid(Avoid);
-        pb.set_attach(Attach);
-        return 0;
+
     }
+    pb.set_healthpoint(HealthPoint);
+    pb.set_speed(Speed);
+    pb.set_defend(Defend);
+    pb.set_avoid(Avoid);
+    pb.set_attach(Attach);
+    return 0;
 }
 
 int CHeroData::DB2Hero(const DBHeroInfo &db)

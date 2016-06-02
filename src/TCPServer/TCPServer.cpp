@@ -95,7 +95,7 @@ int RecvData(int epollfd, int readfd)
     {
         Data data;
         memset(&data, 0, sizeof(Data));
-        if (p.lock()->GetFormatData(data) == 0)
+        while (p.lock()->GetFormatData(data) == 0)
         {
             if (p.lock()->GetPlayer().expired())
             {
@@ -106,10 +106,15 @@ int RecvData(int epollfd, int readfd)
             {
                 ProcessHandle::GetInstance().ProcessData(data, p.lock()->GetPlayer());
             }
+            memset(&data, 0, sizeof(Data));
         }
     }
     else
     {
+        if (!p.lock()->GetPlayer().expired())
+        {
+            PlayerManager::GetInstance().RemovePlayer(p.lock()->GetPlayer().lock()->GetPlayerID());
+        }
         if (RemoveAcceptEvent(epollfd, readfd) == -1)
         {
             return -1;

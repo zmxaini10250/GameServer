@@ -20,6 +20,7 @@ class CDrop
 {
     public:
         CDrop(int Number, int DropType, int DropGoodsType, CPlayer& player):Number(Number), DropType(DropType), DropGoodsType(DropGoodsType), player(player){}
+        CDrop(int Number, int DropType, int DropGoodsType, int ID, CPlayer& player):Number(Number), DropType(DropType), DropGoodsType(DropGoodsType), ID(ID), player(player){}
         ~CDrop(){}
         bool CheckPack();
         int DropAdd();
@@ -29,6 +30,7 @@ class CDrop
         int Number;
         int DropType;
         int DropGoodsType;
+        int ID;
         CPlayer& player;
 };
 

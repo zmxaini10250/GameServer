@@ -31,6 +31,7 @@ class CTCPClientSocket
         void SetPlayer(std::weak_ptr<CPlayer> player);
         int GetReadFD(){ return readfd; }
         void SetLoginID(int Number);
+        int GetLoginID(){ return LoginID; }
     private:
         std::weak_ptr<CPlayer> player;
         int readfd;

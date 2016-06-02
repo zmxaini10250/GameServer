@@ -1,0 +1,1 @@
+BuyHeroConsume = 10;

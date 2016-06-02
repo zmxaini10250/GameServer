@@ -167,7 +167,6 @@ int CDBServer::DeleteUser(int LoginID, PBS2CDeleteUserRes& PBRes)
     }
     mysql_free_result(res);  
     printf("result:%d\n", PBRes.deleteuserresult());
-    printf("result:\n");
     return 0;
 }
 
@@ -179,18 +178,21 @@ int CDBServer::SavePlayerData(const DBPlayer& db)
     MYSQL_RES* res;
     MYSQL_ROW row;
     
-    int size = db.hero().GetCachedSize();
+    int size = db.hero().ByteSize();
     char *buffer = new char[size + 1];
-    db.SerializeToArray(buffer, size + 1);
-    char *sql = new char[size + 1024 + 1];
+    db.hero().SerializeToArray(buffer, size + 1);
+    char *sql = new char[size * 2 + 1024 + 2];
 
-    memset(sql, 0, size + 1024 + 1);
+    memset(sql, 0, size * 2 + 1024 + 2);
     int result = 0;
 
     sprintf(sql, sqlmoudle, db.playerid(), db.gold(), db.empirical());
     int length = strlen(sql);
-    memcpy(sql + length, buffer, size);
-    memcpy(sql + length + size, "')", 2);
+    //memcpy(sql + length, buffer, bytesize);
+
+    int bytesize = mysql_real_escape_string(connect, sql + length, buffer, size);
+
+    memcpy(sql + length + bytesize, "')", 2);
     if (mysql_query(connect, sql))
     {
         fprintf(stderr, "%s\n\n", mysql_error(connect));

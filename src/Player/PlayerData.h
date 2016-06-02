@@ -57,6 +57,7 @@ class CPlayerManager
     public:
         std::weak_ptr<CPlayer> CreatePlayer(int PlayerID,const std::weak_ptr<CTCPClientSocket>& socketPtr = std::weak_ptr<CTCPClientSocket>());
         std::weak_ptr<CPlayer> GetPlayer(int PlayerID);
+        void RemovePlayer(int PlayerID);
         int PlayerList2PB(PBS2CGetPlayerListRes& res);
     protected:
         typedef std::unordered_map<int, PlayerPool::Ptr> PlayerList;

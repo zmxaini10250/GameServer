@@ -141,3 +141,12 @@ int CPlayerManager::PlayerList2PB(PBS2CGetPlayerListRes& res)
     }
     return 0;
 }
+
+void CPlayerManager::RemovePlayer(int PlayerID)
+{
+    PlayerList::const_iterator it = list.find(PlayerID);
+    if (it != list.cend())
+    {
+        list.erase(it);
+    }
+}
