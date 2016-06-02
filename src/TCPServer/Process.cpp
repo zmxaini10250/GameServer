@@ -279,8 +279,11 @@ int HeroLevelUp(const Data& data, std::weak_ptr<CPlayer> player)
     {
         return -1;
     }
-    consume.ConsumeReduce();
-
+    if (consume.ConsumeReduce() == -1)
+    {
+        return -1;
+    }
+    p.lock()->LevelUp();
     PBS2CHeroLevelUpRes res;
     res.set_herolevelupresult(result);
     player.lock()->GetSocket().lock()->SendBuff((int)TypeS2CHeroLevelUpRes, res);

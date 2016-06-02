@@ -169,7 +169,7 @@ int CHeroAttribute::GetAttach()const
 
 int CHeroAttribute::GetHealthPoint(int level)const
 {
-    return level * 1000 * HealthPointGrow + BaseHealthPoint;
+    return level * 100 * HealthPointGrow + BaseHealthPoint;
 }
 
 int CHeroAttribute::SetSpeed(int Number)
